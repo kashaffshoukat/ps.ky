@@ -1,0 +1,8 @@
+{
+  "name": "Paradise Slumbers | Luxury Slumber Parties & Glamping Cayman Islands",
+  "description": "Bespoke indoor teepee sleepovers, luxury glamping bell tents, bohemian picnics, and starlight outdoor cinema experiences in the Cayman Islands.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

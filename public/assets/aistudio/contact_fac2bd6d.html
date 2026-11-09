@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paradise Slumbers - Booking & Contact Form</title>
+  <style>
+    /* --- BRAND COLOR PALETTE --- */
+    :root {
+      --dusty-rose: #C88A8F;
+      --soft-blush: #F7EBEB;
+      --sage-green: #6C8B64;
+      --light-sage: #E8EFE6;
+      --soft-white: #FAF8F6;
+      --charcoal: #3D3A3A;
+      --shadow-color: rgba(200, 138, 143, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* --- ENTIRE PAGE BACKGROUND: DIAGONAL GRID & SMOOTH FLOATING BALLOONS --- */
+    body {
+      background-color: var(--soft-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      position: relative;
+      background-image: 
+        repeating-linear-gradient(45deg, rgba(200, 138, 143, 0.08) 0, rgba(200, 138, 143, 0.08) 1px, transparent 0, transparent 50px),
+        repeating-linear-gradient(-45deg, rgba(200, 138, 143, 0.08) 0, rgba(200, 138, 143, 0.08) 1px, transparent 0, transparent 50px);
+    }
+
+    /* Global Full-Page Floating Balloons Container */
+    .global-balloon-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 48px;
+      height: 62px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      opacity: 0.45;
+      animation: floatUp 24s infinite linear;
+    }
+
+    .balloon::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 7px solid inherit;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      width: 1.5px;
+      height: 28px;
+      background: rgba(108, 139, 100, 0.3);
+      transform: translateX(-50%) rotate(2deg);
+      border-radius: 2px;
+    }
+
+    .balloon-1  { left: 4%;  background: radial-gradient(circle at 30% 30%, #fcebeb, var(--dusty-rose)); animation-delay: -3s; }
+    .balloon-2  { left: 14%; width: 42px; height: 55px; background: radial-gradient(circle at 30% 30%, #f0f7ef, var(--sage-green)); animation-delay: -12s; }
+    .balloon-3  { left: 24%; width: 52px; height: 68px; background: radial-gradient(circle at 30% 30%, #fffbf0, #FFD57E); animation-delay: -7s; }
+    .balloon-4  { left: 36%; background: radial-gradient(circle at 30% 30%, #fcebeb, var(--dusty-rose)); animation-delay: -18s; }
+    .balloon-5  { left: 48%; width: 45px; height: 58px; background: radial-gradient(circle at 30% 30%, #f0f7ef, var(--sage-green)); animation-delay: -5s; }
+    .balloon-6  { left: 60%; width: 50px; height: 65px; background: radial-gradient(circle at 30% 30%, #fffbf0, #FFD57E); animation-delay: -15s; }
+    .balloon-7  { left: 72%; background: radial-gradient(circle at 30% 30%, #fcebeb, var(--dusty-rose)); animation-delay: -9s; }
+    .balloon-8  { left: 82%; width: 44px; height: 57px; background: radial-gradient(circle at 30% 30%, #f0f7ef, var(--sage-green)); animation-delay: -21s; }
+    .balloon-9  { left: 92%; width: 48px; height: 62px; background: radial-gradient(circle at 30% 30%, #fffbf0, #FFD57E); animation-delay: -2s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-3800px) rotate(10deg); }
+    }
+
+    /* --- TOP ANNOUNCEMENT BAR --- */
+    .announcement-bar {
+      background: var(--dusty-rose);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .announcement-track {
+      display: inline-block;
+      animation: scrollText 28s linear infinite;
+    }
+
+    .announcement-item {
+      display: inline-block;
+      margin: 0 25px;
+    }
+
+    @keyframes scrollText {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* --- NAVBAR LAYOUT --- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: var(--sage-green);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-left, .nav-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1.6rem;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-toggle:hover {
+      opacity: 0.85;
+      transform: scale(1.08);
+    }
+
+    .nav-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .brand-logo-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 3px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-icon-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1.35rem;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-icon-btn:hover {
+      opacity: 0.85;
+    }
+
+    /* --- SIDE DRAWER NAVIGATION --- */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(61, 58, 58, 0.4);
+      backdrop-filter: blur(3px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      left: -320px;
+      width: 300px;
+      height: 100%;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px 20px;
+    }
+
+    .side-drawer.open {
+      left: 0;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--soft-blush);
+    }
+
+    .drawer-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dusty-rose);
+      letter-spacing: 1px;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--charcoal);
+      cursor: pointer;
+    }
+
+    .drawer-menu {
+      list-style: none;
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .drawer-menu a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .drawer-menu a:hover,
+    .drawer-menu a.active {
+      background: var(--light-sage);
+      color: var(--sage-green);
+    }
+
+    .drawer-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--sage-green), #5a7753);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 6px 18px var(--shadow-color);
+      margin-top: auto;
+    }
+
+    /* --- PAGE HERO SECTION --- */
+    .page-hero {
+      position: relative;
+      padding: 60px 20px 30px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid var(--dusty-rose);
+      color: var(--dusty-rose);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(200, 138, 143, 0.15);
+      backdrop-filter: blur(5px);
+    }
+
+    .page-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--sage-green);
+      margin-bottom: 12px;
+    }
+
+    .page-subtitle {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      opacity: 0.85;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* --- MAIN FORM CONTAINER --- */
+    .main-container {
+      max-width: 850px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .booking-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      border: 1.5px solid var(--soft-blush);
+      box-shadow: 0 15px 40px rgba(200, 138, 143, 0.15);
+      padding: 45px 50px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      color: var(--sage-green);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1.5px solid #e2d7d7;
+      background: #fcfbfa;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--dusty-rose);
+      box-shadow: 0 0 10px rgba(200, 138, 143, 0.15);
+      background: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Checkboxes grid styling for Extras */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      background: #fcfbfa;
+      border: 1.5px solid #e2d7d7;
+      padding: 16px;
+      border-radius: 14px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--sage-green);
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--sage-green), #5a7753);
+      color: #ffffff;
+      border: none;
+      padding: 16px;
+      border-radius: 30px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(108, 139, 100, 0.3);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    /* --- CONTACT INFO SECTION --- */
+    .contact-info-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .contact-info-section h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--sage-green);
+      margin-bottom: 20px;
+    }
+
+    .contact-info-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--sage-green);
+      padding: 14px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1.5px solid var(--soft-blush);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .contact-pill:hover {
+      transform: translateY(-3px);
+      background: var(--sage-green);
+      color: #ffffff;
+    }
+
+    /* --- RESPONSIVE DESIGN --- */
+    @media (max-width: 768px) {
+      .form-row, .checkbox-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .booking-card {
+        padding: 25px 20px;
+      }
+      .page-title {
+        font-size: 2.1rem;
+      }
+      .contact-info-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-pill {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Full-Page Floating Balloons Container -->
+  <div class="global-balloon-container">
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+    <div class="balloon balloon-4"></div>
+    <div class="balloon balloon-5"></div>
+    <div class="balloon balloon-6"></div>
+    <div class="balloon balloon-7"></div>
+    <div class="balloon balloon-8"></div>
+    <div class="balloon balloon-9"></div>
+  </div>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="announcement-track">
+      <span class="announcement-item">Cayman's Only Indoor Glamping Experience •</span>
+      <span class="announcement-item">Creating Magical Memories for Kids •</span>
+      <span class="announcement-item">Fully Delivered, Styled & Packed Away •</span>
+      <span class="announcement-item">Cayman's Only Indoor Glamping Experience •</span>
+      <span class="announcement-item">Creating Magical Memories for Kids •</span>
+      <span class="announcement-item">Fully Delivered, Styled & Packed Away •</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <button class="menu-toggle" id="openDrawerBtn" aria-label="Open Navigation Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="nav-center">
+      <a href="test.html">
+        <img src="logo.jpg" alt="Paradise Slumbers Logo" class="brand-logo-img">
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" class="nav-icon-btn" aria-label="Favorites">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </a>
+      <a href="#" class="nav-icon-btn" aria-label="User Account">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Side Drawer Navigation -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="side-drawer" id="sideDrawer">
+    <div>
+      <div class="drawer-header">
+        <span class="drawer-title">PARADISE SLUMBERS</span>
+        <button class="drawer-close" id="closeDrawerBtn" aria-label="Close Navigation Menu">&times;</button>
+      </div>
+      <ul class="drawer-menu">
+        <li><a href="test.html">Home</a></li>
+        <li><a href="theme.html">Choose Your Theme</a></li>
+        <li><a href="packages.html">Select Your Package</a></li>
+        <li><a href="custom.html">Custom & Design</a></li>
+        <li><a href="extras.html">Extras</a></li>
+        <li><a href="#" class="active">Contact Us</a></li>
+      </ul>
+    </div>
+    
+    <a href="contact.html" class="drawer-contact-btn">
+      <span>Contact Us</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </aside>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="hero-badge">
+      <span>Get In Touch</span>
+    </div>
+    <h1 class="page-title">Booking & Enquiry Form</h1>
+    <p class="page-subtitle">
+      To complete your booking or if you have any questions, please fill out the form below. Please ensure as much information is given!
+    </p>
+  </section>
+
+  <!-- Main Container -->
+  <div class="main-container">
+
+    <div class="booking-card">
+      <form action="#" method="POST">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (345) 000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Event Date *</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+        </div>
+
+        <!-- PACKAGES DROPDOWN -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="package">Select Your Package *</label>
+            <select id="package" name="package" required>
+              <option value="">Choose a package...</option>
+              <option value="2 People ($275)">2 People (1 Host + 1 Guest) - $275</option>
+              <option value="3 People ($395)">3 People (1 Host + 2 Guests) - $395</option>
+              <option value="4 People ($495)">4 People (1 Host + 3 Guests) - $495 [Most Popular]</option>
+              <option value="5 People ($595)">5 People (1 Host + 4 Guests) - $595</option>
+              <option value="6 People ($670)">6 People (1 Host + 5 Guests) - $670</option>
+              <option value="7 People ($765)">7 People (1 Host + 6 Guests) - $765</option>
+              <option value="8 People ($820)">8 People (1 Host + 7 Guests) - $820 [Grand Party]</option>
+            </select>
+          </div>
+
+          <!-- THEMES DROPDOWN -->
+          <div class="form-group">
+            <label for="theme">Select Your Theme *</label>
+            <select id="theme" name="theme" required>
+              <option value="">Choose a theme...</option>
+              <option value="CandyLand">CandyLand</option>
+              <option value="Dreaming of Unicorns">Dreaming of Unicorns</option>
+              <option value="Fortnite">Fortnite</option>
+              <option value="Frozen">Frozen</option>
+              <option value="Harry Potter">Harry Potter</option>
+              <option value="Pirates of the Caribbean">Pirates of the Caribbean</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SERVICE / INQUIRY TYPE (Including Custom Tents & Kids Interior Design) -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service_type">Service / Enquiry Focus *</label>
+            <select id="service_type" name="service_type" required>
+              <option value="Standard Slumber Party">Standard Slumber Party Booking</option>
+              <option value="Custom Made Tents">Custom Made Tents (To Keep at Home)</option>
+              <option value="Kids Interior Design">Kids Interior Design Makeover (Free Consultation)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="campers">Estimated Number of Campers</label>
+            <select id="campers" name="campers">
+              <option value="Not Applicable">Select number (if applicable)</option>
+              <option value="2">2 Campers</option>
+              <option value="3">3 Campers</option>
+              <option value="4">4 Campers</option>
+              <option value="5">5 Campers</option>
+              <option value="6">6 Campers</option>
+              <option value="7">7 Campers</option>
+              <option value="8">8+ Campers</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- EXTRAS AS TICK BOXES (EXACTLY MATCHING EXTRAS.HTML) -->
+        <div class="form-group">
+          <label>Select Magical Add-On Extras (Optional)</label>
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Adopt a Blue Iguana"> Adopt a Blue Iguana</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Balloon Arches & Displays"> Balloon Arches & Displays</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Build Your Own Cupcake"> Build Your Own Cupcake</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Themed Celebration Cake"> Themed Celebration Cake</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Candy Table Treats"> Candy Table Treats</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Graze Girl Charcuterie Boards"> Graze Girl Charcuterie Boards</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Fresh Flower Displays"> Fresh Flower Displays</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Glow Party Experience"> Glow Party Experience</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Green Thumb Package"> Green Thumb Package</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Party Pinata"> Party Pinata</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Tableware & Decor Bundle"> Tableware & Decor Bundle</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Sleepover Bundle"> Sleepover Bundle</label>
+            <label class="checkbox-item"><input type="checkbox" name="extras" value="Spa Pamper Package"> Spa Pamper Package</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message / Special Requests *</label>
+          <textarea id="message" name="message" placeholder="Please share any questions, allergies, or specific requirements..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Booking Enquiry ➔</button>
+
+      </form>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="contact-info-section">
+      <h3>Other Ways to Reach Us</h3>
+      <div class="contact-info-grid">
+        <!-- Location -->
+        <div class="contact-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Grand Cayman</span>
+        </div>
+
+        <!-- Email -->
+        <a href="mailto:info@paradiseslumbers.ky" class="contact-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>info@paradiseslumbers.ky</span>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:+13459286983" class="contact-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>+1 (345) 928-6983</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+<style>
+    /* --- PROFESSIONAL FOOTER FIX --- */
+    .site-footer {
+      background-color: var(--sage-green) !important;
+      color: #ffffff !important;
+      padding: 50px 20px 30px;
+      margin-top: 60px;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+    }
+
+    .footer-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .footer-col h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+      color: #ffffff !important;
+    }
+
+    .footer-col p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #ffffff !important;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      transition: opacity 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      padding-left: 5px;
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 25px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.85rem;
+      color: #ffffff !important;
+      opacity: 0.9;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: #ffffff !important;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* Mobile Responsive Footer */
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+      .footer-bottom-links {
+        justify-content: center;
+      }
+    }
+</style>
+<!-- Site Footer -->
+  <footer class="site-footer">
+  <style>
+    /* --- SITE FOOTER STYLES --- */
+    .site-footer {
+      --footer-bg: #2C2828;
+      --footer-text: #E8DADA;
+      --footer-muted: #B8B0B0;
+      --footer-accent: #C88A8F;
+      --footer-sage: #6C8B64;
+      
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 50px 40px 30px 40px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .site-footer .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* --- LINE 1: Brand, Tagline & Social Icons --- */
+    .site-footer .footer-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 25px;
+    }
+
+    .site-footer .footer-brand-group h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 0 4px 0;
+    }
+
+    .site-footer .footer-brand-group p {
+      font-size: 0.88rem;
+      color: var(--footer-muted);
+      margin: 0;
+      max-width: 450px;
+    }
+
+    .site-footer .footer-social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .site-footer .footer-social-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--footer-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .site-footer .footer-social-icons a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: fill 0.3s ease;
+    }
+
+    .site-footer .footer-social-icons a:hover {
+      background: var(--footer-accent);
+      color: #FFFFFF;
+      border-color: var(--footer-accent);
+      transform: translateY(-2px);
+    }
+
+    /* --- LINE 2: Compact Quick Links & Contact Info --- */
+    .site-footer .footer-middle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 25px;
+    }
+
+    .site-footer .footer-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .site-footer .footer-nav-links li a {
+      color: var(--footer-text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .site-footer .footer-nav-links li a:hover {
+      color: var(--footer-accent);
+    }
+
+    .site-footer .footer-contact-inline {
+      display: flex;
+      gap: 20px;
+      font-size: 0.85rem;
+      color: var(--footer-muted);
+      flex-wrap: wrap;
+    }
+
+    .site-footer .footer-contact-inline span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* --- LINE 3: Copyright, Privacy Policy & Terms --- */
+    .site-footer .footer-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.82rem;
+      color: var(--footer-muted);
+    }
+
+    .site-footer .footer-legal-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .site-footer .footer-legal-links a {
+      color: var(--footer-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .site-footer .footer-legal-links a:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .site-footer {
+        padding: 40px 20px 25px 20px;
+      }
+      .site-footer .footer-top-row,
+      .site-footer .footer-middle-row,
+      .site-footer .footer-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      .site-footer .footer-nav-links {
+        gap: 14px;
+      }
+    }
+  </style>
+
+  <div class="footer-container">
+
+    <!-- LINE 1: Logo, Tagline & Social Media SVG Icons -->
+    <div class="footer-top-row">
+      <div class="footer-brand-group">
+        <h3>Paradise Slumbers</h3>
+        <p>Grand Cayman's premier indoor glamping experience creating magical, stress-free sleepover memories.</p>
+      </div>
+      <div class="footer-social-icons">
+        <!-- Instagram Icon -->
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <!-- Facebook Icon -->
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.581 9 4.75V8z"/></svg>
+        </a>
+        <!-- Pinterest Icon -->
+        <a href="#" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.292 1.199-.334 1.363-.053.225-.172.271-.399.165-1.493-.695-2.428-2.875-2.428-4.629 0-3.767 2.738-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.209 0-2.345-.628-2.734-1.367l-.744 2.836c-.269 1.041-1 2.348-1.493 3.146 1.123.347 2.317.535 3.55 .535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+        </a>
+        <!-- TikTok Icon -->
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.242V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002-.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.853 4.853 0 0 1-1.01-.104z"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- LINE 3: Copyright, Privacy Policy & Terms -->
+    <div class="footer-bottom-row">
+      <p>Copyright © 2026 Paradise Slumbers Ltd. All Rights Reserved.</p>
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+  <!-- JavaScript for Drawer Toggle -->
+  <script>
+    const openBtn = document.getElementById('openDrawerBtn');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+    const drawer = document.getElementById('sideDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('active');
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('active');
+    }
+
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  </script>
+</body>
+</html>
