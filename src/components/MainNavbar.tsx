@@ -59,19 +59,18 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
           {/* Scrolling / Marquee announcement */}
           <div className="flex-1 overflow-hidden">
             <div className="flex items-center gap-6 whitespace-nowrap animate-marquee text-[11px] sm:text-xs">
-              <span className="font-extrabold text-white">Grand Cayman's Only Luxury Indoor Glamping Experience •</span>
+              <span className="font-extrabold text-white">Grand Cayman's Only Luxury Indoor Glamping Experience </span>
               <button
                 type="button"
                 onClick={onOpenPromo}
                 className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full hover:bg-white text-white hover:text-[#B06F78] font-black transition-all cursor-pointer shadow-2xs"
               >
-                <Sparkles className="w-3 h-3 text-[#FFE7EA]" />
                 <span>15% OFF Code: PARADISE15 [Claim]</span>
               </button>
-              <span className="text-white/95">• Creating Magical Memories for Kids •</span>
-              <span className="text-white/95">Delivered, Styled &amp; Packed Away •</span>
-              <span className="text-white/95 hidden sm:inline">100% Steam Sanitized Linens •</span>
-              <span className="font-extrabold text-white">Grand Cayman's Only Luxury Indoor Glamping Experience •</span>
+              <span className="text-white/95">Creating Magical Memories for Kids </span>
+              <span className="text-white/95">Delivered, Styled &amp; Packed Away </span>
+              <span className="text-white/95 hidden sm:inline">100% Steam Sanitized Linens </span>
+              <span className="font-extrabold text-white">Grand Cayman's Only Luxury Indoor Glamping Experience </span>
             </div>
           </div>
 
