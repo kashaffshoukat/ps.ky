@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart,X, Mail, Sparkles, Tag, CheckCircle2 } from 'lucide-react';
+import { Heart, X, Mail, Sparkles, Tag, CheckCircle2 } from 'lucide-react';
 
 interface PromoDiscountModalProps {
   isOpen: boolean;
@@ -24,24 +24,32 @@ export const PromoDiscountModal: React.FC<PromoDiscountModalProps> = ({
       onClaimDiscount('PARADISE15');
     }
     setSubmitted(true);
+    
+    // Smooth auto close after showing success state
     setTimeout(() => {
       setSubmitted(false);
       setEmail('');
       onClose();
-    }, 1200);
+    }, 2200);
+  };
+
+  const handleCloseModal = () => {
+    setSubmitted(false);
+    setEmail('');
+    onClose();
   };
 
   return (
     <div className="fixed inset-0 z-[9999] overflow-y-auto bg-black/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 font-sans animate-in fade-in duration-200 select-none">
       {/* Backdrop */}
-      <div className="fixed inset-0 cursor-pointer" onClick={onClose} aria-hidden="true" />
+      <div className="fixed inset-0 cursor-pointer" onClick={handleCloseModal} aria-hidden="true" />
 
       {/* Modal Container with Strict Square Corners (rounded-none) */}
       <div className="relative z-10 max-w-3xl w-full bg-[#FAF7F4] rounded-none overflow-hidden shadow-2xl border-2 border-[#5A7755]/30 flex flex-row text-[#232B25] my-auto">
         
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleCloseModal}
           className="absolute top-3 right-3 z-20 w-7 h-7 rounded-none bg-white/90 hover:bg-white text-[#384C37] flex items-center justify-center transition-colors cursor-pointer border border-[#384C37]/20 shadow-md"
           aria-label="Close modal"
         >
@@ -49,16 +57,16 @@ export const PromoDiscountModal: React.FC<PromoDiscountModalProps> = ({
         </button>
 
         {/* LEFT SIDE: Compact Left-Side Image Cover (w-5/12) */}
-        <div className="w-5/12 relative bg-[#233122] overflow-hidden min-h-[280px] sm:min-h-[340px] border-r-2 border-[#5A7755]/30">
+        <div className="w-5/12 relative bg-[#233122] overflow-hidden min-h-[280px] sm:min-h-[340px] border-r-2 border-[#5A7755]/30 flex flex-col justify-end">
           <img
             src="https://paradiseslumbersky-btzm.vercel.app/4.jpeg"
             alt="Paradise Slumbers Setup"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
           {/* Overlay Badge */}
-          <div className="absolute bottom-4 left-4 right-4 text-white space-y-0.5">
+          <div className="relative z-10 p-4 text-white space-y-0.5">
             <span className="bg-[#5A7755] text-white text-[9px] font-bold px-2.5 py-0.5 rounded-none uppercase tracking-wider">
               VIP Club
             </span>
@@ -68,28 +76,39 @@ export const PromoDiscountModal: React.FC<PromoDiscountModalProps> = ({
           </div>
         </div>
 
-        {/* RIGHT SIDE: Subscribe Form (w-7/12) */}
-        <div className="w-7/12 p-5 sm:p-8 flex flex-col justify-center space-y-4 bg-white">
+        {/* RIGHT SIDE: Subscribe Form or Success View (w-7/12) */}
+        <div className="w-7/12 p-5 sm:p-8 flex flex-col justify-center bg-white">
           
           {submitted ? (
-            <div className="py-8 text-center space-y-2">
-              <div className="w-12 h-12 rounded-none bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
-                <CheckCircle2 className="w-6 h-6" />
+            /* BEAUTIFUL PROFESSIONAL SUCCESS MESSAGE */
+            <div className="py-4 text-center space-y-3 animate-in zoom-in-95 fade-in duration-300">
+              <div className="w-12 h-12 rounded-full bg-[#5A7755]/15 text-[#5A7755] flex items-center justify-center mx-auto border border-[#5A7755]/30 shadow-sm">
+                <CheckCircle2 className="w-7 h-7 animate-bounce" />
               </div>
-              <h4 className="text-lg font-black text-[#384C37]">You're In!</h4>
-              <p className="text-[11px] text-[#232B25]/80">
-                Your 15% off promo code has been unlocked.
-              </p>
+
+              <div className="space-y-1">
+                <div className="inline-flex items-center gap-1 text-[9px] font-extrabold text-[#B06F78] uppercase tracking-wider">
+                  <Sparkles className="w-3 h-3 text-[#B06F78]" />
+                  <span>Welcome To VIP Club</span>
+                </div>
+                <h4 className="text-lg sm:text-xl font-black text-[#384C37] uppercase tracking-tight">
+                  You're On The List!
+                </h4>
+                <p className="text-[11px] text-[#232B25]/80 leading-relaxed">
+                  Your 15% discount code <strong className="text-[#384C37] underline decoration-[#5A7755]">PARADISE15</strong> is now active.
+                </p>
+              </div>
+
             </div>
           ) : (
-            <>
+            /* STANDARD FORM */
+            <div className="space-y-4">
               {/* Badge */}
               <div>
-              
-                <div className="inline-flex items-center gap-2 px-4 py-1.5  bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
-                      <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
-                      <span className='text-[10px]'>Join the VIP Slumber Club</span>
-                    </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+                  <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
+                  <span className='text-[10px]'>Join the VIP Slumber Club</span>
+                </div>
               </div>
 
               {/* Title & Description */}
@@ -136,13 +155,13 @@ export const PromoDiscountModal: React.FC<PromoDiscountModalProps> = ({
               <div className="text-center pt-0.5">
                 <button
                   type="button"
-                  onClick={onClose}
+                  onClick={handleCloseModal}
                   className="text-[11px] text-neutral-500 hover:text-[#384C37] transition-colors cursor-pointer underline underline-offset-4"
                 >
                   No thanks, I'll pay full price
                 </button>
               </div>
-            </>
+            </div>
           )}
 
         </div>

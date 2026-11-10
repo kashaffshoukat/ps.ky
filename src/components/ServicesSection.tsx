@@ -244,7 +244,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   : 'text-[#384C37] hover:text-[#5A7755]'
               }`}
             >
-              All Packages
+              All
             </button>
             <button
               onClick={() => setActiveTab('inclusions')}
@@ -254,7 +254,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   : 'text-[#384C37] hover:text-[#5A7755]'
               }`}
             >
-              Standard Inclusions
+              Inclusions
             </button>
             <button
               onClick={() => setActiveTab('addons')}
@@ -264,7 +264,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   : 'text-[#384C37] hover:text-[#5A7755]'
               }`}
             >
-              Glamping Add-Ons
+              Add-Ons
             </button>
           </div>
         </div>
