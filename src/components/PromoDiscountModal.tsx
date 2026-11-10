@@ -105,10 +105,7 @@ export const PromoDiscountModal: React.FC<PromoDiscountModalProps> = ({
             <div className="space-y-4">
               {/* Badge */}
               <div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
-                  <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
-                  <span className='text-[10px]'>Join the VIP Slumber Club</span>
-                </div>
+                
               </div>
 
               {/* Title & Description */}
