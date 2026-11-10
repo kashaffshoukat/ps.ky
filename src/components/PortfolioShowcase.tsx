@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, MapPin, Sparkles, ArrowRight, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Heart, MapPin, Sparkles, ArrowRight, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PORTFOLIO_PROJECTS } from '../data/mockData';
 import { PortfolioProject } from '../types';
 
@@ -27,10 +27,10 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onOpenBook
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5A7755]/15 border border-[#5A7755]/30 text-[#5A7755] text-xs font-bold uppercase tracking-widest">
-            <Award className="w-3.5 h-3.5 text-[#5A7755]" />
-            <span>Real Cayman Memoirs</span>
-          </div>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5  bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+                      <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
+                      <span>Grand Cayman's Slumber Themes Collection</span>
+                    </div>
           <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#232B25] tracking-tight">
             Featured Island Celebrations
           </h2>
@@ -50,7 +50,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onOpenBook
                 alt={selectedProject.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3 left-3 bg-[#5A7755] text-white text-xs font-bold px-3 py-1 rounded-full uppercase shadow-xs">
+              <div className="absolute top-3 left-3 bg-[#5A7755] text-white text-xs font-bold px-3 py-1  uppercase shadow-xs">
                 {selectedProject.theme}
               </div>
             </div>
@@ -92,7 +92,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onOpenBook
                 <div className="space-y-1.5">
                   {selectedProject.decorHighlights.map((hl, i) => (
                     <div key={i} className="flex items-center gap-2 text-xs text-[#232B25]">
-                      <span className="w-2 h-2 rounded-full bg-[#C78D95] shrink-0" />
+                      <span className="w-2 h-2  bg-[#C78D95] shrink-0" />
                       <span>{hl}</span>
                     </div>
                   ))}
@@ -105,14 +105,14 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onOpenBook
                   <button
                     onClick={handlePrev}
                     aria-label="Previous memoir"
-                    className="w-9 h-9 rounded-full bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
+                    className="w-9 h-9  bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     onClick={handleNext}
                     aria-label="Next memoir"
-                    className="w-9 h-9 rounded-full bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
+                    className="w-9 h-9  bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center cursor-pointer transition-colors shadow-2xs"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>
@@ -123,7 +123,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({ onOpenBook
 
                 <button
                   onClick={() => onOpenBooking()}
-                  className="px-6 py-2.5 rounded-full bg-[#5A7755] text-white hover:bg-[#384C37] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs"
+                  className="px-6 py-2.5  bg-[#5A7755] text-white hover:bg-[#384C37] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs"
                 >
                   Book Setup
                 </button>

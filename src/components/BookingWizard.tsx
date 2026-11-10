@@ -160,8 +160,8 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
         {/* Top Header in Logo Palette (Warm Cream & Sage) */}
         <div className="p-5 sm:p-6 border-b border-[#5A7755]/15 bg-[#FAF7F4] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-full overflow-hidden border border-[#5A7755]/25 bg-white p-0.5 shadow-xs">
-              <img src={LOGO_IMAGE} alt="Logo" className="w-full h-full object-cover rounded-full" />
+            <div className="w-11 h-11  overflow-hidden border border-[#5A7755]/25 bg-white p-0.5 shadow-xs">
+              <img src={LOGO_IMAGE} alt="Logo" className="w-full h-full object-cover " />
             </div>
             <div>
               <h3 className="font-sans text-lg sm:text-xl font-black text-[#232B25]">
@@ -175,7 +175,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
 
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-white hover:bg-[#EFF4EE] text-[#232B25] flex items-center justify-center shadow-xs transition-colors cursor-pointer border border-[#5A7755]/20"
+            className="w-9 h-9  bg-white hover:bg-[#EFF4EE] text-[#232B25] flex items-center justify-center shadow-xs transition-colors cursor-pointer border border-[#5A7755]/20"
             aria-label="Close booking modal"
           >
             <X className="w-5 h-5 text-[#232B25]" />
@@ -192,9 +192,9 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
               <span className={step >= 4 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>4. Details</span>
               <span className={step >= 5 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>5. Review</span>
             </div>
-            <div className="w-full bg-[#5A7755]/15 h-2 rounded-full overflow-hidden">
+            <div className="w-full bg-[#5A7755]/15 h-2  overflow-hidden">
               <div
-                className="bg-[#5A7755] h-full transition-all duration-300 rounded-full"
+                className="bg-[#5A7755] h-full transition-all duration-300 "
                 style={{ width: `${(step / 5) * 100}%` }}
               />
             </div>
@@ -491,7 +491,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
           {/* SUBMITTED CONFIRMATION */}
           {isSubmitted && (
             <div className="py-8 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
+              <div className="w-16 h-16  bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
                 <CheckCircle2 className="w-10 h-10 text-white" />
               </div>
               <h3 className="font-sans text-2xl font-black text-[#232B25]">
@@ -505,7 +505,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
                   href={`https://wa.me/13459253217?text=Hi%20Paradise%20Slumbers!%20I%20just%20submitted%20booking%20reference%20${bookingRef}%20for%20${eventDate}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3  text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-colors shadow-sm"
                 >
                   <MessageCircle className="w-4 h-4 text-white" />
                   <span>Chat with Concierge on WhatsApp</span>
@@ -523,7 +523,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
               <button
                 type="button"
                 onClick={handleBack}
-                className="px-5 py-2.5 rounded-full text-xs font-bold text-[#232B25] bg-white hover:bg-[#EFF4EE] border border-[#5A7755]/20 transition-colors cursor-pointer"
+                className="px-5 py-2.5  text-xs font-bold text-[#232B25] bg-white hover:bg-[#EFF4EE] border border-[#5A7755]/20 transition-colors cursor-pointer"
               >
                 Back
               </button>
@@ -535,7 +535,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-7 py-2.5 rounded-full text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-xs"
+                className="px-7 py-2.5  text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-xs"
               >
                 Continue
               </button>
@@ -543,7 +543,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
               <button
                 type="button"
                 onClick={handleSubmitBooking}
-                className="px-8 py-2.5 rounded-full text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-md"
+                className="px-8 py-2.5  text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-md"
               >
                 Confirm Reservation (${estimatedTotal} CI)
               </button>

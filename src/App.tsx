@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BackgroundBalloons } from './components/BackgroundBalloons';
 import { MainNavbar } from './components/MainNavbar';
 import { HeroSection } from './components/HeroSection';
-import { WhoWeAreSection } from './components/WhoWeAreSection';
 import { ServicesSection } from './components/ServicesSection';
+import { WhoWeAreSection } from './components/WhoWeAreSection';
+
 import { ThemesExplorer } from './components/ThemesExplorer';
 import { BentoGallery } from './components/BentoGallery';
 import { WhyChooseUsSection } from './components/WhyChooseUsSection';
@@ -16,11 +17,11 @@ import { AuthModal, UserProfile } from './components/AuthModal';
 import { WishlistModal } from './components/WishlistModal';
 import { PromoDiscountModal } from './components/PromoDiscountModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
-
+import { PromoModal } from "./components/PromoModal";
 type ViewType =
   | 'home'
-  | 'about'
   | 'services'
+  | 'about'
   | 'themes'
   | 'why-us'
   | 'gallery'
@@ -38,6 +39,9 @@ export default function App() {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isPromoOpen, setIsPromoOpen] = useState(false);
+  
+  // 2. Add state for your new custom promo modal
+  const [isCustomPromoModalOpen, setIsCustomPromoModalOpen] = useState(false);
 
   // Auto show promo discount on visit
   useEffect(() => {
@@ -143,45 +147,24 @@ export default function App() {
 
       {/* Main Content Router */}
       <main className="relative z-10">
-        
-        {/* ========================================================
-            HOMEPAGE SECTIONS:
-            1. Header Section (Hero with Cute Rainbow & Clouds)
-            2. Who We Are Section (About Us with 4 Real Images + Exact Text)
-            3. Services Section (Bento Grid + Responsive Tabs Slider)
-            4. Themes and Packages Section (Bento Grid without color palette)
-            5. Gallery Preview (EXACTLY 4 Images in Bento Grid + View More button)
-            6. Why Choose Us Section (Bento Grid with Images)
-            7. Reviews and Testimonials Section (Bento Grid)
-            8. Booking & Enquiry Form (Direct, Real, Authenticated)
-            ======================================================== */}
         {currentView === 'home' && (
           <>
-            {/* 1. Header Section with Cute Rainbow & Smiling Clouds */}
             <HeroSection
               onNavigate={handleNavigate}
               onOpenBooking={handleOpenBooking}
             />
-
-            {/* 2. Who We Are Section (4 Real Images + Exact Text) */}
             <WhoWeAreSection
               onOpenBooking={() => handleOpenBooking()}
               onNavigate={handleNavigate}
             />
-
-            {/* 3. Services Section (Bento Grid + Responsive Slider) */}
             <ServicesSection
               onOpenBooking={handleOpenBooking}
             />
-
-            {/* 4. Themes & Packages Section (Bento Grid, No Color Palette) */}
             <ThemesExplorer
               onOpenBooking={handleOpenBooking}
               onToggleWishlist={handleToggleWishlist}
               savedWishlistIds={wishlist}
             />
-
-            {/* 5. Gallery Showcase: EXACTLY 4 Images on Homepage in Bento Grid */}
             <BentoGallery
               onOpenBooking={handleOpenBooking}
               onNavigate={handleNavigate}
@@ -189,17 +172,11 @@ export default function App() {
               onToggleWishlist={handleToggleWishlist}
               savedWishlistIds={wishlist}
             />
-
-            {/* 6. Why Choose Us Section (Bento Grid with Images) */}
             <WhyChooseUsSection
               onOpenBooking={() => handleOpenBooking()}
               onNavigate={handleNavigate}
             />
-
-            {/* 7. Reviews and Testimonials Section */}
             <TestimonialsSection />
-
-            {/* 8. Booking & Enquiry Form directly on Homepage (Super Functional, Real, Authenticated) */}
             <ContactSection
               prefilledService={bookingServiceId}
               prefilledTheme={bookingThemeId}
@@ -208,7 +185,6 @@ export default function App() {
           </>
         )}
 
-        {/* DEDICATED PAGE: WHO WE ARE (ABOUT US) */}
         {currentView === 'about' && (
           <div className="pt-4">
             <WhoWeAreSection
@@ -227,7 +203,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: SERVICES */}
         {currentView === 'services' && (
           <div className="pt-4">
             <ServicesSection onOpenBooking={handleOpenBooking} />
@@ -239,7 +214,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: THEMES & PACKAGES */}
         {currentView === 'themes' && (
           <div className="pt-4">
             <ThemesExplorer
@@ -247,7 +221,6 @@ export default function App() {
               onToggleWishlist={handleToggleWishlist}
               savedWishlistIds={wishlist}
             />
-            {/* Packages listed on this page as well (for mobile and desktop) */}
             <ServicesSection onOpenBooking={handleOpenBooking} />
             <ContactSection
               prefilledService={bookingServiceId}
@@ -257,7 +230,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: WHY CHOOSE US */}
         {currentView === 'why-us' && (
           <div className="pt-4">
             <WhyChooseUsSection
@@ -273,7 +245,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: PHOTO GALLERY (ALL 55 PICTURES IN BENTO GRID) */}
         {currentView === 'gallery' && (
           <div className="pt-4">
             <BentoGallery
@@ -291,7 +262,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: REVIEWS & TESTIMONIALS */}
         {currentView === 'testimonials' && (
           <div className="pt-4">
             <TestimonialsSection />
@@ -303,7 +273,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: PRIVACY POLICY & BLOGS */}
         {(currentView === 'privacy' || currentView === 'blog') && (
           <div className="pt-4">
             <PrivacyPolicyView onOpenBooking={() => handleOpenBooking()} />
@@ -315,7 +284,6 @@ export default function App() {
           </div>
         )}
 
-        {/* DEDICATED PAGE: CONTACT US */}
         {currentView === 'contact' && (
           <div className="pt-4">
             <ContactSection
@@ -333,14 +301,26 @@ export default function App() {
         onOpenBooking={() => handleOpenBooking()}
       />
 
-      {/* Floating Island WhatsApp Direct Concierge */}
-      <FloatingWhatsApp />
+      {/* 3. Pass the handler down to FloatingWhatsApp */}
+      <FloatingWhatsApp 
+        onOpenPromoModal={() => setIsCustomPromoModalOpen(true)} 
+      />
 
       {/* 15% Welcome Promo Discount Modal with Popcorn Bar */}
       <PromoDiscountModal
         isOpen={isPromoOpen}
         onClose={() => setIsPromoOpen(false)}
         onClaimDiscount={(code) => handleOpenBooking(undefined, undefined, code)}
+      />
+
+      {/* 4. Render your new custom PromoModal at the bottom of the stack */}
+      <PromoModal
+        isOpen={isCustomPromoModalOpen}
+        onClose={() => setIsCustomPromoModalOpen(false)}
+        onSubmit={(email) => {
+          console.log('Subscribed email:', email);
+          // Handle your Formspree/backend submission here
+        }}
       />
 
       {/* Floating Cookie & Privacy Consent Banner */}

@@ -12,6 +12,7 @@ import {
   RefreshCw,
   Send,
   Sparkles,
+  Heart,
 } from 'lucide-react';
 import { FAQS } from '../data/mockData';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
@@ -35,19 +36,45 @@ interface ContactSectionProps {
   prefilledPackage?: string;
 }
 
-// Authentic packages strictly from paradiseslumbers.ky (No long dashes)
+// Exact Package Options requested
 const PACKAGE_OPTIONS = [
-  { value: '2 People ($275)', label: '2 People (1 Host + 1 Guest) • $275 CI' },
-  { value: '3 People ($395)', label: '3 People (1 Host + 2 Guests) • $395 CI' },
-  { value: '4 People ($495)', label: '4 People (1 Host + 3 Guests) • $495 CI [Most Popular]' },
-  { value: '5 People ($595)', label: '5 People (1 Host + 4 Guests) • $595 CI' },
-  { value: '6 People ($670)', label: '6 People (1 Host + 5 Guests) • $670 CI' },
-  { value: '7 People ($765)', label: '7 People (1 Host + 6 Guests) • $765 CI' },
-  { value: '8 People ($820)', label: '8 People (1 Host + 7 Guests) • $820 CI [Grand Party]' },
+  { value: '1 Host + 1 Guest * $275 (2 people)', label: '1 Host + 1 Guest * $275 (2 people)' },
+  { value: '1 Host + 2 guests * $395 (3 people)', label: '1 Host + 2 guests * $395 (3 people)' },
+  { value: '1 Host + 3 guests * $495 (4 people)', label: '1 Host + 3 guests * $495 (4 people) [Most Popular]' },
+  { value: '1 Host + 4 guests * $595 (5 people)', label: '1 Host + 4 guests * $595 (5 people)' },
+  { value: '1 Host + 5 guests * $670 (6 people)', label: '1 Host + 5 guests * $670 (6 people)' },
+  { value: '1 Host + 6 guests * $765 (7 people)', label: '1 Host + 6 guests * $765 (7 people)' },
+  { value: '1 Host + 7 guests * $820 (8 people)', label: '1 Host + 7 guests * $820 (8 people) [Grand Party]' },
 ];
 
-// Authentic themes strictly from paradiseslumbers.ky
-// Authentic themes including all requested themes (No long dashes)
+const STANDARD_INCLUSIONS = [
+  'Overnight hire of custom-made A-frame tents',
+  'Hypo-allergenic camping mattress with waterproof mattress protector & fitted sheet',
+  'Blankets in chosen theme & decorative cushions',
+  'Fairy lights & decorative accessories',
+  'Breakfast tray table with lantern and LED tealight candle',
+  'LED lightboard with customised wording for any occasion',
+  '4ft candy table with cake stand & accessories (cake & candy not included)',
+  'Full set-up and take down across Grand Cayman',
+  'Campers bring their own sleeping pillow for hygiene reasons',
+];
+
+const EXTRAS_LIST = [
+  'Adopt a Blue Iguana from the Conservation Facility',
+  'Balloon arches / Balloon displays',
+  'Build your own cupcake (1 cupcake per camper + no nuts / advise of allergies)',
+  'Cake, decorated in the chosen party theme',
+  'Candy for candy table (no nuts, gum or hard candy / advise of allergies)',
+  'Charcuterie Board by Graze Girl (Kids or adults, dessert, vegan, GF, or meats & cheeses)',
+  'Fresh flower displays / fresh flower garlands',
+  'Glow Party…add all the GLOW imaginable to your party!!',
+  'Green Thumb Package (small plant pot, soil, succulent & rocks - 1 per camper)',
+  'Pinata (no nuts, gum or hard candy / advise of allergies)',
+  'Plates, cups, napkins, candles and additional decorations',
+  'Sleepover bundle (eye mask, toothbrush, bath bomb, loofah - 1 bundle per camper)',
+  'Spa package (nail polish, file, hand/foot scrub & moisturiser - 1 set per camper)',
+];
+
 const THEME_OPTIONS = [
   'CandyLand',
   'Dreaming of Unicorns',
@@ -71,16 +98,15 @@ const THEME_OPTIONS = [
   'Custom colour combinations on request',
 ];
 
-// Authentic service offerings
 const SERVICE_TYPE_OPTIONS = [
   { value: 'Standard Slumber Party', label: 'Standard Slumber Party Booking' },
-  { value: 'Custom Made Tents', label: 'Custom Made Tents (To Keep at Home)' },
-  { value: 'Kids Interior Design', label: 'Kids Interior Design Makeover (Free Consultation)' },
+  { value: 'Custom Made Tents', label: 'Custom Made Tents (Tailor Made To Keep at Home - From $175)' },
+  { value: 'Kids Interior Design', label: 'Kids Interior Design (Fully Themed Bedroom / Playroom Makeover - First Consultation Free)' },
   { value: 'Full Event Planning', label: 'Full-Service Party Planning & Styling' },
 ];
 
 const CAMPER_OPTIONS = [
-  { value: 'Not Applicable', label: 'Select number (if applicable)' },
+  { value: 'Not Applicable', label: 'Select number of campers' },
   { value: '2', label: '2 Campers' },
   { value: '3', label: '3 Campers' },
   { value: '4', label: '4 Campers' },
@@ -88,20 +114,6 @@ const CAMPER_OPTIONS = [
   { value: '6', label: '6 Campers' },
   { value: '7', label: '7 Campers' },
   { value: '8', label: '8+ Campers' },
-];
-
-const EXTRAS_LIST = [
-  'Adopt a Blue Iguana',
-  'Balloon Arches & Displays',
-  'Gourmet Pancake Breakfast Stack',
-  'Themed Celebration Cake',
-  'Candy Table Treats',
-  'Graze Girl Charcuterie Boards',
-  'Fresh Flower Displays',
-  'Glow Party Experience',
-  'Party Pinata',
-  'Tableware & Decor Kit',
-  'Spa Pamper Package',
 ];
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvgkzyqv';
@@ -116,7 +128,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     phone: '',
     email: '',
     date: '',
-    package: prefilledPackage || '4 People ($495)',
+    package: prefilledPackage || '1 Host + 3 guests * $495 (4 people)',
     theme: prefilledTheme || '',
     service_type: prefilledService === 'custom-tents' ? 'Custom Made Tents' : prefilledService === 'interior-design' ? 'Kids Interior Design' : 'Standard Slumber Party',
     campers: '4',
@@ -124,7 +136,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     message: '',
   });
 
-  // Sync incoming prefill changes when user clicks booking from any section
   useEffect(() => {
     if (prefilledService) {
       const matchSvc = prefilledService === 'custom-tents'
@@ -135,7 +146,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       setFormData((prev) => ({ ...prev, service_type: matchSvc }));
     }
     if (prefilledTheme) {
-      // Find matching theme name
       const matchedTheme = THEME_OPTIONS.find((t) => t.toLowerCase().includes(prefilledTheme.toLowerCase())) || prefilledTheme;
       setFormData((prev) => ({ ...prev, theme: matchedTheme }));
     }
@@ -150,7 +160,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [lastSubmittedData, setLastSubmittedData] = useState<ContactFormData | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Form validation
   const validate = () => {
     return {
       fullname: formData.fullname.trim().length >= 2,
@@ -228,7 +237,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         }),
       });
     } catch {
-      // Graceful fallback for offline preview
+      // Graceful fallback
     } finally {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -242,7 +251,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       phone: '',
       email: '',
       date: '',
-      package: '4 People ($495)',
+      package: '1 Host + 3 guests * $495 (4 people)',
       theme: '',
       service_type: 'Standard Slumber Party',
       campers: '4',
@@ -271,12 +280,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   };
 
   return (
-    <section id="contact" className="py-14 sm:py-18 lg:py-22 relative z-10 bg-[#FAF7F4] border-b border-[#5A7755]/15">
+    <section id="contact" className="py-14 sm:py-18 lg:py-22 relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Page Hero Section */}
+        {/* Page Hero Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5A7755]/15 border border-[#5A7755]/30 text-[#5A7755] text-xs font-bold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-none bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-xs">
+            <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Direct Concierge Booking</span>
           </div>
 
@@ -289,18 +299,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           </div>
 
           <p className="text-[#232B25]/80 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
-            To complete your slumber party reservation or inquire about custom tents and room styling, please fill out the verified form below.
+            Pricing in KYD includes set up, take down, overnight hire, and all standard inclusions.
           </p>
         </div>
 
-        {/* 2-Column Split: Form on Left, Direct Contact on Right */}
+        {/* Main 2-Column Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Main Booking Card */}
-          <div className="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 border border-[#5A7755]/20 shadow-sm">
+          {/* Main Booking Form */}
+          <div className="lg:col-span-8 bg-white rounded-none p-6 sm:p-10 border-2 border-[#5A7755]/20 shadow-sm">
             {submitted && lastSubmittedData ? (
               <div className="py-8 sm:py-12 text-center space-y-6">
-                <div className="w-16 h-16 rounded-full bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
+                <div className="w-16 h-16 rounded-none bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
                   <CheckCircle2 className="w-10 h-10 text-white" />
                 </div>
 
@@ -313,8 +323,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </p>
                 </div>
 
-                {/* Summary Box */}
-                <div className="bg-[#FAF7F4] border border-[#5A7755]/20 rounded-2xl p-5 text-left text-xs sm:text-sm space-y-2.5 max-w-lg mx-auto">
+                <div className="bg-[#FAF7F4] border-2 border-[#5A7755]/20 rounded-none p-5 text-left text-xs sm:text-sm space-y-2.5 max-w-lg mx-auto">
                   <div className="flex justify-between border-b border-[#5A7755]/15 pb-2">
                     <span className="text-[#232B25]/70 font-medium">Package Tier:</span>
                     <span className="font-bold text-[#384C37]">{lastSubmittedData.package}</span>
@@ -336,7 +345,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <span className="text-[#232B25]/70 font-medium block mb-1">Add-Ons ({lastSubmittedData.extras.length}):</span>
                       <div className="flex flex-wrap gap-1.5">
                         {lastSubmittedData.extras.map((ex, i) => (
-                          <span key={i} className="bg-white border border-[#5A7755]/20 text-[#384C37] px-2 py-0.5 rounded-md text-[11px] font-bold">
+                          <span key={i} className="bg-white border border-[#5A7755]/20 text-[#384C37] px-2 py-0.5 rounded-none text-[11px] font-bold">
                             {ex}
                           </span>
                         ))}
@@ -349,13 +358,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Instant Actions */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                   <a
                     href={createWhatsAppLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] shadow-md transition-all cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-none text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] shadow-md transition-all cursor-pointer border border-[#5A7755]"
                   >
                     <MessageCircle className="w-4 h-4 text-white" />
                     <span>Send Copy to WhatsApp (+1 345 925-3217)</span>
@@ -363,7 +371,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <button
                     type="button"
                     onClick={handleResetForm}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-xs font-bold text-[#384C37] bg-white hover:bg-[#FAF7F4] border border-[#5A7755]/30 transition-all cursor-pointer shadow-xs"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-none text-xs font-bold text-[#384C37] bg-white hover:bg-[#FAF7F4] border-2 border-[#5A7755]/30 transition-all cursor-pointer shadow-xs"
                   >
                     <RefreshCw className="w-3.5 h-3.5 text-[#384C37]" />
                     <span>Book Another Event</span>
@@ -378,18 +386,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 className="space-y-5"
                 noValidate
               >
-                {/* Notice if prefilled */}
-                {(formData.theme || formData.service_type !== 'Standard Slumber Party') && (
-                  <div className="p-3 rounded-2xl bg-[#5A7755]/10 border border-[#5A7755]/25 flex items-center justify-between text-xs text-[#384C37] font-bold">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-[#5A7755]" />
-                      <span>Prefilled: {formData.service_type} {formData.theme ? `• Theme: ${formData.theme}` : ''}</span>
-                    </div>
-                    <span className="text-[10px] text-[#5A7755]/80 font-normal">Ready to submit</span>
-                  </div>
-                )}
+               
 
-                {/* ROW 1: Full Name & Phone Number */}
+                {/* Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
@@ -411,7 +410,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.fullname}
                       onBlur={() => handleBlur('fullname')}
                       onChange={(e) => setFormData({ ...formData, fullname: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
                     />
                   </div>
 
@@ -435,12 +434,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.phone}
                       onBlur={() => handleBlur('phone')}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
                     />
                   </div>
                 </div>
 
-                {/* ROW 2: Email Address & Preferred Event Date */}
+                {/* Email & Date */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
@@ -462,7 +461,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.email}
                       onBlur={() => handleBlur('email')}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
                     />
                   </div>
 
@@ -486,16 +485,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.date}
                       onBlur={() => handleBlur('date')}
                       onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all"
                     />
                   </div>
                 </div>
 
-                {/* ROW 3: PACKAGES DROPDOWN & THEMES DROPDOWN */}
+                {/* Package Tier Dropdown */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label htmlFor="package" className="block text-xs font-bold text-[#384C37] mb-1.5">
-                      Select Package Tier *
+                      PACKAGES (Pricing in KYD) *
                     </label>
                     <select
                       id="package"
@@ -504,9 +503,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.package}
                       onBlur={() => handleBlur('package')}
                       onChange={(e) => setFormData({ ...formData, package: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
                     >
-                      <option value="">Choose a package...</option>
+                      <option value="">Select Package Tier...</option>
                       {PACKAGE_OPTIONS.map((pkg) => (
                         <option key={pkg.value} value={pkg.value}>
                           {pkg.label}
@@ -526,7 +525,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.theme}
                       onBlur={() => handleBlur('theme')}
                       onChange={(e) => setFormData({ ...formData, theme: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
                     >
                       <option value="">Choose a theme...</option>
                       {THEME_OPTIONS.map((themeName) => (
@@ -538,11 +537,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </div>
 
-                {/* ROW 4: SERVICE TYPE & ESTIMATED CAMPERS */}
+                {/* Service Focus & Campers */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label htmlFor="service_type" className="block text-xs font-bold text-[#384C37] mb-1.5">
-                      Service / Enquiry Focus *
+                      Service Offering *
                     </label>
                     <select
                       id="service_type"
@@ -551,7 +550,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.service_type}
                       onBlur={() => handleBlur('service_type')}
                       onChange={(e) => setFormData({ ...formData, service_type: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
                     >
                       {SERVICE_TYPE_OPTIONS.map((svc) => (
                         <option key={svc.value} value={svc.value}>
@@ -570,7 +569,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       name="campers"
                       value={formData.campers}
                       onChange={(e) => setFormData({ ...formData, campers: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
+                      className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all cursor-pointer"
                     >
                       {CAMPER_OPTIONS.map((opt) => (
                         <option key={opt.value} value={opt.value}>
@@ -581,13 +580,33 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </div>
 
-                {/* ROW 5: EXTRAS CHECKBOXES */}
+                {/* Inclusions Accordion Summary Box */}
+                <div className="p-4 bg-[#FAF7F4] border-2 border-[#5A7755]/20 rounded-none space-y-2">
+                  <span className="text-xs font-black uppercase text-[#384C37] block">
+                    INCLUSIONS (Included with each setup):
+                  </span>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-[#232B25]/80">
+                    {STANDARD_INCLUSIONS.map((inc, i) => (
+                      <li key={i} className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-[#5A7755] shrink-0 mt-0.5" />
+                        <span>{inc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* GLAMPING ADD-ONS Checkbox List */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-xs font-bold text-[#384C37] flex items-center gap-1.5">
-                      <Gift className="w-3.5 h-3.5 text-[#5A7755]" />
-                      <span>Select Add-On Extras (Optional)</span>
-                    </label>
+                    <div>
+                      <label className="text-xs font-bold text-[#384C37] flex items-center gap-1.5">
+                        <Gift className="w-3.5 h-3.5 text-[#5A7755]" />
+                        <span>GLAMPING ADD-ONS (Quoted on Request)</span>
+                      </label>
+                      <span className="text-[10px] text-[#232B25]/60 block mt-0.5">
+                        Prices on request and subject to availability and number of campers.
+                      </span>
+                    </div>
                     <button
                       type="button"
                       onClick={handleSelectAllExtras}
@@ -597,16 +616,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-neutral-50 border border-neutral-200 rounded-2xl p-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-neutral-50 border-2 border-neutral-200 rounded-none p-4 max-h-72 overflow-y-auto no-scrollbar">
                     {EXTRAS_LIST.map((extra) => {
                       const isChecked = formData.extras.includes(extra);
                       return (
                         <label
                           key={extra}
-                          className={`flex items-center gap-2.5 p-2 rounded-xl text-xs cursor-pointer transition-all select-none ${
+                          className={`flex items-center gap-2.5 p-2.5 rounded-none text-xs cursor-pointer transition-all select-none border ${
                             isChecked
-                              ? 'bg-[#5A7755] text-white font-bold shadow-xs'
-                              : 'text-[#232B25] hover:bg-[#FAF7F4] font-medium'
+                              ? 'bg-[#5A7755] text-white font-bold border-[#5A7755] shadow-xs'
+                              : 'text-[#232B25] bg-white hover:bg-[#FAF7F4] font-medium border-neutral-200'
                           }`}
                         >
                           <input
@@ -615,16 +634,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                             value={extra}
                             checked={isChecked}
                             onChange={() => handleExtraToggle(extra)}
-                            className="w-4 h-4 accent-[#5A7755] rounded cursor-pointer shrink-0"
+                            className="w-4 h-4 accent-[#5A7755] rounded-none cursor-pointer shrink-0"
                           />
-                          <span className="truncate">{extra}</span>
+                          <span className="line-clamp-2 leading-tight">{extra}</span>
                         </label>
                       );
                     })}
                   </div>
                 </div>
 
-                {/* ROW 6: Your Message */}
+                {/* Message Field */}
                 <div>
                   <label htmlFor="message" className="block text-xs font-bold text-[#384C37] mb-1.5">
                     Your Message / Special Requests *
@@ -634,11 +653,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     name="message"
                     required
                     rows={3}
-                    placeholder="Child's name, age, address in Grand Cayman, special theme requests..."
+                    placeholder="Child's name, age, address in Grand Cayman, special theme or custom tent requests..."
                     value={formData.message}
                     onBlur={() => handleBlur('message')}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all resize-y min-h-[90px]"
+                    className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all resize-y min-h-[90px]"
                   />
                 </div>
 
@@ -646,7 +665,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 rounded-full text-xs sm:text-sm font-black uppercase tracking-wider text-white transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer ${
+                  className={`w-full py-4 rounded-none text-xs sm:text-sm font-black uppercase tracking-wider text-white transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer border border-[#5A7755] ${
                     isSubmitting ? 'bg-neutral-400' : 'bg-[#5A7755] hover:bg-[#384C37] active:scale-98'
                   }`}
                 >
@@ -657,24 +676,80 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             )}
           </div>
 
-          {/* Right Column: Direct Info & Accordion FAQ */}
+          {/* Right Column Services Spotlight Cards with Professional Direct WhatsApp Buttons */}
           <div className="lg:col-span-4 space-y-6">
             
-            {/* Direct Contact Cards */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#5A7755]/20 shadow-sm text-center space-y-4">
+            {/* Custom Made Tents Highlight Box */}
+            <div className="bg-white rounded-none p-6 border-2 border-[#5A7755]/25 shadow-sm space-y-3">
+              <span className="bg-[#5A7755] text-white text-[10px] font-bold px-2.5 py-1 rounded-none uppercase tracking-wider">
+                Tailor Made To Keep
+              </span>
+              <h3 className="font-sans text-lg font-black text-[#384C37]">
+                CUSTOM MADE TENTS (From $175)
+              </h3>
+              <p className="text-xs text-[#232B25]/80 leading-relaxed">
+                If you love our custom made A-Frame tents as much as we do, we can have one specially hand made for you to keep at home so the magic continues all year round!
+              </p>
+              <span className="text-[11px] text-[#5A7755] font-bold block">
+                Tent pricing is quoted for each unique order, depending on frame size, fabric and finishings.
+              </span>
+              
+              {/* Professional Direct WhatsApp Button */}
+              <div className="pt-2">
+                <a
+                  href="https://wa.me/13459253217?text=Hi%20Paradise%20Slumbers!%20I%20would%20like%20to%20inquire%20about%20ordering%20Custom%20Made%20Tents%20to%20keep%20at%20home."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-none bg-[#5A7755] hover:bg-[#384C37] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all cursor-pointer border border-[#5A7755]"
+                >
+                  <span>Enquire via WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Kids Interior Design Highlight Box */}
+            <div className="bg-white rounded-none p-6 border-2 border-[#C78D95]/40 shadow-sm space-y-3">
+              <span className="bg-[#C78D95] text-white text-[10px] font-bold px-2.5 py-1 rounded-none uppercase tracking-wider">
+                First Consultation Free
+              </span>
+              <h3 className="font-sans text-lg font-black text-[#384C37]">
+                KIDS INTERIOR DESIGN (Candice Hall)
+              </h3>
+              <p className="text-xs text-[#232B25]/80 leading-relaxed">
+                Fully themed bedroom / playroom makeover by Candice Hall. Candice has many years experience creating unique spaces, including decorating for the Ritz Carlton Private Residences and The Deckhouses, Grand Cayman.
+              </p>
+              <blockquote className="text-xs italic text-[#B06F78] border-l-2 border-[#C78D95] pl-3 py-0.5">
+                "People with great passion can make the impossible happen!"
+              </blockquote>
+              
+              {/* Professional Direct WhatsApp Button */}
+              <div className="pt-2">
+                <a
+                  href="https://wa.me/13459253217?text=Hi%20Paradise%20Slumbers!%20I%20would%20like%20to%20book%20my%20complimentary%20consultation%20for%20Kids%20Interior%20Design%20with%20Candice%20Hall."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-none bg-[#B06F78] hover:bg-[#965A63] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all cursor-pointer border border-[#B06F78]"
+                >
+                  <span>Book Free Consultation on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Direct Info */}
+            <div className="bg-white rounded-none p-6 sm:p-7 border-2 border-[#5A7755]/20 shadow-sm text-center space-y-4">
               <h3 className="font-sans text-lg font-black text-[#384C37]">
                 Other Ways to Reach Us
               </h3>
               
               <div className="flex flex-col gap-3">
-                <div className="flex items-center justify-center gap-3 bg-[#FAF7F4] text-[#232B25] py-3 px-4 rounded-2xl border border-[#5A7755]/15 font-bold text-xs sm:text-sm">
+                <div className="flex items-center justify-center gap-3 bg-[#FAF7F4] text-[#232B25] py-3 px-4 rounded-none border border-[#5A7755]/15 font-bold text-xs sm:text-sm">
                   <MapPin className="w-4 h-4 text-[#5A7755] shrink-0" />
                   <span>Grand Cayman Island-Wide</span>
                 </div>
 
                 <a
                   href="mailto:info@paradiseslumbers.ky"
-                  className="flex items-center justify-center gap-3 bg-[#FAF7F4] text-[#232B25] hover:bg-[#5A7755] hover:text-white py-3 px-4 rounded-2xl border border-[#5A7755]/15 font-bold text-xs sm:text-sm transition-all group"
+                  className="flex items-center justify-center gap-3 bg-[#FAF7F4] text-[#232B25] hover:bg-[#5A7755] hover:text-white py-3 px-4 rounded-none border border-[#5A7755]/15 font-bold text-xs sm:text-sm transition-all group"
                 >
                   <Mail className="w-4 h-4 text-[#5A7755] shrink-0 group-hover:text-white" />
                   <span>info@paradiseslumbers.ky</span>
@@ -682,63 +757,39 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 <a
                   href="tel:+13459253217"
-                  className="flex items-center justify-center gap-3 bg-[#FAF7F4] text-[#232B25] hover:bg-[#5A7755] hover:text-white py-3 px-4 rounded-2xl border border-[#5A7755]/15 font-bold text-xs sm:text-sm transition-all group"
+                  className="flex items-center justify-center gap-3 bg-[#FAF7F4] text-[#232B25] hover:bg-[#5A7755] hover:text-white py-3 px-4 rounded-none border border-[#5A7755]/15 font-bold text-xs sm:text-sm transition-all group"
                 >
                   <Phone className="w-4 h-4 text-[#5A7755] shrink-0 group-hover:text-white" />
                   <span>+1 (345) 925-3217</span>
                 </a>
-
-                <a
-                  href="https://wa.me/13459253217"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 bg-[#5A7755] text-white hover:bg-[#384C37] py-3.5 px-4 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-sm"
-                >
-                  <MessageCircle className="w-4 h-4 text-white shrink-0" />
-                  <span>WhatsApp Island Concierge</span>
-                </a>
               </div>
             </div>
 
-            {/* Service Guarantee Card */}
-            <div className="bg-[#FAF7F4] rounded-3xl p-6 border border-[#5A7755]/20 space-y-2 text-xs text-[#232B25]">
-              <div className="flex items-center gap-2 text-[#384C37] font-black text-sm">
-                <Check className="w-4 h-4 rounded-full bg-[#5A7755] text-white p-0.5" />
-                <span>All-Inclusive Island Service</span>
-              </div>
-              <p className="leading-relaxed text-[#232B25]/80">
-                Every slumber party includes delivery, full styling, memory foam mattresses, themed decor, lighting, and next-day takedown across Grand Cayman.
-              </p>
-            </div>
-
-            {/* Accordion FAQ with Animated Cute Smiley Clouds (No emojis) */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#5A7755]/25 shadow-sm">
+            {/* Accordion FAQ */}
+            <div className="bg-white rounded-none p-6 sm:p-7 border-2 border-[#5A7755]/25 shadow-sm">
               <div className="flex items-center gap-3 mb-4 pb-2 border-b border-neutral-100">
                 <div className="animate-bounce duration-1000 shrink-0">
                   <CuteSmileyCloud size="sm" />
                 </div>
-                <h4 className="font-sans text-lg sm:text-2xl font-black text-[#384C37] tracking-tight leading-snug">
-                  Frequently Asked Questions &amp; Mattress Guide
+                <h4 className="font-sans text-lg sm:text-xl font-black text-[#384C37] tracking-tight leading-snug">
+                  Frequently Asked Questions
                 </h4>
-                <div className="animate-bounce duration-1000 delay-150 shrink-0 hidden sm:block">
-                  <CuteSmileyCloud size="sm" />
-                </div>
               </div>
 
               <div className="space-y-2.5">
-                {FAQS.slice(0, 6).map((faq, idx) => {
+                {FAQS.slice(0, 5).map((faq, idx) => {
                   const isOpen = openFaq === idx;
                   return (
                     <div
                       key={idx}
-                      className={`border rounded-2xl overflow-hidden transition-all ${
+                      className={`border-2 rounded-none overflow-hidden transition-all ${
                         isOpen ? 'border-[#5A7755]/40 bg-[#FAF7F4]/60 shadow-xs' : 'border-neutral-200 bg-neutral-50/70 hover:bg-neutral-100'
                       }`}
                     >
                       <button
                         type="button"
                         onClick={() => setOpenFaq(isOpen ? null : idx)}
-                        className="w-full p-3.5 text-left text-xs sm:text-sm font-bold text-[#384C37] flex items-center justify-between transition-colors cursor-pointer"
+                        className="w-full p-3.5 text-left text-xs font-bold text-[#384C37] flex items-center justify-between transition-colors cursor-pointer"
                       >
                         <span className="pr-2">{faq.question}</span>
                         {isOpen ? (
@@ -748,7 +799,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         )}
                       </button>
                       {isOpen && (
-                        <div className="px-3.5 pb-3.5 text-xs sm:text-sm text-[#232B25]/85 bg-white leading-relaxed border-t border-neutral-200/80 pt-2.5">
+                        <div className="px-3.5 pb-3.5 text-xs text-[#232B25]/85 bg-white leading-relaxed border-t border-neutral-200/80 pt-2.5">
                           {faq.answer}
                         </div>
                       )}
@@ -765,3 +816,5 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     </section>
   );
 };
+
+export default ContactSection;

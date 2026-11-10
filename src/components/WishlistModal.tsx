@@ -77,7 +77,7 @@ export const WishlistModal: React.FC<WishlistModalProps> = ({
         {/* Header */}
         <div className="p-5 bg-[#FAF7F4] border-b border-[#5A7755]/15 text-[#232B25] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-full bg-[#C78D95] text-white flex items-center justify-center shadow-xs">
+            <div className="w-9 h-9  bg-[#C78D95] text-white flex items-center justify-center shadow-xs">
               <Heart className="w-4 h-4 fill-white text-white" />
             </div>
             <div>
@@ -88,7 +88,7 @@ export const WishlistModal: React.FC<WishlistModalProps> = ({
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white hover:bg-[#EFF4EE] text-[#232B25] flex items-center justify-center transition-colors cursor-pointer border border-[#5A7755]/20"
+            className="w-8 h-8  bg-white hover:bg-[#EFF4EE] text-[#232B25] flex items-center justify-center transition-colors cursor-pointer border border-[#5A7755]/20"
             aria-label="Close wishlist"
           >
             <X className="w-4 h-4 text-[#232B25]" />
@@ -99,7 +99,7 @@ export const WishlistModal: React.FC<WishlistModalProps> = ({
         <div className="p-5 overflow-y-auto flex-1 space-y-3">
           {resolvedItems.length === 0 ? (
             <div className="py-12 text-center space-y-3">
-              <div className="w-14 h-14 rounded-full bg-[#FAF7F4] border border-[#5A7755]/20 text-[#C78D95] flex items-center justify-center mx-auto">
+              <div className="w-14 h-14  bg-[#FAF7F4] border border-[#5A7755]/20 text-[#C78D95] flex items-center justify-center mx-auto">
                 <Heart className="w-6 h-6" />
               </div>
               <h4 className="font-sans text-base font-black text-[#232B25]">Your Wishlist is Empty</h4>
@@ -166,7 +166,7 @@ export const WishlistModal: React.FC<WishlistModalProps> = ({
                 onClose();
                 onOpenBooking();
               }}
-              className="w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-sm"
+              className="w-full py-3  text-xs font-bold uppercase tracking-wider text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-sm"
             >
               Book Selected Setup
             </button>

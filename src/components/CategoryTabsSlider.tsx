@@ -32,17 +32,17 @@ export const CategoryTabsSlider: React.FC<CategoryTabsSliderProps> = ({
   return (
     <div className={`relative max-w-4xl mx-auto px-1 sm:px-4 ${className}`}>
       <div className="flex items-center gap-1.5 sm:gap-2">
-        {/* Left Scroll Button (Always available on small screens, subtle on desktop) */}
+        {/* Left Scroll Button (Squared) */}
         <button
           type="button"
           onClick={() => scroll('left')}
-          className="shrink-0 w-8 h-8 rounded-full bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
+          className="shrink-0 w-8 h-8 rounded-none bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
           aria-label="Previous tabs"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
 
-        {/* Scrollable Tabs Track: single line, no wrapping, snap scroll */}
+        {/* Scrollable Tabs Track */}
         <div
           ref={containerRef}
           className="flex-1 flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-1 px-0.5"
@@ -55,7 +55,7 @@ export const CategoryTabsSlider: React.FC<CategoryTabsSliderProps> = ({
                 key={tab.id}
                 type="button"
                 onClick={() => onChange(tab.id)}
-                className={`snap-start shrink-0 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer select-none whitespace-nowrap border ${
+                className={`snap-start shrink-0 px-4 py-2 rounded-none text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer select-none whitespace-nowrap border ${
                   isActive
                     ? 'bg-[#5A7755] text-white border-[#5A7755] shadow-xs scale-[1.02]'
                     : 'bg-white text-[#232B25] border-[#5A7755]/20 hover:border-[#5A7755]/50 hover:bg-[#FAF7F4]'
@@ -72,11 +72,11 @@ export const CategoryTabsSlider: React.FC<CategoryTabsSliderProps> = ({
           })}
         </div>
 
-        {/* Right Scroll Button */}
+        {/* Right Scroll Button (Squared) */}
         <button
           type="button"
           onClick={() => scroll('right')}
-          className="shrink-0 w-8 h-8 rounded-full bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
+          className="shrink-0 w-8 h-8 rounded-none bg-white hover:bg-[#EFF4EE] text-[#5A7755] border border-[#5A7755]/25 flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
           aria-label="Next tabs"
         >
           <ChevronRight className="w-4 h-4" />
@@ -85,3 +85,5 @@ export const CategoryTabsSlider: React.FC<CategoryTabsSliderProps> = ({
     </div>
   );
 };
+
+export default CategoryTabsSlider;

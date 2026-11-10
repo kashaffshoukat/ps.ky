@@ -98,7 +98,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#384C37]/10 hover:bg-[#384C37]/20 text-[#384C37] flex items-center justify-center transition-colors cursor-pointer border border-[#384C37]/20"
+          className="absolute top-4 right-4 z-20 w-8 h-8  bg-[#384C37]/10 hover:bg-[#384C37]/20 text-[#384C37] flex items-center justify-center transition-colors cursor-pointer border border-[#384C37]/20"
           aria-label="Close portal"
         >
           <X className="w-4 h-4" />
@@ -110,11 +110,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <div className="absolute inset-0 bg-gradient-to-tr from-[#5A7755]/40 via-[#C78D95]/30 to-[#384C37] blur-2xl pointer-events-none" />
           
           {/* Center Showcase Circle */}
-          <div className="relative z-10 w-56 h-56 sm:w-64 sm:h-64 rounded-full border-2 border-[#C78D95]/60 shadow-[0_0_40px_rgba(199,141,149,0.3)] bg-[#2A3A29]/80 flex flex-col items-center justify-center p-6 text-center">
-            <div className="absolute inset-0 rounded-full border border-white/20 animate-pulse pointer-events-none" />
+          <div className="relative z-10 w-56 h-56 sm:w-64 sm:h-64  border-2 border-[#C78D95]/60 shadow-[0_0_40px_rgba(199,141,149,0.3)] bg-[#2A3A29]/80 flex flex-col items-center justify-center p-6 text-center">
+            <div className="absolute inset-0  border border-white/20 animate-pulse pointer-events-none" />
             
-            <div className="w-16 h-16 rounded-full bg-white p-1 mb-3 border border-white/40 shadow-md flex items-center justify-center">
-              <img src={LOGO_IMAGE} alt="Logo" className="w-full h-full object-cover rounded-full" />
+            <div className="w-16 h-16  bg-white p-1 mb-3 border border-white/40 shadow-md flex items-center justify-center">
+              <img src={LOGO_IMAGE} alt="Logo" className="w-full h-full object-cover " />
             </div>
 
             <h3 className="text-lg sm:text-xl font-black tracking-wider text-white">
@@ -124,7 +124,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               Grand Cayman
             </span>
 
-            <div className="mt-3 px-3 py-1 rounded-full bg-[#C78D95]/30 border border-[#C78D95]/50 text-white text-[11px] font-bold tracking-wide shadow-sm flex items-center gap-1.5">
+            <div className="mt-3 px-3 py-1  bg-[#C78D95]/30 border border-[#C78D95]/50 text-white text-[11px] font-bold tracking-wide shadow-sm flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#C78D95]" />
               <span>{mode === 'admin' ? 'ADMIN PORTAL' : 'VIP MEMBER PORTAL'}</span>
             </div>
@@ -138,7 +138,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             /* ADMIN PANEL SCREEN */
             <div className="space-y-5 text-center sm:text-left">
               <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5A7755]/10 border border-[#5A7755]/20 text-[#384C37] text-xs font-bold shadow-xs mb-3">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1  bg-[#5A7755]/10 border border-[#5A7755]/20 text-[#384C37] text-xs font-bold shadow-xs mb-3">
                   <Sparkles className="w-3.5 h-3.5 text-[#5A7755]" />
                   <span>Admin Control Hub</span>
                 </div>
@@ -184,7 +184,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </div>
           ) : showSuccessToast ? (
             <div className="py-8 text-center space-y-3">
-              <div className="w-14 h-14 rounded-full bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
+              <div className="w-14 h-14  bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h4 className="font-sans text-lg font-black text-[#384C37]">
@@ -200,7 +200,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <div className="p-4 rounded-2xl bg-[#FAF7F4] border border-[#5A7755]/20 space-y-3">
                 <div className="flex items-center justify-between border-b border-[#5A7755]/15 pb-3">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-10 h-10 rounded-full bg-[#384C37] text-white flex items-center justify-center text-xs font-black shadow-xs">
+                    <div className="w-10 h-10  bg-[#384C37] text-white flex items-center justify-center text-xs font-black shadow-xs">
                       {user.name.slice(0, 2).toUpperCase()}
                     </div>
                     <div>
@@ -212,7 +212,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     </div>
                   </div>
 
-                  <span className="font-mono text-[10px] font-black bg-[#5A7755] text-white px-2 py-0.5 rounded-full shadow-xs">
+                  <span className="font-mono text-[10px] font-black bg-[#5A7755] text-white px-2 py-0.5  shadow-xs">
                     {user.memberCode || 'VIP-KY-8821'}
                   </span>
                 </div>
@@ -250,7 +250,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     const contactEl = document.getElementById('contact');
                     if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="w-full py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-xs"
+                  className="w-full py-2.5  text-xs font-black uppercase tracking-wider text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-xs"
                 >
                   Book New Slumber Party
                 </button>
@@ -258,7 +258,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="w-full py-2.5 rounded-full text-xs font-bold text-[#232B25]/80 hover:text-red-600 bg-[#FAF7F4] hover:bg-red-50 border border-neutral-200 transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-2.5  text-xs font-bold text-[#232B25]/80 hover:text-red-600 bg-[#FAF7F4] hover:bg-red-50 border border-neutral-200 transition-colors cursor-pointer flex items-center justify-center gap-2"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Sign Out</span>
@@ -302,7 +302,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-white bg-[#5A7755] hover:bg-[#384C37] transition-all shadow-md cursor-pointer mt-2"
+                  className="w-full py-2.5  text-xs font-black uppercase tracking-wider text-white bg-[#5A7755] hover:bg-[#384C37] transition-all shadow-md cursor-pointer mt-2"
                 >
                   Authenticate Profile
                 </button>

@@ -16,7 +16,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onOpenBooking }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#5A7755] text-white text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1  bg-[#5A7755] text-white text-xs font-bold uppercase tracking-widest">
             <BookOpen className="w-3.5 h-3.5 text-white" />
             <span>Island Slumber Journal</span>
           </div>
@@ -43,7 +43,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onOpenBooking }) => {
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 bg-[#5A7755] text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                  <div className="absolute top-3 left-3 bg-[#5A7755] text-white px-2.5 py-0.5  text-[10px] font-bold uppercase tracking-wider">
                     {post.category}
                   </div>
                 </div>
@@ -92,12 +92,12 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onOpenBooking }) => {
           <div className="relative z-10 bg-white rounded-3xl max-w-2xl w-full max-h-[88vh] overflow-hidden flex flex-col shadow-2xl border border-[#5A7755]/20 my-auto">
             {/* Modal Header */}
             <div className="p-5 sm:p-6 border-b border-[#5A7755]/15 bg-[#FAF7F4] flex items-center justify-between shrink-0">
-              <span className="bg-[#5A7755] text-white px-3 py-1 rounded-full text-xs font-bold shadow-xs">
+              <span className="bg-[#5A7755] text-white px-3 py-1  text-xs font-bold shadow-xs">
                 {selectedPost.category}
               </span>
               <button
                 onClick={() => setSelectedPost(null)}
-                className="w-9 h-9 rounded-full bg-white hover:bg-[#EFF4EE] text-[#232B25] flex items-center justify-center transition-colors cursor-pointer border border-[#5A7755]/20"
+                className="w-9 h-9  bg-white hover:bg-[#EFF4EE] text-[#232B25] flex items-center justify-center transition-colors cursor-pointer border border-[#5A7755]/20"
               >
                 <X className="w-5 h-5 text-[#232B25]" />
               </button>
@@ -136,7 +136,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onOpenBooking }) => {
             <div className="p-4 sm:p-5 border-t border-[#5A7755]/15 bg-[#FAF7F4] flex items-center justify-between shrink-0">
               <button
                 onClick={() => setSelectedPost(null)}
-                className="px-5 py-2 rounded-full text-xs font-bold text-[#232B25] bg-white hover:bg-[#EFF4EE] border border-[#5A7755]/20 transition-colors cursor-pointer"
+                className="px-5 py-2  text-xs font-bold text-[#232B25] bg-white hover:bg-[#EFF4EE] border border-[#5A7755]/20 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -145,7 +145,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onOpenBooking }) => {
                   setSelectedPost(null);
                   onOpenBooking();
                 }}
-                className="px-6 py-2 rounded-full text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-xs"
+                className="px-6 py-2  text-xs font-bold text-white bg-[#5A7755] hover:bg-[#384C37] transition-all cursor-pointer shadow-xs"
               >
                 Plan a Slumber
               </button>

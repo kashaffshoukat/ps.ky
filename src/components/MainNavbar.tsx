@@ -53,7 +53,7 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
           TIER 1: TOP DUSTY ROSE/MAUVE ANNOUNCEMENT BAR
           Exact match to screenshot with ticker and contact items
           ======================================================== */}
-      <div className="bg-[#B06F78] text-white py-1.5 px-3 sm:px-6 overflow-hidden text-xs font-semibold border-b border-[#9E5D68]/40">
+      <div className="bg-[#a56069] text-white py-1.5 px-3 sm:px-6 overflow-hidden text-xs font-semibold border-b border-[#9E5D68]/40">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
           {/* Scrolling / Marquee announcement */}
@@ -63,7 +63,7 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
               <button
                 type="button"
                 onClick={onOpenPromo}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#B06F78] font-black transition-all cursor-pointer shadow-2xs"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full hover:bg-white text-white hover:text-[#B06F78] font-black transition-all cursor-pointer shadow-2xs"
               >
                 <Sparkles className="w-3 h-3 text-[#FFE7EA]" />
                 <span>15% OFF Code: PARADISE15 [Claim]</span>
@@ -76,24 +76,7 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
           </div>
 
           {/* Right Phone & WhatsApp Contact Links */}
-          <div className="flex items-center gap-3 sm:gap-4 shrink-0 text-xs text-white pl-3 sm:pl-4 border-l border-white/25">
-            <a
-              href="tel:+13459253217"
-              className="hover:text-white/80 flex items-center gap-1.5 transition-colors font-bold text-[11px] sm:text-xs"
-            >
-              <Phone className="w-3.5 h-3.5 text-white" />
-              <span className="hidden sm:inline">+1 (345) 925-3217</span>
-            </a>
-            <a
-              href="https://wa.me/13459253217"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white/80 flex items-center gap-1.5 transition-colors font-bold text-[11px] sm:text-xs"
-            >
-              <MessageCircle className="w-3.5 h-3.5 text-white" />
-              <span>WhatsApp</span>
-            </a>
-          </div>
+       
         </div>
       </div>
 
@@ -137,9 +120,9 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
 
           {/* DESKTOP CENTER FREE SPACE: "We will handle it" (Requested by user) */}
           <div className="hidden xl:flex items-center justify-center flex-1 px-4">
-            <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-white/10 backdrop-blur-xs border border-white/20 text-white shadow-xs">
-              <span className="text-sm font-semibold tracking-wide text-white/95 italic">
-                ✨ We will handle it ✨
+            <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full backdrop-blur-xs text-white shadow-xs">
+              <span className="text-3xl font-semibold tracking-wide text-white/95 italic">
+               WE WILL HANDLE IT..
               </span>
             </div>
           </div>
@@ -171,14 +154,11 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenAuth}
-                  className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-[#232B25] hover:bg-[#FDF5F6] transition-all duration-200 hover:scale-105 active:scale-95 shadow-xs cursor-pointer border border-white/50"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-[#232B25] hover:bg-[#FDF5F6] transition-all duration-200 hover:scale-105 active:scale-95 shadow-xs cursor-pointer border border-white/50"
                   title="VIP Member Account"
-                  aria-label="VIP Member"
                 >
-                  <User className="w-4 h-4 text-[#5A7755]" />
-                  <span className="text-xs font-black text-[#232B25] tracking-wide">
-                    VIP Member
-                  </span>
+                  <User className="w-4 h-4 text-[#5A7755] text-[11px]" />
+                 
                 </button>
 
                 {/* Mobile: Clean round button with User icon */}

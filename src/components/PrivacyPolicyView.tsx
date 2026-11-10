@@ -12,7 +12,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ onOpenBook
       {/* Privacy Policy Header */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#5A7755]/30 bg-white text-xs font-bold uppercase tracking-wider text-[#5A7755] shadow-xs mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5  border border-[#5A7755]/30 bg-white text-xs font-bold uppercase tracking-wider text-[#5A7755] shadow-xs mb-4">
             <ShieldCheck className="w-4 h-4 text-[#5A7755]" />
             <span>Grand Cayman Privacy &amp; Trust</span>
           </div>
