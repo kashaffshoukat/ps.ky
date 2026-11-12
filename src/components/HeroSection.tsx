@@ -9,10 +9,8 @@ const MARQUEE_IMAGES = [
   '/assets/aistudio/1.jfif',
   '/assets/aistudio/55.jfif',
   '/assets/aistudio/33.jfif',
-
   '/assets/aistudio/77.jfif',
   '/assets/aistudio/66.jfif',
-
 ];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -36,24 +34,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Top Spacer */}
       <div className="h-12 sm:h-16" />
 
-      {/* 1. Brand Title & Subtitle - Left Aligned with Increased Bottom Spacing */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-8 sm:mb-10 text-left">
-        <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white font-semibold mb-2.5 mt-[-20px]">
+      {/* 1. Brand Title & Subtitle - Left Aligned with Single Line Fix on Mobile */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-6 sm:mb-8 text-left">
+        <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white font-semibold mb-2 mt-[-20px]">
           Luxury Indoor Glamping • Grand Cayman
-
         </span>
-        <h1 className="font-black text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm">
+        <h1 className="font-black text-3xl xs:text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm whitespace-nowrap">
           Paradise Slumbers 
         </h1>
       </div>
 
-      {/* 2. Infinite Horizontal Image Marquee (Slower Speed via index.css) */}
-      <div className="relative w-full overflow-hidden py-2 mb-6 sm:mb-14 group z-10">
-        <div className="flex w-max gap-4 sm:gap-6 animate-marquee group-hover:[animation-play-state:paused]">
+      {/* 2. Infinite Horizontal Image Marquee (Increased Image Size) */}
+      <div className="relative w-full overflow-hidden py-3 mb-6 sm:mb-12 group z-10">
+        <div className="flex w-max gap-5 sm:gap-7 animate-marquee group-hover:[animation-play-state:paused]">
           {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((imgSrc, index) => (
             <div
               key={index}
-              className="w-[260px] sm:w-[360px] lg:w-[420px] h-[220px] sm:h-[290px] lg:h-[330px] flex-shrink-0 rounded-3xl overflow-hidden shadow-xl border-2 border-white/25 bg-white/10"
+              className="w-[290px] sm:w-[390px] lg:w-[460px] h-[240px] sm:h-[310px] lg:h-[360px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 bg-white/10"
             >
               <img
                 src={imgSrc}
@@ -65,28 +62,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
-      {/* 3. Rest of Current Text Content (Centered Below Marquee with Extra Spacing) */}
+      {/* 3. Rest of Current Text Content (Beautiflly Aligned Below Marquee) */}
       <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 w-full relative z-10 flex flex-col items-center justify-center text-center">
-        <div className="w-full space-y-9 flex flex-col items-center text-center">
+        <div className="w-full space-y-8 flex flex-col items-center text-center">
           
           {/* Main Headline & Captivating Kid-Focused Subline */}
           <div className="space-y-4 max-w-4xl mx-auto">
-            <h2 className="font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15] text-white drop-shadow-sm text-center mt-[-30px]">
+            <h2 className="font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15] text-white drop-shadow-sm text-center">
               Where Little Dreamers
-              <span className="block mt-2.5">
-              
+              <span className="block mt-2">
                 Enjoy Under the Stars
-                
               </span>
             </h2>
             
-            <p className="text-xs sm:text-sm lg:text-base font-medium text-white tracking-wide text-center max-w-2xl mx-auto pt-3">
+            <p className="text-xs sm:text-sm lg:text-base font-medium text-white/90 tracking-wide text-center max-w-2xl mx-auto pt-2">
               Turning ordinary sleepovers into extraordinary childhood adventures across Grand Cayman
             </p>
           </div>
 
           {/* Dual Button Group - Centered */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
             <button
               onClick={() => onNavigate('themes')}
               className="px-7 py-3.5 rounded-lg text-xs sm:text-sm font-semibold text-[#161B18] bg-white hover:bg-[#F5E6E7] transition-colors shadow-lg cursor-pointer"
@@ -100,10 +95,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             >
               Book Setup
             </button>
-
           </div>
-
-        
 
         </div>
       </div>
