@@ -35,7 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="h-12 sm:h-16" />
 
       {/* 1. Brand Title & Subtitle - Left Aligned with Single Line Fix on Mobile */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-6 sm:mb-8 text-left">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-6 sm:mb-8 text-left">
         <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white font-semibold mb-2 mt-[-20px]">
           Luxury Indoor Glamping • Grand Cayman
         </span>
@@ -50,7 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((imgSrc, index) => (
             <div
               key={index}
-              className="w-[290px] sm:w-[390px] lg:w-[460px] h-[240px] sm:h-[310px] lg:h-[360px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 bg-white/10"
+              className="w-[390px] sm:w-[390px] lg:w-[460px] h-[340px] sm:h-[310px] lg:h-[360px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 bg-white/10"
             >
               <img
                 src={imgSrc}
