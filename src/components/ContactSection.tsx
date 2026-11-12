@@ -312,10 +312,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   <div className="space-y-2">
                     <span className="bg-white/20 text-white text-[10px] font-extrabold px-3 py-1 uppercase tracking-widest border border-white/30">
-                      Enquiry Successfully Dispatched!
+                      Enquiry Successfully Sent!
                     </span>
                     <h3 className="font-sans text-2xl sm:text-3xl font-black tracking-tight text-white pt-1">
-                      Magical Celebration Awaits, {lastSubmittedData.fullname}! ✨
+                      Magical Celebration Awaits, {lastSubmittedData.fullname}! 
                     </h3>
                     <p className="text-xs sm:text-sm text-white/95 leading-relaxed pt-1">
                       Thank you for choosing <strong>Paradise Slumbers</strong>. We have received your booking details for <strong>{lastSubmittedData.date}</strong> and our Cayman concierge team will reach out to your email (<strong>{lastSubmittedData.email}</strong>) shortly with setup confirmation.
@@ -723,7 +723,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     Any items damaged, broken, lost, or misused during the rental period will be the customer's responsibility. The customer agrees to cover the reasonable cost of repairs or, where necessary, the replacement cost of any damaged or lost items.
                   </p>
                   <p className="text-[11px] sm:text-xs text-white/90 italic pt-1 border-t border-white/20">
-                    We appreciate your cooperation in helping us keep Paradise Slumbers magical for everyone! Thank you for choosing Paradise Slumbers. ✨
+                    We appreciate your cooperation in helping us keep Paradise Slumbers magical for everyone! Thank you for choosing Paradise Slumbers. 
                   </p>
                 </div>
 

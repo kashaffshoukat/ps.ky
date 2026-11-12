@@ -40,11 +40,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-8 sm:mb-10 text-left">
         <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white font-semibold mb-2.5 mt-[-20px]">
           Luxury Indoor Glamping • Grand Cayman
-         <CuteSmileyCloud size="md" className="shrink-0" />
 
         </span>
         <h1 className="font-black text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm">
-          Paradise Slumbers
+          Paradise Slumbers &nbsp;
+         <CuteSmileyCloud size="md" className="shrink-0" />
         </h1>
       </div>
 
