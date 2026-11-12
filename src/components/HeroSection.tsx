@@ -1,5 +1,6 @@
 import React from 'react';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
+
 interface HeroSectionProps {
   onNavigate: (view: string) => void;
   onOpenBooking: (serviceId?: string, themeId?: string) => void;
@@ -32,25 +33,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Top Spacer */}
-      <div className="h-12 sm:h-16" />
+      <div className="h-8 sm:h-12" />
 
-      {/* 1. Brand Title & Subtitle - Left Aligned with Single Line Fix on Mobile */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-6 sm:mb-8 text-left">
-        <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white font-semibold mb-2 mt-[-20px]">
+      {/* 1. Brand Title & Subtitle - Cleanly Aligned without Overlap */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-4 sm:mb-6 text-left">
+        <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white/90 font-semibold mb-1">
           Luxury Indoor Glamping • Grand Cayman
         </span>
-        <h1 className="font-black text-3xl xs:text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm whitespace-nowrap">
+        <h1 className="font-black text-3xl xs:text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm">
           Paradise Slumbers 
         </h1>
       </div>
 
-      {/* 2. Infinite Horizontal Image Marquee (Increased Image Size) */}
+      {/* 2. Infinite Horizontal Image Marquee */}
       <div className="relative w-full overflow-hidden py-3 mb-2 sm:mb-4 group z-10">
         <div className="flex w-max gap-5 sm:gap-7 animate-marquee group-hover:[animation-play-state:paused]">
           {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((imgSrc, index) => (
             <div
               key={index}
-              className="w-[390px] sm:w-[390px] lg:w-[460px] h-[340px] sm:h-[310px] lg:h-[360px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 bg-white/10"
+              className="w-[300px] sm:w-[390px] lg:w-[460px] h-[260px] sm:h-[310px] lg:h-[360px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 bg-white/10"
             >
               <img
                 src={imgSrc}
@@ -62,20 +63,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
-      {/* 3. Rest of Current Text Content (Beautiflly Aligned Below Marquee) */}
+      {/* 3. Rest of Current Text Content & Buttons */}
       <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 w-full relative z-10 flex flex-col items-center justify-center text-center">
-        <div className="w-full space-y-8 flex flex-col items-center text-center">
+        <div className="w-full space-y-6 flex flex-col items-center text-center">
           
           {/* Main Headline & Captivating Kid-Focused Subline */}
-          <div className="space-y-4 max-w-4xl mx-auto">
-            <h2 className="font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15] text-white drop-shadow-sm text-center">
+          <div className="space-y-3 max-w-4xl mx-auto">
+            <h2 className="font-black text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-[1.15] text-white drop-shadow-sm text-center">
               Where Little Dreamers
-              <span className="block mt-2">
+              <span className="block mt-1">
                 Enjoy Under the Stars
               </span>
             </h2>
             
-            <p className="text-xs sm:text-sm lg:text-base font-medium text-white/90 tracking-wide text-center max-w-2xl mx-auto pt-2">
+            <p className="text-xs sm:text-sm lg:text-base font-medium text-white/90 tracking-wide text-center max-w-2xl mx-auto pt-1">
               Turning ordinary sleepovers into extraordinary childhood adventures across Grand Cayman
             </p>
           </div>
