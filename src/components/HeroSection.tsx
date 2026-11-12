@@ -45,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* 2. Infinite Horizontal Image Marquee (Increased Image Size) */}
-      <div className="relative w-full overflow-hidden py-3 mb-6 sm:mb-12 group z-10">
+      <div className="relative w-full overflow-hidden py-3 mb-2 sm:mb-4 group z-10">
         <div className="flex w-max gap-5 sm:gap-7 animate-marquee group-hover:[animation-play-state:paused]">
           {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((imgSrc, index) => (
             <div
