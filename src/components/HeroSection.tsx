@@ -35,7 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="h-12 sm:h-16" />
 
       {/* 1. Brand Title & Subtitle - Left Aligned with Single Line Fix on Mobile */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-6 sm:mb-8 text-left">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 w-full relative z-10 mb-6 sm:mb-8 text-left">
         <span className="block text-[10px] sm:text-xs uppercase tracking-[0.35em] text-white font-semibold mb-2 mt-[-20px]">
           Luxury Indoor Glamping • Grand Cayman
         </span>
