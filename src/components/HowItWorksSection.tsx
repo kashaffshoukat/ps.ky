@@ -1,7 +1,8 @@
 import React from 'react';
-import { Heart, ArrowRight, Phone, MapPin, Mail, Sparkles } from 'lucide-react';
+import { Heart, Sparkles } from 'lucide-react';
 import { LOGO_IMAGE } from '../data/mockData';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
+
 interface HowItWorksSectionProps {
   onNavigate: (view: string) => void;
   onOpenBooking: (serviceId?: string, themeId?: string) => void;
@@ -61,10 +62,9 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
                 Explore our curated collection of enchanting indoor glamping styles.
               </p>
             </div>
-
-          
-
-            <CardFooterBar />
+            
+            {/* Spacer to maintain vertical layout balance */}
+            <div />
           </div>
 
           {/* ==============================================================
@@ -94,9 +94,8 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
               </p>
             </div>
 
-           
-
-            <CardFooterBar />
+            {/* Spacer to maintain vertical layout balance */}
+            <div />
           </div>
 
           {/* ==============================================================
@@ -126,8 +125,8 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
               </p>
             </div>
 
-        
-            <CardFooterBar />
+            {/* Spacer to maintain vertical layout balance */}
+            <div />
           </div>
 
           {/* ==============================================================
@@ -157,9 +156,8 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
               </p>
             </div>
 
-          
-
-            <CardFooterBar />
+            {/* Spacer to maintain vertical layout balance */}
+            <div />
           </div>
 
         </div>
@@ -167,19 +165,3 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
     </section>
   );
 };
-
-/* Bottom Contact Strip */
-const CardFooterBar: React.FC = () => (
-  <div className="w-full absolute bottom-0 left-0 right-0 z-10 bg-black/35 backdrop-blur-md text-white px-2 py-1.5 border-t border-white/15">
-    <div className="flex items-center justify-center gap-3 text-[9px] sm:text-[10px] font-medium">
-      <span className="inline-flex items-center gap-1">
-        <Phone className="w-2 h-2" />
-        +1 (345) 555-0199
-      </span>
-      <span className="inline-flex items-center gap-1">
-        <MapPin className="w-2 h-2" />
-        Grand Cayman
-      </span>
-    </div>
-  </div>
-);
