@@ -43,8 +43,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         </span>
         <h1 className="font-black text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm">
-          Paradise Slumbers &nbsp;
-         <CuteSmileyCloud size="md" className="shrink-0" />
+          Paradise Slumbers 
         </h1>
       </div>
 

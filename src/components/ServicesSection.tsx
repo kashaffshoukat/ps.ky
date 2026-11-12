@@ -25,7 +25,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 1 Guest (2 People)',
       price: '$275',
       period: 'KYD / event hire',
-      image: './src/assets/images/solo.jfif',
+      image: '/assets/aistudio/solo.jfif',
       features: [
         'Hire of 2 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -40,7 +40,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 2 Guests (3 People)',
       price: '$395',
       period: 'KYD / event hire',
-      image: './src/assets/images/333.jfif',
+      image: '/assets/aistudio/333.jfif',
       features: [
         'Hire of 3 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -55,7 +55,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 3 Guests (4 People)',
       price: '$495',
       period: 'KYD / event hire',
-      image: './src/assets/images/4t.jfif',
+      image: '/assets/aistudio/4t.jfif',
       features: [
         'Hire of 4 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -70,7 +70,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 4 Guests (5 People)',
       price: '$595',
       period: 'KYD / event hire',
-      image: './src/assets/images/bbb.jfif',
+      image: '/assets/aistudio/bbb.jfif',
       features: [
         'Hire of 5 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -85,7 +85,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 5 Guests (6 People)',
       price: '$670',
       period: 'KYD / event hire',
-      image: './src/assets/images/ttt.jfif',
+      image: '/assets/aistudio/ttt.jfif',
       features: [
         'Hire of 6 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -100,7 +100,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 6 Guests (7 People)',
       price: '$765',
       period: 'KYD / event hire',
-      image: './src/assets/images/ggg.jfif',
+      image: '/assets/aistudio/ggg.jfif',
       features: [
         'Hire of 7 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -115,7 +115,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 7 Guests (8 People)',
       price: '$820',
       period: 'KYD / event hire',
-      image: './src/assets/images/bnw.jfif',
+      image: '/assets/aistudio/bnw.jfif',
       features: [
         'Hire of 8 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -355,7 +355,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                 <div className="w-full lg:w-1/2 min-h-[320px] sm:min-h-[420px] relative overflow-hidden bg-neutral-100">
                   <img
-                    src="./src/assets/images/solo.jfif"
+                    src="/assets/aistudio/solo.jfif"
                     alt="Paradise Slumbers Inclusions"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -420,7 +420,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                 <div className="w-full lg:w-1/2 min-h-[320px] sm:min-h-[420px] relative overflow-hidden bg-neutral-100">
                   <img
-                    src="./src/assets/images/ggg.jfif"
+                    src="/assets/aistudio/ggg.jfif"
                     alt="Paradise Slumbers Add-Ons"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -463,7 +463,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             {/* TOP-RIGHT CORNER CIRCULAR LOGO WATERMARK */}
             <div className="absolute top-4 right-4 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/95 backdrop-blur-md p-1 border-2 border-[#5A7755] shadow-2xl flex items-center justify-center pointer-events-none select-none">
               <img 
-                src="./src/assets/images/logo.jpg" 
+                src="/assets/aistudio/logo.jpg" 
                 alt="Logo" 
                 className="w-full h-full object-cover rounded-full"
               />
@@ -479,7 +479,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               loop
               playsInline
             >
-              <source src="./src/video/video.mp4" type="video/mp4" />
+              <source src="/assets/aistudio/video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

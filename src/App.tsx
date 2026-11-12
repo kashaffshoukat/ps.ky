@@ -5,7 +5,7 @@ import { HeroSection } from './components/HeroSection';
 import { ServicesSection } from './components/ServicesSection';
 import { WhoWeAreSection } from './components/WhoWeAreSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
-import { ThemesExplorer } from './components/ThemesExplorer';
+import ThemesExplorer from './components/ThemesExplorer';
 import { BentoGallery } from './components/BentoGallery';
 import { WhyChooseUsSection } from './components/WhyChooseUsSection';
 import { TestimonialsSection } from './components/TestimonialsSection';

@@ -73,7 +73,7 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
             {/* Inner Bordered Image Box */}
             <div className="relative rounded-none overflow-hidden border-2 border-[#5A7755] shadow-[0_15px_30px_rgba(35,49,34,0.15)] aspect-[4/3] bg-white">
               <img
-                src="./src/assets/images/iii.jfif"
+                src="/assets/aistudio/iii.jfif"
                 alt="Paradise Slumbers Experience"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
