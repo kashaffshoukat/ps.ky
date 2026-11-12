@@ -42,13 +42,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           Luxury Indoor Glamping • Grand Cayman
 
         </span>
-        <h1 className="font-black text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm">
+        <h1 className="font-black text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] drop-shadow-sm">
           Paradise Slumbers 
         </h1>
       </div>
 
       {/* 2. Infinite Horizontal Image Marquee (Slower Speed via index.css) */}
-      <div className="relative w-full overflow-hidden py-2 mb-12 sm:mb-14 group z-10">
+      <div className="relative w-full overflow-hidden py-2 mb-6 sm:mb-14 group z-10">
         <div className="flex w-max gap-4 sm:gap-6 animate-marquee group-hover:[animation-play-state:paused]">
           {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((imgSrc, index) => (
             <div

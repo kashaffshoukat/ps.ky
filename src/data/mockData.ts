@@ -210,7 +210,7 @@ export const THEMES_DATA: ThemeItem[] = [
     vibeHighlight: 'Lollipop Swirls, Pastel Bonbons & Sweet Tooth Dreams',
     palette: ['#F7C5CC', '#B5E2FA', '#FFE17D', '#FAF9F6', '#000000'],
     paletteNames: ['Bubblegum Pink', 'Mint Cyan', 'Lemon Drop', 'Soft White', 'Pure Black'],
-    image: '.assets/images/aaa.jfif',
+    image: './assets/images/aaa.jfif',
     popularFor: 'Sweet birthdays, candy lovers, colorful sleepovers, and joyful celebrations.',
     decorElements: ['Lollipop accent cushions', 'Sprinkle bed runners', 'Candy jar lanterns', 'Pastel bunting'],
     tentStyle: 'Handcrafted timber A-frames with pastel pink and mint drapery',
@@ -540,25 +540,26 @@ export const THEMES_DATA: ThemeItem[] = [
     beddingStyle: 'Ivory quilted duvets with cloud pillows and plush fur throws',
     lightingType: 'Warm 2200K amber micro-fairy lights and frosted glass lanterns'
   },
-  {
-    id: 'christmas-holiday',
-    title: 'Christmas & Holiday Magic',
-    subtitle: 'Seasonal Starlight Wonder',
-    category: 'Holiday Festive',
-    headline: 'Crimson Velvet, Pine Green & Starlight Cheer.',
-    narrative: 'Transform your living room into Santa’s cozy North Pole workshop with deep crimson blankets, tartan plaids, evergreen garland swags, and festive stockings.',
-    exploreHighlight: 'Festive red and ivory teepees adorned with frosted pine cone garlands and jingle bells.',
-    stayHighlight: 'Cozy plaid and velvet duvets with snowflake cushions and holiday breakfast trays.',
-    vibeHighlight: 'Holiday Tartan, Pine Garlands & Christmas Starlight',
-    palette: ['#B22222', '#2E5A36', '#D4AF37', '#FAF9F6', '#000000'],
-    paletteNames: ['Holiday Crimson', 'Pine Green', 'Gilded Star', 'Soft White', 'Pure Black'],
-    image: './assets/aistudio/2.jfif',
-    popularFor: 'December holiday sleepovers, Christmas Eve traditions, winter birthdays, and festive family fun.',
-    decorElements: ['Frosted evergreen garlands', 'Personalized holiday stockings', 'Tartan blankets', 'Snowflake pillows'],
-    tentStyle: 'Ivory A-frames draped in holiday pine swags and red velvet ribbons',
-    beddingStyle: 'Crimson and tartan duvets with embroidered snowflake cushions',
-    lightingType: 'Warm twinkle fairy lights and holiday lantern tealights'
+    {
+    id: 'harry-potter',
+    title: 'Harry Potter',
+    subtitle: 'Hogwarts Wizarding Academy',
+    category: 'Magic & Adventure',
+    headline: 'Board the Hogwarts Express for a Night of Magic.',
+    narrative: 'Immerse in wizarding wonder with house crest banners, floating candle lanterns, golden snitch pillows, aged spellbooks, and custom acceptance letters.',
+    exploreHighlight: 'Hogwarts Great Hall inspired teepees with rich burgundy and navy house drapery.',
+    stayHighlight: 'Velvet house crest blankets with golden snitch cushions and wand favors.',
+    vibeHighlight: 'Floating Candles, House Crests & Wizarding Mystery',
+    palette: ['#740001', '#D3A625', '#0E1A40', '#FAF9F6', '#000000'],
+    paletteNames: ['Gryffindor Crimson', 'Snitch Gold', 'Ravenclaw Navy', 'Soft White', 'Pure Black'],
+    image: './assets/aistudio/eee.jfif',
+    popularFor: 'Harry Potter fans, book lovers, fantasy sleepovers, and magical milestones.',
+    decorElements: ['Hogwarts house banners', 'Golden snitch bed trays', 'Aged spellbook props', 'Floating candle lights'],
+    tentStyle: 'Rich crimson and navy timber A-frames with house crest emblems',
+    beddingStyle: 'Cozy velvet blankets with golden snitch cushions and breakfast trays',
+    lightingType: 'Warm amber suspended floating candle lanterns and potion bottle lamps'
   },
+  
   {
     id: 'custom-theme',
     title: 'Lilo and Stitch',
@@ -578,7 +579,26 @@ export const THEMES_DATA: ThemeItem[] = [
     tentStyle: 'Handcrafted timber frames with custom tailored drapery',
     beddingStyle: 'Custom coordinated linens and pillows designed for your event',
     lightingType: 'Specialized lighting chosen to complement your custom theme'
-  }
+  },
+  {
+    id: 'christmas-holiday',
+    title: 'Christmas & Holiday Magic',
+    subtitle: 'Seasonal Starlight Wonder',
+    category: 'Holiday Festive',
+    headline: 'Crimson Velvet, Pine Green & Starlight Cheer.',
+    narrative: 'Transform your living room into Santa’s cozy North Pole workshop with deep crimson blankets, tartan plaids, evergreen garland swags, and festive stockings.',
+    exploreHighlight: 'Festive red and ivory teepees adorned with frosted pine cone garlands and jingle bells.',
+    stayHighlight: 'Cozy plaid and velvet duvets with snowflake cushions and holiday breakfast trays.',
+    vibeHighlight: 'Holiday Tartan, Pine Garlands & Christmas Starlight',
+    palette: ['#B22222', '#2E5A36', '#D4AF37', '#FAF9F6', '#000000'],
+    paletteNames: ['Holiday Crimson', 'Pine Green', 'Gilded Star', 'Soft White', 'Pure Black'],
+    image: './assets/aistudio/2.jfif',
+    popularFor: 'December holiday sleepovers, Christmas Eve traditions, winter birthdays, and festive family fun.',
+    decorElements: ['Frosted evergreen garlands', 'Personalized holiday stockings', 'Tartan blankets', 'Snowflake pillows'],
+    tentStyle: 'Ivory A-frames draped in holiday pine swags and red velvet ribbons',
+    beddingStyle: 'Crimson and tartan duvets with embroidered snowflake cushions',
+    lightingType: 'Warm twinkle fairy lights and holiday lantern tealights'
+  },
 ];
 
 // Authentic Add-On Extras strictly listed on paradiseslumbers.ky

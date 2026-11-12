@@ -70,7 +70,7 @@ export const PromoModal: React.FC<PromoModalProps> = ({
         {/* LEFT COLUMN: Image with overlay text */}
         <div className="relative w-[42%] sm:w-1/2 flex-shrink-0 bg-neutral-900 flex flex-col justify-end overflow-hidden">
           <img
-            src="./assets/aistudio//eee.jfif"
+            src="./assets/aistudio/eee.jfif"
             alt="Paradise Slumbers Setup"
             className="absolute inset-0 w-full h-full object-cover opacity-90"
           />
