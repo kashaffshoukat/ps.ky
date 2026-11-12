@@ -233,7 +233,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <div className="flex items-center gap-2">
                   <Gift className="w-4 h-4 text-[#5A7755]" />
                   <div>
-                    <span className="text-xs font-black text-[#384C37] block">VIP 15% OFF Active</span>
+                    <span className="text-xs font-black text-[#384C37] block">VIP 20% OFF Active</span>
                     <span className="text-[10px] text-[#232B25]/75">Free Gourmet Popcorn Bar</span>
                   </div>
                 </div>

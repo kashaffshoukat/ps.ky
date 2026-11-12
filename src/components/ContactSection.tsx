@@ -8,11 +8,12 @@ import {
   ChevronUp,
   MessageCircle,
   Gift,
-  Check,
   RefreshCw,
   Send,
   Sparkles,
   Heart,
+  X,
+  ShieldAlert,
 } from 'lucide-react';
 import { FAQS } from '../data/mockData';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
@@ -36,7 +37,6 @@ interface ContactSectionProps {
   prefilledPackage?: string;
 }
 
-// Exact Package Options requested
 const PACKAGE_OPTIONS = [
   { value: '1 Host + 1 Guest * $275 (2 people)', label: '1 Host + 1 Guest * $275 (2 people)' },
   { value: '1 Host + 2 guests * $395 (3 people)', label: '1 Host + 2 guests * $395 (3 people)' },
@@ -47,32 +47,16 @@ const PACKAGE_OPTIONS = [
   { value: '1 Host + 7 guests * $820 (8 people)', label: '1 Host + 7 guests * $820 (8 people) [Grand Party]' },
 ];
 
-const STANDARD_INCLUSIONS = [
-  'Overnight hire of custom-made A-frame tents',
-  'Hypo-allergenic camping mattress with waterproof mattress protector & fitted sheet',
-  'Blankets in chosen theme & decorative cushions',
-  'Fairy lights & decorative accessories',
-  'Breakfast tray table with lantern and LED tealight candle',
-  'LED lightboard with customised wording for any occasion',
-  '4ft candy table with cake stand & accessories (cake & candy not included)',
-  'Full set-up and take down across Grand Cayman',
-  'Campers bring their own sleeping pillow for hygiene reasons',
-];
-
+// Updated Add-Ons list based on client's exact instructions
 const EXTRAS_LIST = [
-  'Adopt a Blue Iguana from the Conservation Facility',
-  'Balloon arches / Balloon displays',
-  'Build your own cupcake (1 cupcake per camper + no nuts / advise of allergies)',
-  'Cake, decorated in the chosen party theme',
-  'Candy for candy table (no nuts, gum or hard candy / advise of allergies)',
-  'Charcuterie Board by Graze Girl (Kids or adults, dessert, vegan, GF, or meats & cheeses)',
-  'Fresh flower displays / fresh flower garlands',
-  'Glow Party…add all the GLOW imaginable to your party!!',
-  'Green Thumb Package (small plant pot, soil, succulent & rocks - 1 per camper)',
-  'Pinata (no nuts, gum or hard candy / advise of allergies)',
-  'Plates, cups, napkins, candles and additional decorations',
-  'Sleepover bundle (eye mask, toothbrush, bath bomb, loofah - 1 bundle per camper)',
-  'Spa package (nail polish, file, hand/foot scrub & moisturiser - 1 set per camper)',
+  'Balloon Arches & Styling',
+  'Theme Decorated Party Cake',
+  'Graze Girl Charcuterie Board',
+  'Fresh Flower Display / Garlands',
+  'Custom Piñata',
+  'Party Tableware & Decorations (Plates, Cups, Napkins, Candles)',
+  'Spa Package & Nail Pampering',
+  'Henna Tattoo & Face Painting',
 ];
 
 const THEME_OPTIONS = [
@@ -99,7 +83,7 @@ const THEME_OPTIONS = [
 ];
 
 const SERVICE_TYPE_OPTIONS = [
-  { value: 'Standard Slumber Party', label: 'Standard Slumber Party Booking' },
+  { value: 'Standard Glamping Party', label: 'Standard Glamping Tent Setup' },
   { value: 'Custom Made Tents', label: 'Custom Made Tents (Tailor Made To Keep at Home - From $175)' },
   { value: 'Kids Interior Design', label: 'Kids Interior Design (Fully Themed Bedroom / Playroom Makeover - First Consultation Free)' },
   { value: 'Full Event Planning', label: 'Full-Service Party Planning & Styling' },
@@ -116,7 +100,7 @@ const CAMPER_OPTIONS = [
   { value: '8', label: '8+ Campers' },
 ];
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvgkzyqv';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/moedqlgw';
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   prefilledService,
@@ -130,7 +114,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     date: '',
     package: prefilledPackage || '1 Host + 3 guests * $495 (4 people)',
     theme: prefilledTheme || '',
-    service_type: prefilledService === 'custom-tents' ? 'Custom Made Tents' : prefilledService === 'interior-design' ? 'Kids Interior Design' : 'Standard Slumber Party',
+    service_type: prefilledService === 'custom-tents' ? 'Custom Made Tents' : prefilledService === 'interior-design' ? 'Kids Interior Design' : 'Standard Glamping Party',
     campers: '4',
     extras: [],
     message: '',
@@ -142,7 +126,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         ? 'Custom Made Tents'
         : prefilledService === 'interior-design'
         ? 'Kids Interior Design'
-        : 'Standard Slumber Party';
+        : 'Standard Glamping Party';
       setFormData((prev) => ({ ...prev, service_type: matchSvc }));
     }
     if (prefilledTheme) {
@@ -253,7 +237,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       date: '',
       package: '1 Host + 3 guests * $495 (4 people)',
       theme: '',
-      service_type: 'Standard Slumber Party',
+      service_type: 'Standard Glamping Party',
       campers: '4',
       extras: [],
       message: '',
@@ -264,7 +248,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   const createWhatsAppLink = () => {
     const data = lastSubmittedData || formData;
-    const text = `Hi Paradise Slumbers! I would like to book a slumber celebration:
+    const text = `Hi Paradise Slumbers! I would like to book a glamping celebration:
 • Name: ${data.fullname}
 • Phone: ${data.phone}
 • Email: ${data.email}
@@ -289,17 +273,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Direct Concierge Booking</span>
           </div>
+            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
 
           <div className="flex items-center justify-center gap-2 sm:gap-3">
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
             <h1 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
               Booking &amp; Enquiry Form
             </h1>
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
           </div>
 
           <p className="text-[#232B25]/80 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
-            Pricing in KYD includes set up, take down, overnight hire, and all standard inclusions.
+            Pricing in KYD includes delivery, setup, next-morning or same-day breakdown, and all inclusions with each setup.
           </p>
         </div>
 
@@ -307,7 +290,78 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Main Booking Form */}
-          <div className="lg:col-span-8 bg-white rounded-none p-6 sm:p-10 border-2 border-[#5A7755]/20 shadow-sm">
+          <div className="lg:col-span-8 bg-white rounded-none p-6 sm:p-10 border-2 border-[#5A7755]/20 shadow-sm relative">
+            
+            {/* SAGE GREEN SUCCESS MODAL POP-UP */}
+            {submitted && lastSubmittedData && (
+              <div className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
+                <div className="relative bg-[#5A7755] border-4 border-white text-white max-w-lg w-full p-6 sm:p-8 shadow-2xl space-y-6 text-center animate-in zoom-in-95 duration-200">
+                  
+                  <button
+                    type="button"
+                    onClick={handleResetForm}
+                    className="absolute top-3 right-3 w-8 h-8 bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/40"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+
+                  <div className="w-16 h-16 rounded-full bg-white text-[#5A7755] flex items-center justify-center mx-auto shadow-lg">
+                    <Sparkles className="w-8 h-8 fill-[#5A7755]" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="bg-white/20 text-white text-[10px] font-extrabold px-3 py-1 uppercase tracking-widest border border-white/30">
+                      Enquiry Successfully Dispatched!
+                    </span>
+                    <h3 className="font-sans text-2xl sm:text-3xl font-black tracking-tight text-white pt-1">
+                      Magical Celebration Awaits, {lastSubmittedData.fullname}! ✨
+                    </h3>
+                    <p className="text-xs sm:text-sm text-white/95 leading-relaxed pt-1">
+                      Thank you for choosing <strong>Paradise Slumbers</strong>. We have received your booking details for <strong>{lastSubmittedData.date}</strong> and our Cayman concierge team will reach out to your email (<strong>{lastSubmittedData.email}</strong>) shortly with setup confirmation.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/10 border border-white/30 p-4 text-left text-xs space-y-1.5">
+                    <div className="flex justify-between border-b border-white/20 pb-1.5">
+                      <span className="text-white/80">Selected Theme:</span>
+                      <span className="font-bold text-white">{lastSubmittedData.theme}</span>
+                    </div>
+                    <div className="flex justify-between border-b border-white/20 pb-1.5">
+                      <span className="text-white/80">Package Tier:</span>
+                      <span className="font-bold text-white">{lastSubmittedData.package}</span>
+                    </div>
+                    <div className="flex justify-between pt-0.5">
+                      <span className="text-white/80">Campers:</span>
+                      <span className="font-bold text-white">{lastSubmittedData.campers} Guests</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2.5 pt-2">
+                    <a
+                      href={createWhatsAppLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-none text-xs font-bold text-[#384C37] bg-white hover:bg-neutral-100 shadow-md transition-all cursor-pointer border border-white"
+                    >
+                      <MessageCircle className="w-4 h-4 text-[#5A7755]" />
+                      <span>Send Instant Copy to WhatsApp (+1 345 925-3217)</span>
+                    </a>
+                    
+                    <button
+                      type="button"
+                      onClick={handleResetForm}
+                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold text-white hover:bg-white/10 transition-all cursor-pointer border border-white/40"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5 text-white" />
+                      <span>Close &amp; Book Another Event</span>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            )}
+
             {submitted && lastSubmittedData ? (
               <div className="py-8 sm:py-12 text-center space-y-6">
                 <div className="w-16 h-16 rounded-none bg-[#5A7755] text-white flex items-center justify-center mx-auto shadow-md">
@@ -387,7 +441,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 noValidate
               >
                
-
                 {/* Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
@@ -580,19 +633,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Inclusions Accordion Summary Box */}
-                <div className="p-4 bg-[#FAF7F4] border-2 border-[#5A7755]/20 rounded-none space-y-2">
-                  <span className="text-xs font-black uppercase text-[#384C37] block">
-                    INCLUSIONS (Included with each setup):
+                {/* Single Line Green Strip Inclusions Note */}
+                <div className="p-3.5 bg-[#5A7755] text-white rounded-none shadow-sm flex items-center justify-center text-center">
+                  <span className="text-xs sm:text-sm font-black uppercase tracking-wide">
+                    Inclusions with Each Setup and A Customized Tumblers and Camper Gift Bags Included!
                   </span>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-[#232B25]/80">
-                    {STANDARD_INCLUSIONS.map((inc, i) => (
-                      <li key={i} className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-[#5A7755] shrink-0 mt-0.5" />
-                        <span>{inc}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
                 {/* GLAMPING ADD-ONS Checkbox List */}
@@ -601,7 +646,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <div>
                       <label className="text-xs font-bold text-[#384C37] flex items-center gap-1.5">
                         <Gift className="w-3.5 h-3.5 text-[#5A7755]" />
-                        <span>GLAMPING ADD-ONS (Quoted on Request)</span>
+                        <span>OPTIONAL PARTY ADD-ONS (Quoted on Request)</span>
                       </label>
                       <span className="text-[10px] text-[#232B25]/60 block mt-0.5">
                         Prices on request and subject to availability and number of campers.
@@ -646,19 +691,40 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 {/* Message Field */}
                 <div>
                   <label htmlFor="message" className="block text-xs font-bold text-[#384C37] mb-1.5">
-                    Your Message / Special Requests *
+                    Your Message / Camper Names for Tumblers *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
                     rows={3}
-                    placeholder="Child's name, age, address in Grand Cayman, special theme or custom tent requests..."
+                    placeholder="Child's name, camper names for personalized tumblers, age, address in Grand Cayman, or special requests..."
                     value={formData.message}
                     onBlur={() => handleBlur('message')}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 rounded-none border-2 border-neutral-300 text-xs sm:text-sm text-[#232B25] bg-neutral-50 outline-none focus:border-[#5A7755] focus:bg-white transition-all resize-y min-h-[90px]"
                   />
+                </div>
+
+                {/* ========================================================
+                    PARADISE SLUMBERS – DAMAGE DISCLAIMER (Green Box)
+                    ======================================================== */}
+                <div className="p-4 sm:p-5 bg-[#5A7755] text-white rounded-none border-2 border-white/40 shadow-md space-y-2.5">
+                  <div className="flex items-center gap-2 border-b border-white/20 pb-2">
+                    <ShieldAlert className="w-4 h-4 text-white shrink-0" />
+                    <h4 className="font-sans font-black text-xs sm:text-sm uppercase tracking-wider text-white">
+                      Paradise Slumbers – Damage Disclaimer
+                    </h4>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-white/95 leading-relaxed">
+                    By booking with Paradise Slumbers, the customer acknowledges that they are responsible for the care and proper use of all rental items and equipment provided.
+                  </p>
+                  <p className="text-[11px] sm:text-xs text-white/95 leading-relaxed">
+                    Any items damaged, broken, lost, or misused during the rental period will be the customer's responsibility. The customer agrees to cover the reasonable cost of repairs or, where necessary, the replacement cost of any damaged or lost items.
+                  </p>
+                  <p className="text-[11px] sm:text-xs text-white/90 italic pt-1 border-t border-white/20">
+                    We appreciate your cooperation in helping us keep Paradise Slumbers magical for everyone! Thank you for choosing Paradise Slumbers. ✨
+                  </p>
                 </div>
 
                 {/* Submit Button */}
@@ -694,7 +760,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 Tent pricing is quoted for each unique order, depending on frame size, fabric and finishings.
               </span>
               
-              {/* Professional Direct WhatsApp Button */}
               <div className="pt-2">
                 <a
                   href="https://wa.me/13459253217?text=Hi%20Paradise%20Slumbers!%20I%20would%20like%20to%20inquire%20about%20ordering%20Custom%20Made%20Tents%20to%20keep%20at%20home."
@@ -722,7 +787,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 "People with great passion can make the impossible happen!"
               </blockquote>
               
-              {/* Professional Direct WhatsApp Button */}
               <div className="pt-2">
                 <a
                   href="https://wa.me/13459253217?text=Hi%20Paradise%20Slumbers!%20I%20would%20like%20to%20book%20my%20complimentary%20consultation%20for%20Kids%20Interior%20Design%20with%20Candice%20Hall."

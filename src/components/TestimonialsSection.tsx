@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star,Heart, CheckCircle2, Plus, X, ThumbsUp, ShieldCheck } from 'lucide-react';
+import { Star, Heart, CheckCircle2, Plus, X, ThumbsUp } from 'lucide-react';
 import { TESTIMONIALS_DATA } from '../data/mockData';
 import { TestimonialItem } from '../types';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
@@ -29,7 +29,6 @@ export const TestimonialsSection: React.FC = () => {
   });
 
   const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
-  const [filterRating, setFilterRating] = useState<number>(0);
 
   // Form state
   const [reviewerName, setReviewerName] = useState('');
@@ -84,53 +83,77 @@ export const TestimonialsSection: React.FC = () => {
     }, 1500);
   };
 
-  // Ensure exactly 4 reviews displayed on screen, distributed among 5, 4, and 3 stars
-  const baseReviews = testimonials.slice(0, 4);
-  const constrainedReviews = baseReviews.map((t, idx) => {
-    if (idx === 0 || idx === 1) return { ...t, rating: 5 };
-    if (idx === 2) return { ...t, rating: 4 };
-    return { ...t, rating: 3 };
-  });
-
-  const filteredReviews = filterRating === 0
-    ? constrainedReviews
-    : constrainedReviews.filter((t) => t.rating === filterRating);
-
-  // Exact requested review breakdown counts (Total = 285 reviews: 265 in 5-star, 15 in 4-star, 5 in 3-star)
-  const totalReviewsCount = 285;
-  const counts = { 5: 265, 4: 15, 3: 5 };
-
-  const averageRating = (
-    (counts[5] * 5 + counts[4] * 4 + counts[3] * 3) / totalReviewsCount
-  ).toFixed(1);
+  // Split reviews into two distinct rows for opposite marquee loops
+  const midPoint = Math.ceil(testimonials.length / 2);
+  const rowOneReviews = testimonials.slice(0, midPoint);
+  const rowTwoReviews = testimonials.slice(midPoint);
 
   return (
-    <section id="reviews" className="py-14 sm:py-18 lg:py-22 relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans">
+    <section id="reviews" className="py-14 sm:py-18 lg:py-22 relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans overflow-hidden">
+      
+      {/* Custom CSS Keyframes for Left-to-Right and Right-to-Left Loops */}
+      <style>{`
+        @keyframes marqueeLeftToRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0%); }
+        }
+        @keyframes marqueeRightToLeft {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-ltr {
+          display: flex;
+          width: max-content;
+          animation: marqueeLeftToRight 35s linear infinite;
+        }
+        .animate-marquee-ltr:hover {
+          animation-play-state: paused;
+        }
+        .animate-marquee-rtl {
+          display: flex;
+          width: max-content;
+          animation: marqueeRightToLeft 35s linear infinite;
+        }
+        .animate-marquee-rtl:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-         <div className="inline-flex items-center gap-2 px-4 py-1.5  bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
-                      <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
-                      <span>Grand Cayman's Verified Reviews</span>
-                    </div>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+            <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
+            <span>Grand Cayman's Verified Reviews</span>
+          </div>
+            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
 
           <div className="flex items-center justify-center gap-2 sm:gap-3">
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
             <h2 className="font-sans text-4xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
               Loved by Parents, Adored by Kids
             </h2>
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
           </div>
 
           <p className="text-[#232B25]/80 text-sm sm:text-base leading-relaxed">
             Read authentic experiences from Cayman families who celebrated birthdays, bestie milestones, and magical sleepovers with us.
           </p>
+
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => setIsWriteReviewOpen(!isWriteReviewOpen)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-none bg-[#5A7755] hover:bg-[#384C37] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer border border-[#5A7755]"
+            >
+              <Plus className="w-4 h-4" />
+              <span>{isWriteReviewOpen ? 'Close Form' : 'Write a Review'}</span>
+            </button>
+          </div>
         </div>
 
-        {/* WRITE A REVIEW INLINE ACCORDION (Square Corners) */}
+        {/* WRITE A REVIEW INLINE ACCORDION */}
         {isWriteReviewOpen && (
-          <div className="max-w-2xl mx-auto mb-10 bg-white rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/25 shadow-md">
+          <div className="max-w-2xl mx-auto mb-12 bg-white rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/25 shadow-md">
             <div className="flex items-center justify-between pb-4 border-b border-[#5A7755]/15 mb-5">
               <h3 className="font-sans text-lg font-black text-[#384C37]">
                 Share Your Slumber Experience
@@ -147,7 +170,7 @@ export const TestimonialsSection: React.FC = () => {
             {formSubmitted ? (
               <div className="py-6 text-center space-y-2">
                 <CheckCircle2 className="w-10 h-10 text-[#5A7755] mx-auto" />
-                <h4 className="font-bold text-base text-[#384C37]">Thank You!</h4>
+                <span className="font-bold text-base text-[#384C37]">Thank You!</span>
                 <p className="text-xs text-[#232B25]/75">Your review was saved and published!</p>
               </div>
             ) : (
@@ -225,96 +248,22 @@ export const TestimonialsSection: React.FC = () => {
           </div>
         )}
 
-        {/* BENTO GRID TEMPLATE FOR TESTIMONIALS (Squared) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          
-          {/* Left Column: Overall Rating Scorecard & Filter Bento */}
-          <div className="bento-card bg-white rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/20 shadow-sm flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#5A7755]">
-                  Client Satisfaction
-                </span>
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-[#5A7755] bg-[#5A7755]/10 px-2.5 py-0.5 rounded-none border border-[#5A7755]/20">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>100% Verified</span>
-                </span>
-              </div>
+      </div>
 
-              {/* Big Score */}
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-sans text-5xl sm:text-6xl font-black text-[#384C37] tracking-tight">
-                  {averageRating}
-                </span>
-                <span className="text-lg font-bold text-[#232B25]/50">/ 5.0</span>
-              </div>
-
-              {/* 5 Golden Stars */}
-              <div className="flex items-center gap-1 text-[#EAB308] mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#EAB308] text-[#EAB308]" />
-                ))}
-              </div>
-
-              <p className="text-xs text-[#232B25]/75 leading-relaxed mb-6">
-                Based on {totalReviewsCount} verified reviews from Cayman parents across George Town, Seven Mile Beach, South Sound, and Savannah.
-              </p>
-
-              {/* Professional Star Breakdown Bars with 265 for 5-star, 15 for 4-star, 5 for 3-star */}
-              <div className="space-y-2 pt-2 border-t border-[#5A7755]/15">
-                {[5, 4, 3].map((starCount) => {
-                  const count = counts[starCount as keyof typeof counts];
-                  const pct = Math.round((count / totalReviewsCount) * 100);
-
-                  return (
-                    <button
-                      key={starCount}
-                      type="button"
-                      onClick={() => setFilterRating(filterRating === starCount ? 0 : starCount)}
-                      className={`w-full flex items-center gap-2.5 p-2 rounded-none text-xs font-bold transition-all cursor-pointer border ${
-                        filterRating === starCount
-                          ? 'bg-[#5A7755]/15 text-[#5A7755] border-[#5A7755]/40 shadow-xs'
-                          : 'bg-white hover:bg-[#FAF7F4] text-[#232B25] border-[#5A7755]/15'
-                      }`}
-                    >
-                      <span className="w-14 text-left font-bold">{starCount} Stars</span>
-                      <div className="flex-1 h-2.5 bg-[#FAF7F4] rounded-none overflow-hidden border border-[#5A7755]/20">
-                        <div
-                          className="h-full bg-[#EAB308] rounded-none transition-all duration-500"
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                      <span className="w-8 text-right text-[11px] text-[#232B25]/70 font-mono font-semibold">
-                        {count}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Write a review toggle */}
-            <div className="pt-4 border-t border-[#5A7755]/15">
-              <button
-                type="button"
-                onClick={() => setIsWriteReviewOpen(!isWriteReviewOpen)}
-                className="w-full py-3 rounded-none bg-[#5A7755] hover:bg-[#384C37] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer border border-[#5A7755]"
-              >
-                <Plus className="w-4 h-4" />
-                <span>{isWriteReviewOpen ? 'Close Form' : 'Write a Review'}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column: Exactly 4 Reviews Grid Bento (Squared Cards) */}
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {filteredReviews.map((t) => {
+      {/* ========================================================
+          TWO-ROW OPPOSITE MARQUEE (ROW 1: LTR, ROW 2: RTL)
+          ======================================================== */}
+      <div className="space-y-6 pt-4 w-full overflow-hidden">
+        
+        {/* ROW 1: Marquee Left to Right */}
+        <div className="relative w-full overflow-hidden">
+          <div className="animate-marquee-ltr flex gap-6 px-3">
+            {[...rowOneReviews, ...rowOneReviews, ...rowOneReviews].map((t, idx) => {
               const votes = helpfulVotes[t.id] || 0;
-
               return (
                 <div
-                  key={t.id}
-                  className="bento-card bg-white rounded-none p-5 sm:p-6 border-2 border-[#5A7755]/20 shadow-sm flex flex-col justify-between hover:border-[#5A7755]/50 transition-all"
+                  key={`${t.id}-r1-${idx}`}
+                  className="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#5A7755] rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -323,24 +272,24 @@ export const TestimonialsSection: React.FC = () => {
                           <Star key={i} className="w-4 h-4 fill-[#EAB308] text-[#EAB308]" />
                         ))}
                       </div>
-                      <span className="text-[11px] text-[#232B25]/50 font-medium">{t.date}</span>
+                      <span className="text-[11px] text-white/70 font-medium">{t.date}</span>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[#232B25]/85 leading-relaxed italic">
+                    <p className="text-xs sm:text-sm text-white/95 leading-relaxed italic">
                       "{t.review}"
                     </p>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-[#5A7755]/15 flex items-center justify-between">
+                  <div className="pt-4 mt-4 border-t border-white/25 flex items-center justify-between">
                     <div>
-                      <h4 className="font-sans font-bold text-xs sm:text-sm text-[#384C37]">{t.name}</h4>
-                      <span className="text-[10px] text-[#232B25]/60 block">{t.location}</span>
+                      <span className="font-sans font-bold text-xs sm:text-sm text-white">{t.name}</span>
+                      <span className="text-[10px] text-white/80 block">{t.location}</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => handleVoteHelpful(t.id)}
-                      className="inline-flex items-center gap-1 text-[11px] text-[#5A7755] hover:text-[#384C37] font-semibold transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 text-[11px] text-white hover:text-white/80 font-semibold transition-colors cursor-pointer bg-white/10 px-2.5 py-1 border border-white/30"
                       title="Mark as helpful"
                     >
                       <ThumbsUp className="w-3.5 h-3.5" />
@@ -351,10 +300,57 @@ export const TestimonialsSection: React.FC = () => {
               );
             })}
           </div>
+        </div>
 
+        {/* ROW 2: Marquee Right to Left (Opposite Direction) */}
+        <div className="relative w-full overflow-hidden">
+          <div className="animate-marquee-rtl flex gap-6 px-3">
+            {[...rowTwoReviews, ...rowTwoReviews, ...rowTwoReviews].map((t, idx) => {
+              const votes = helpfulVotes[t.id] || 0;
+              return (
+                <div
+                  key={`${t.id}-r2-${idx}`}
+                  className="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#5A7755] rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1 text-[#EAB308]">
+                        {[...Array(t.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-[#EAB308] text-[#EAB308]" />
+                        ))}
+                      </div>
+                      <span className="text-[11px] text-white/70 font-medium">{t.date}</span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-white/95 leading-relaxed italic">
+                      "{t.review}"
+                    </p>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-white/25 flex items-center justify-between">
+                    <div>
+                      <span className="font-sans font-bold text-xs sm:text-sm text-white">{t.name}</span>
+                      <span className="text-[10px] text-white/80 block">{t.location}</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleVoteHelpful(t.id)}
+                      className="inline-flex items-center gap-1 text-[11px] text-white hover:text-white/80 font-semibold transition-colors cursor-pointer bg-white/10 px-2.5 py-1 border border-white/30"
+                      title="Mark as helpful"
+                    >
+                      <ThumbsUp className="w-3.5 h-3.5" />
+                      <span>{votes > 0 ? votes : 'Helpful'}</span>
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
       </div>
+
     </section>
   );
 };

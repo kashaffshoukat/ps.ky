@@ -4,7 +4,7 @@ import { MainNavbar } from './components/MainNavbar';
 import { HeroSection } from './components/HeroSection';
 import { ServicesSection } from './components/ServicesSection';
 import { WhoWeAreSection } from './components/WhoWeAreSection';
-
+import { HowItWorksSection } from './components/HowItWorksSection';
 import { ThemesExplorer } from './components/ThemesExplorer';
 import { BentoGallery } from './components/BentoGallery';
 import { WhyChooseUsSection } from './components/WhyChooseUsSection';
@@ -15,7 +15,6 @@ import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { AuthModal, UserProfile } from './components/AuthModal';
 import { WishlistModal } from './components/WishlistModal';
-import { PromoDiscountModal } from './components/PromoDiscountModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { PromoModal } from "./components/PromoModal";
 type ViewType =
@@ -153,17 +152,20 @@ export default function App() {
               onNavigate={handleNavigate}
               onOpenBooking={handleOpenBooking}
             />
-            <WhoWeAreSection
-              onOpenBooking={() => handleOpenBooking()}
-              onNavigate={handleNavigate}
-            />
-            <ServicesSection
-              onOpenBooking={handleOpenBooking}
-            />
-            <ThemesExplorer
+          
+           <HowItWorksSection onNavigate={(view) => handleNavigate(view)} onOpenBooking={handleOpenBooking} />
+             <ThemesExplorer
               onOpenBooking={handleOpenBooking}
               onToggleWishlist={handleToggleWishlist}
               savedWishlistIds={wishlist}
+            />
+           
+            <ServicesSection
+              onOpenBooking={handleOpenBooking}
+            />
+            <WhoWeAreSection
+              onOpenBooking={() => handleOpenBooking()}
+              onNavigate={handleNavigate}
             />
             <BentoGallery
               onOpenBooking={handleOpenBooking}
@@ -306,12 +308,7 @@ export default function App() {
         onOpenPromoModal={() => setIsCustomPromoModalOpen(true)} 
       />
 
-      {/* 15% Welcome Promo Discount Modal with Popcorn Bar */}
-      <PromoDiscountModal
-        isOpen={isPromoOpen}
-        onClose={() => setIsPromoOpen(false)}
-        onClaimDiscount={(code) => handleOpenBooking(undefined, undefined, code)}
-      />
+     
 
       {/* 4. Render your new custom PromoModal at the bottom of the stack */}
       <PromoModal

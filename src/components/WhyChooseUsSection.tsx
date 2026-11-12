@@ -14,12 +14,12 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
   const featuresList = [
     {
       number: '1',
-      title: 'White-Glove Setup & Packdown',
+      title: 'White-Glove Setup AND Packdown',
       desc: 'Parents don\'t lift a finger. We assemble wooden A-frames, beds, and lights, then return next morning.',
     },
     {
       number: '2',
-      title: '100% Sanitized & Hypoallergenic Linens',
+      title: '100% Sanitized AND Hypoallergenic Linens',
       desc: 'Every bed sheet and cushion is washed in fragrance-free baby detergent and steam-sanitized.',
     },
     {
@@ -29,12 +29,12 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
     },
     {
       number: '4',
-      title: 'Curated Breakfast Trays & Lanterns',
+      title: 'Curated Breakfast Trays AND Lanterns',
       desc: 'Each setup includes individual wooden tray tables, safe battery LED tealights, and themed pillows.',
     },
     {
       number: '5',
-      title: '10 Bespoke Themes & Custom Concepts',
+      title: '10 Bespoke Themes AND Custom Concepts',
       desc: 'From CandyLand to Harry Potter and bespoke requests, tailored specifically to your child\'s dream.',
     },
   ];
@@ -49,13 +49,12 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
                       <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
                       <span>Trust on Grand Cayman's Slumber</span>
                     </div>
+            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
 
           <div className="flex items-center justify-center gap-2 sm:gap-3">
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
             <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
               Why Choose Paradise Slumbers
             </h2>
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
           </div>
 
           <p className="text-[#232B25]/80 text-xs sm:text-base leading-relaxed">
@@ -74,7 +73,7 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
             {/* Inner Bordered Image Box */}
             <div className="relative rounded-none overflow-hidden border-2 border-[#5A7755] shadow-[0_15px_30px_rgba(35,49,34,0.15)] aspect-[4/3] bg-white">
               <img
-                src="https://paradiseslumbersky-btzm.vercel.app/4.jpeg"
+                src="./src/assets/images/iii.jfif"
                 alt="Paradise Slumbers Experience"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -117,7 +116,26 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
           </div>
 
         </div>
-
+  {/* Professional Action Bar */}
+            <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3 ml-auto">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('contact')}
+                  className="px-5 py-2.5 rounded-xl bg-[#5A7755]/10 hover:bg-[#5A7755]/20 text-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                >
+                  Enquire Here
+                </button>
+                <button
+                  type="button"
+                  onClick={onOpenBooking}
+                  className="px-6 py-2.5 rounded-xl bg-[#5A7755] hover:bg-[#384C37] text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
+                >
+                  <span>Book Now</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-white" />
+                </button>
+              </div>
+            </div>
 
       </div>
     </section>

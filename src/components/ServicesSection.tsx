@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Heart, CheckCircle2, Gift, PlusCircle, ArrowUpRight, MessageCircle, Tent } from 'lucide-react';
+import { Heart, CheckCircle2, PlusCircle, ArrowUpRight, ChevronDown, ChevronUp, Sparkles, Play } from 'lucide-react';
+import { CuteSmileyCloud } from './CuteSmileyCloud';
 
 interface ServicesSectionProps {
   onOpenBooking?: (serviceId?: string, themeId?: string, packageId?: string) => void;
@@ -11,6 +12,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   onNavigate,
 }) => {
   const [activeTab, setActiveTab] = useState<'packages' | 'inclusions' | 'addons'>('packages');
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
+
+  const toggleExpand = (id: string) => {
+    setExpandedCards(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const allPackagesData = [
     {
@@ -18,237 +24,165 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       title: 'Cozy Solo Duo',
       subtitle: '1 Host + 1 Guest (2 People)',
       price: '$275',
-      period: 'KYD / overnight',
-      cardStyle: 'white',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/3e.jfif',
+      period: 'KYD / event hire',
+      image: './src/assets/images/solo.jfif',
       features: [
-        'Overnight hire of 2 custom A-frame tents',
-        'Hypo-allergenic mattresses & fitted sheets',
-        'Theme blankets & cozy cushions',
-        'Fairy lights & individual tray tables',
+        'Hire of 2 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name & gift bag',
+        '4ft candy table with cake stand & accessories',
       ],
     },
     {
       id: 'pkg-2',
-      title: 'Trio Slumber Party',
+      title: 'Trio Glamping Party',
       subtitle: '1 Host + 2 Guests (3 People)',
       price: '$395',
-      period: 'KYD / overnight',
-      cardStyle: 'custom-dark', // #233122
-      image: 'https://paradiseslumbersky-btzm.vercel.app/2e.jfif',
+      period: 'KYD / event hire',
+      image: './src/assets/images/333.jfif',
       features: [
-        'Overnight hire of 3 custom A-frame tents',
-        'Hypo-allergenic mattresses & bedding',
-        'Theme blankets & decorative cushions',
-        'Tray tables with lanterns & LED candles',
+        'Hire of 3 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name &  gift bag',
+        '4ft candy table with cake stand & accessories',
       ],
     },
     {
       id: 'pkg-3',
-      title: 'Signature Party Slumber',
+      title: 'Signature Glamping Setup',
       subtitle: '1 Host + 3 Guests (4 People)',
       price: '$495',
-      period: 'KYD / overnight',
-      cardStyle: 'white-sage', // White bg & Sage text
-      image: 'https://paradiseslumbersky-btzm.vercel.app/4.jpeg',
+      period: 'KYD / event hire',
+      image: './src/assets/images/4t.jfif',
       features: [
-        'Overnight hire of 4 custom A-frame tents',
-        'Full bedding, blankets & cozy cushions',
-        'Breakfast tray tables with LED tealights',
-        'Customised LED message lightboard',
+        'Hire of 4 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name &  gift bag',
         '4ft candy table with cake stand & accessories',
       ],
     },
     {
       id: 'pkg-4',
-      title: 'Quintet Slumber Bash',
+      title: 'Five-Fold Fiesta',
       subtitle: '1 Host + 4 Guests (5 People)',
       price: '$595',
-      period: 'KYD / overnight',
-      cardStyle: 'white',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/5e.jpeg',
+      period: 'KYD / event hire',
+      image: './src/assets/images/bbb.jfif',
       features: [
-        'Overnight hire of 5 custom A-frame tents',
-        'Hypo-allergenic mattresses & fitted sheets',
-        'Theme blankets & decorative cushions',
-        'Tray tables with lanterns & fairy lights',
-        '4ft candy table with cake stand display',
+        'Hire of 5 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name &  gift bag',
+        '4ft candy table with cake stand & accessories',
       ],
     },
     {
       id: 'pkg-5',
-      title: 'Grand Cayman Slumber',
+      title: 'Grand Cayman Glamping',
       subtitle: '1 Host + 5 Guests (6 People)',
       price: '$670',
-      period: 'KYD / overnight',
-      cardStyle: 'custom-dark', // #233122
-      image: 'https://paradiseslumbersky-btzm.vercel.app/3e.jfif',
+      period: 'KYD / event hire',
+      image: './src/assets/images/ttt.jfif',
       features: [
-        'Overnight hire of 6 custom A-frame tents',
-        'Full theme blankets & cozy cushions',
-        'Individual tray tables & LED lighting',
+        'Hire of 6 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name &  gift bag',
         '4ft candy table with cake stand & accessories',
-        'Full delivery, setup, and next-day takedown',
       ],
     },
     {
       id: 'pkg-6',
-      title: 'Mega Sleepover Crew',
+      title: 'Mega Glamping Crew',
       subtitle: '1 Host + 6 Guests (7 People)',
       price: '$765',
-      period: 'KYD / overnight',
-      cardStyle: 'white',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/2e.jfif',
+      period: 'KYD / event hire',
+      image: './src/assets/images/ggg.jfif',
       features: [
-        'Overnight hire of 7 custom A-frame tents',
-        'Hypo-allergenic mattresses & bedding',
-        'Theme blankets & decorative cushions',
-        'Tray tables with lanterns & LED candles',
-        '4ft candy table & custom lightboard',
+        'Hire of 7 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name &  gift bag',
+        '4ft candy table with cake stand & accessories',
       ],
     },
     {
       id: 'pkg-7',
-      title: 'Ultimate Slumber Celebration',
+      title: 'Ultimate Glamping Celebration',
       subtitle: '1 Host + 7 Guests (8 People)',
       price: '$820',
-      period: 'KYD / overnight',
-      cardStyle: 'custom-dark', // #233122
-      image: 'https://paradiseslumbersky-btzm.vercel.app/4.jpeg',
+      period: 'KYD / event hire',
+      image: './src/assets/images/bnw.jfif',
       features: [
-        'Overnight hire of 8 custom A-frame tents',
-        'Full luxury bedding & theme cushions',
-        'Breakfast tray tables with lanterns',
+        'Hire of 8 custom A-frame tents',
+        'Theme blankets & cozy decorative cushions',
+        'Breakfast tray tables with fairy lights & LED lightboard',
+        'Customized tumbler with each camper’s name &  gift bag',
         '4ft candy table with cake stand & accessories',
-        'Complete setup, styling, and takedown',
       ],
     },
   ];
 
-  const inclusionsData = [
-    {
-      title: 'Custom A-Frame Tents',
-      desc: 'Handcrafted wooden teepee tents designed specifically for magical indoor sleepovers.',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/3e.jfif',
-      cardStyle: 'white',
-    },
-    {
-      title: 'Hypo-Allergenic Mattresses',
-      desc: 'Includes waterproof mattress protectors and freshly laundered fitted sheets.',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/2e.jfif',
-      cardStyle: 'custom-dark',
-    },
-    {
-      title: 'Theme Blankets & Cushions',
-      desc: 'Luxurious plush blankets and decorative pillows matching your chosen party theme.',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/4.jpeg',
-      cardStyle: 'white-sage',
-    },
-    {
-      title: 'Breakfast Tray Tables',
-      desc: 'Individual wooden trays adorned with lanterns and safe LED tealight candles.',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/5e.jpeg',
-      cardStyle: 'white',
-    },
-    {
-      title: 'Custom LED Lightboard',
-      desc: 'Personalized messaging board tailored with custom wording for your special occasion.',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/3e.jfif',
-      cardStyle: 'custom-dark',
-    },
-    {
-      title: '4ft Candy Table Display',
-      desc: 'Includes cake stand and styling accessories (cake & candy available as add-ons).',
-      image: 'https://paradiseslumbersky-btzm.vercel.app/2e.jfif',
-      cardStyle: 'white',
-    },
+  // Inclusions with each setup
+  const inclusionsList = [
+    'Hire of custom A-frame wooden teepee tents',
+    'Luxurious theme blankets & decorative plush cushions (campers bring their own hypoallergenic pillows/bedding)',
+    'Individual wooden breakfast tray tables',
+    'Personalized  gift bag on every tray table (includes customized tumbler, assorted squishies & stretchies, and a glow stick)',
+    'Customized water bottle / tumbler with each camper’s name on it',
+    'Magical fairy lights and personalised custom LED message lightboard',
+    '4ft candy table display with cake stand & accessories (cake and candy not included)',
+    'Full professional delivery, setup, styling, and next-morning or same-day breakdown across Grand Cayman',
   ];
 
-  const addOnsData = [
-    {
-      title: 'Adopt a Blue Iguana',
-      subtitle: 'Conservation Facility Gift',
-      price: 'On Request',
-      image: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400',
-      desc: 'A unique surprise gift from the Grand Cayman Conservation Facility. We organize all adoption details for you!',
-      cardStyle: 'white',
-    },
-    {
-      title: 'Theme Cake & Cupcakes',
-      subtitle: 'Freshly Baked & Decorated',
-      price: 'On Request',
-      image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=400',
-      desc: 'Custom decorated cake and build-your-own cupcake kits (1 per camper, nut-free / allergy-safe options available).',
-      cardStyle: 'custom-dark',
-    },
-    {
-      title: 'Graze Girl Charcuterie',
-      subtitle: 'Kids or Adults Boards',
-      price: 'On Request',
-      image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=400',
-      desc: 'Dessert boards, vegan, gluten-free, or traditional meats and cheeses curated to suit your party budget.',
-      cardStyle: 'white-sage',
-    },
-    {
-      title: 'Spa & Sleepover Bundles',
-      subtitle: 'Pamper Package',
-      price: 'On Request',
-      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400',
-      desc: 'Nail polish, nail files, hand/foot scrubs and moisturizers, eye masks, toothbrushes, and bath bombs for each camper!',
-      cardStyle: 'white',
-    },
-    {
-      title: 'Balloon & Floral Styling',
-      subtitle: 'Deluxe Party Decor',
-      price: 'On Request',
-      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400',
-      desc: 'Custom balloon arches, balloon displays, and fresh flower garlands designed to match your chosen party theme.',
-      cardStyle: 'custom-dark',
-    },
-    {
-      title: 'Glow Party Experience',
-      subtitle: 'Neon Lighting & Extras',
-      price: 'On Request',
-      image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400',
-      desc: 'Add all the GLOW imaginable with neon lights, glow sticks, and high-energy party accessories!',
-      cardStyle: 'white',
-    },
+  // Updated Add-Ons list
+  const addOnsList = [
+    'Balloon Arches & Styling: Custom balloon garlands and columns matched to your party colors',
+    'Theme Decorated Party Cake: Freshly baked and custom decorated to match your chosen theme',
+    'Graze Girl Charcuterie Board: Curated sweet or savory boards tailored to your celebration',
+    'Fresh Flower Display / Garlands: Floral arrangements and fresh garlands sourced locally',
+    'Custom Piñata: Themed party piñata ready for celebration fun',
+    'Party Tableware & Decorations: Coordinated plates, cups, napkins, candles, and extra decor',
+    'Spa Package & Nail Pampering: Fun mini-spa and nail care pampering experience',
+    'Henna Tattoo & Face Painting: Live artistic henna tattoos and face painting in Grand Cayman',
   ];
 
   return (
-    <section id="services" className="relative z-10 bg-[#FBF9F6] text-[#232B25] select-none">
+    <section id="services" className="relative z-10 bg-[#FBF9F6] text-[#232B25] select-none py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */} <br/> <br/> <br/>
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5  bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-sm">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-sm">
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Slumber Services</span>
           </div>
-
+          <CuteSmileyCloud size="md" className="shrink-0 mx-auto" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
-            Glamping Packages, Inclusions &amp; Add-Ons
+            Glamping Packages, Inclusions and Add-Ons
           </h2>
-
           <p className="text-xs sm:text-sm text-[#232B25]/75 leading-relaxed">
-            Pricing in KYD. Includes delivery, setup, overnight hire, and next-morning takedown across Grand Cayman.
+            Pricing in KYD. Includes delivery, setup, and next-morning or same-day breakdown across Grand Cayman.
           </p>
 
           {/* Tab Navigation Pill Strip */}
-          <div className="inline-flex items-center p-1.5 bg-white border border-[#5A7755]/25  shadow-md mt-4">
+          <div className="inline-flex items-center p-1.5 bg-white border border-[#5A7755]/25 shadow-md mt-2">
             <button
               onClick={() => setActiveTab('packages')}
-              className={`px-5 py-2  text-xs font-bold transition-all cursor-pointer ${
+              className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'packages'
                   ? 'bg-[#5A7755] text-white shadow-lg'
                   : 'text-[#384C37] hover:text-[#5A7755]'
               }`}
             >
-              All
+              All Packages
             </button>
             <button
               onClick={() => setActiveTab('inclusions')}
-              className={`px-5 py-2  text-xs font-bold transition-all cursor-pointer ${
+              className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'inclusions'
                   ? 'bg-[#5A7755] text-white shadow-lg'
                   : 'text-[#384C37] hover:text-[#5A7755]'
@@ -258,7 +192,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             </button>
             <button
               onClick={() => setActiveTab('addons')}
-              className={`px-5 py-2  text-xs font-bold transition-all cursor-pointer ${
+              className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'addons'
                   ? 'bg-[#5A7755] text-white shadow-lg'
                   : 'text-[#384C37] hover:text-[#5A7755]'
@@ -269,184 +203,104 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </div>
         </div>
 
-        {/* TAB 1: ALL 7 PACKAGE CARDS (Stacked Vertically on Mobile) */}
+        {/* FULL-WIDTH SPECIAL OFFER BANNER */}
+        <div className="w-full my-6 p-4 sm:p-6 bg-gradient-to-r from-[#5A7755] to-[#455c42] text-white rounded-none shadow-xl border-y-2 border-white/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+          <div className="flex items-center gap-4">
+              <CuteSmileyCloud size="md" className="shrink-0" />
+            
+            <div className="space-y-2"> 
+              <div>
+                <span className="bg-yellow-400/90 text-[#384C37] text-[10px] font-black px-2.5 py-0.5 rounded-none uppercase tracking-wider inline-block">
+                  Inclusions with Each Setup
+                </span>
+              </div>
+              <div>
+                <span className="text-sm sm:text-base font-black tracking-tight text-white uppercase leading-snug block">
+                  Custom Name Tumblers &amp; Camper Gift Bags with Every Setup!
+                </span>
+              </div>
+              <p className="text-xs text-white/90 leading-relaxed">
+                Every setup comes with custom teepees, blankets, tray tables, fairy lights, LED lightboard, 4ft candy table with cake stand, personalized camper tumblers, and gift bags filled with squishies, spa masks &amp; glow sticks.
+              </p>
+            </div>
+          </div>
+          <div className="shrink-0 w-full sm:w-auto text-center">
+            <a
+              href="#contact"
+              className="w-full sm:w-auto px-5 py-2.5 bg-white text-[#384C37] hover:bg-neutral-100 text-xs font-black uppercase tracking-wider rounded-none shadow-md transition-all inline-block border border-white"
+            >
+              Book Setup ➔
+            </a>
+          </div>
+        </div>
+
+        {/* TAB 1: PACKAGES CARDS */}
         {activeTab === 'packages' && (
-          <div className="space-y-12 animate-fadeIn">
-            <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8 items-stretch pt-6">
+          <div className="space-y-8 animate-fadeIn">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start pt-2">
               {allPackagesData.map((pkg) => {
-                const isDark = pkg.cardStyle === 'custom-dark';
-                const isWhiteSage = pkg.cardStyle === 'white-sage';
+                const isExpanded = !!expandedCards[pkg.id];
+
                 return (
                   <div
                     key={pkg.id}
-                    className={`w-full relative rounded-3xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2.5 ${
-                      isDark
-                        ? 'bg-[#233122] text-white p-7 sm:p-8 border-2 border-[#7A9A60]/50 shadow-[0_20px_40px_rgba(35,49,34,0.35)]'
-                        : isWhiteSage
-                        ? 'bg-white text-[#384C37] p-7 sm:p-8 border-2 border-[#5A7755]/50 shadow-[0_15px_30px_rgba(90,119,85,0.18)] ring-2 ring-[#5A7755]/20'
-                        : 'bg-white text-[#232B25] p-7 sm:p-8 border-2 border-[#5A7755]/20 shadow-[0_15px_30px_rgba(0,0,0,0.08)] hover:border-[#5A7755]/45'
-                    }`}
+                    className="w-full relative bg-white text-[#232B25] rounded-2xl overflow-hidden border-2 border-[#5A7755]/25 shadow-md hover:border-[#5A7755]/50 transition-all duration-300 flex flex-col justify-between group"
                   >
-                  
-
                     <div>
-                      {/* Image Header */}
-                      <div className="w-full h-54 sm:h-78 rounded-2xl overflow-hidden mb-6 border border-black/10 shadow-md relative">
+                      <div className="w-full h-56 sm:h-64 overflow-hidden relative">
                         <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                        <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none" />
                       </div>
 
-                      {/* Subtitle Pill */}
-                      <div className="text-center mb-3">
-                        <span className={`inline-block px-4 py-1  text-[11px] font-bold uppercase tracking-wider ${
-                          isDark ? 'bg-white/15 text-[#A8C88E] border border-white/20' : isWhiteSage ? 'bg-[#5A7755]/15 text-[#384C37] border border-[#5A7755]/30' : 'bg-[#5A7755]/10 text-[#5A7755] border border-[#5A7755]/20'
-                        }`}>
-                          {pkg.subtitle}
-                        </span>
-                      </div>
-
-                      {/* Package Name Title & Price Header */}
-                      <div className="text-center space-y-1.5 mb-6">
-                        <h3 className={`text-xl font-black uppercase tracking-tight ${isDark ? 'text-white' : 'text-[#384C37]'}`}>
-                          {pkg.title}
-                        </h3>
-                        <div className="flex items-baseline justify-center gap-1.5 pt-1">
-                          <span className={`text-3xl sm:text-4xl font-black ${isDark ? 'text-[#A8C88E]' : 'text-[#5A7755]'}`}>
-                            {pkg.price}
-                          </span>
-                          <span className={`text-xs font-semibold ${isDark ? 'text-white/70' : 'text-[#232B25]/60'}`}>
-                            {pkg.period}
+                      <div className="p-5 sm:p-6 pb-2">
+                        <div className="text-center mb-2">
+                          <span className="inline-block px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#5A7755]/10 text-[#5A7755] border border-[#5A7755]/20">
+                            {pkg.subtitle}
                           </span>
                         </div>
-                      </div>
 
-                      <div className={`w-full h-px mb-6 ${isDark ? 'bg-white/15' : 'bg-[#5A7755]/20'}`} />
+                        <div className="text-center space-y-1 mb-4">
+                          <h3 className="text-lg font-black uppercase tracking-tight text-[#384C37]">
+                            {pkg.title}
+                          </h3>
+                          <div className="flex items-baseline justify-center gap-1">
+                            <span className="text-2xl sm:text-3xl font-black text-[#5A7755]">
+                              {pkg.price}
+                            </span>
+                            <span className="text-[11px] font-semibold text-black/60">
+                              {pkg.period}
+                            </span>
+                          </div>
+                        </div>
 
-                      {/* Features List */}
-                      <ul className="space-y-2.5 mb-8 text-xs font-medium">
-                        {pkg.features.map((feat, idx) => (
-                          <li key={idx} className="flex items-start gap-2.5">
-                            <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 ${isDark ? 'text-[#7A9A60]' : 'text-[#5A7755]'}`} />
-                            <span className={isDark ? 'text-white/90' : isWhiteSage ? 'text-[#384C37]' : 'text-[#232B25]/85'}>{feat}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Select Package Button */}
-                    <button
-                      onClick={() => onOpenBooking ? onOpenBooking(undefined, undefined, pkg.id) : null}
-                      className={`w-full py-3.5 px-6 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md ${
-                        isDark
-                          ? 'bg-[#7A9A60] hover:bg-[#698750] text-white'
-                          : isWhiteSage
-                          ? 'bg-[#5A7755] hover:bg-[#384C37] text-white'
-                          : 'bg-[#5A7755] text-white hover:bg-[#384C37]'
-                      }`}
-                    >
-                      <span>Select Package</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* TAB 2: INCLUSIONS CARDS */}
-        {activeTab === 'inclusions' && (
-          <div className="space-y-8 animate-fadeIn">
-            <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-xl font-bold text-[#384C37]">What's Included in Every Setup</h3>
-              <p className="text-xs text-[#232B25]/75 mt-1">Every booking includes full delivery, assembly, cozy styling, and next-morning takedown.</p>
-            </div>
-
-            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
-              {inclusionsData.map((inc, idx) => {
-                const isDark = inc.cardStyle === 'custom-dark';
-                const isWhiteSage = inc.cardStyle === 'white-sage';
-                return (
-                  <div key={idx} className={`w-full rounded-3xl overflow-hidden border-2 shadow-[0_15px_30px_rgba(0,0,0,0.08)] flex flex-col justify-between group ${
-                    isDark 
-                      ? 'bg-[#233122] text-white border-[#7A9A60]/50' 
-                      : isWhiteSage 
-                      ? 'bg-white text-[#384C37] border-[#5A7755]/50 ring-2 ring-[#5A7755]/20' 
-                      : 'bg-white text-[#232B25] border-[#5A7755]/20'
-                  }`}>
-                    <div>
-                      <div className="w-full h-74 sm:h-58 overflow-hidden relative border-b border-[#5A7755]/15">
-                        <img src={inc.image} alt={inc.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                        <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md text-[#5A7755] text-[10px] font-bold px-3 py-1  border border-[#5A7755]/30 shadow-md">
-                          Included
+                        <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-96 opacity-100 pb-2' : 'max-h-0 opacity-0'}`}>
+                          <div className="w-full h-px mb-4 bg-[#5A7755]/20" />
+                          <ul className="space-y-2 text-xs font-medium text-black">
+                            {pkg.features.map((feat, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-[#5A7755]" />
+                                <span className="text-black font-medium">{feat}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
-                      <div className="p-6 space-y-2">
-                        <h4 className={`text-base font-bold uppercase tracking-tight ${isDark ? 'text-white' : 'text-[#384C37]'}`}>{inc.title}</h4>
-                        <p className={`text-xs leading-relaxed ${isDark ? 'text-white/80' : isWhiteSage ? 'text-[#384C37]/90 font-medium' : 'text-[#232B25]/75'}`}>{inc.desc}</p>
-                      </div>
                     </div>
-                    <div className="p-6 pt-0">
-                      <div className={`w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-inner ${
-                        isDark ? 'bg-white/10 text-white border border-white/20' : isWhiteSage ? 'bg-[#5A7755]/15 border border-[#5A7755]/30 text-[#384C37]' : 'bg-[#5A7755]/10 border border-[#5A7755]/20 text-[#5A7755]'
-                      }`}>
-                        <CheckCircle2 className="w-4 h-4 text-[#5A7755]" />
-                        <span>Standard Inclusion</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
-        {/* TAB 3: ADD-ONS CARDS */}
-        {activeTab === 'addons' && (
-          <div className="space-y-8 animate-fadeIn">
-            <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-xl font-bold text-[#384C37]">Glamping Add-Ons &amp; Party Extras</h3>
-              <p className="text-xs text-[#232B25]/75 mt-1">Prices on request and subject to availability. Customized to make your event unforgettable.</p>
-            </div>
-
-            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
-              {addOnsData.map((item, idx) => {
-                const isDark = item.cardStyle === 'custom-dark';
-                const isWhiteSage = item.cardStyle === 'white-sage';
-                return (
-                  <div key={idx} className={`w-full rounded-3xl overflow-hidden border-2 shadow-[0_15px_30px_rgba(0,0,0,0.08)] flex flex-col justify-between group ${
-                    isDark 
-                      ? 'bg-[#233122] text-white border-[#7A9A60]/50' 
-                      : isWhiteSage 
-                      ? 'bg-white text-[#384C37] border-[#5A7755]/50 ring-2 ring-[#5A7755]/20' 
-                      : 'bg-white text-[#232B25] border-[#5A7755]/20'
-                  }`}>
-                    <div>
-                      <div className="w-full h-54 sm:h-78 overflow-hidden relative border-b border-[#5A7755]/15">
-                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                        <div className="absolute top-3 right-3 bg-[#5A7755] text-white text-[10px] font-bold px-3 py-1  shadow-md">
-                          {item.price}
-                        </div>
-                      </div>
-                      <div className="p-6 space-y-2">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#C78D95]">{item.subtitle}</span>
-                        <h4 className={`text-base font-bold uppercase tracking-tight ${isDark ? 'text-white' : 'text-[#384C37]'}`}>{item.title}</h4>
-                        <p className={`text-xs leading-relaxed ${isDark ? 'text-white/80' : isWhiteSage ? 'text-[#384C37]/90 font-medium' : 'text-[#232B25]/75'}`}>{item.desc}</p>
-                      </div>
-                    </div>
-                    <div className="p-6 pt-0">
+                    <div className="p-5 sm:p-6 pt-0 space-y-2">
                       <button
-                        onClick={() => onNavigate ? onNavigate('contact') : null}
-                        className={`w-full py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-sm ${
-                          isDark 
-                            ? 'bg-[#7A9A60] hover:bg-[#698750] text-white' 
-                            : isWhiteSage
-                            ? 'bg-[#5A7755] hover:bg-[#384C37] text-white'
-                            : 'bg-[#5A7755]/10 hover:bg-[#5A7755]/20 border border-[#5A7755]/25 text-[#5A7755]'
-                        }`}
+                        onClick={() => toggleExpand(pkg.id)}
+                        className="w-full py-2.5 px-3 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm bg-[#5A7755] hover:bg-[#384C37] text-white"
                       >
-                        <span>Enquire Add-On</span>
-                        <PlusCircle className="w-4 h-4" />
+                        <span>{isExpanded ? 'Collapse Details' : 'Expand to View More Details'}</span>
+                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </button>
+
+                      <button
+                        onClick={() => onOpenBooking ? onOpenBooking(undefined, undefined, pkg.id) : null}
+                        className="w-full py-2.5 px-4 text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm bg-[#A56069] hover:bg-[#8E5058] text-white"
+                      >
+                        <span>Select Package</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
@@ -455,6 +309,182 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             </div>
           </div>
         )}
+
+        {/* TAB 2: INCLUSIONS */}
+        {activeTab === 'inclusions' && (
+          <div className="max-w-6xl mx-auto py-6 animate-fadeIn">
+            <div className="bg-white rounded-3xl border-2 border-[#5A7755]/25 shadow-xl overflow-hidden">
+              <div className="flex flex-col-reverse lg:flex-row items-stretch">
+                
+                <div className="w-full lg:w-1/2 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                  <div className="space-y-2">
+                    <span className="text-xs font-extrabold uppercase tracking-[0.25em] text-[#B06F78]">
+                      Standard Setup Details
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#384C37] tracking-tight">
+                      Inclusions with Each Setup
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#232B25]/80 font-medium">
+                      Every Paradise Slumbers booking comes thoughtfully styled with keepsake camper gifts and full setup across Grand Cayman.
+                    </p>
+                  </div>
+
+                  <ul className="space-y-3.5">
+                    {inclusionsList.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <span className="w-5 h-5 rounded-full bg-[#5A7755]/10 border border-[#5A7755]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#5A7755]" />
+                        </span>
+                        <span className="text-xs sm:text-sm font-medium text-black/85 leading-snug">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => onOpenBooking ? onOpenBooking() : null}
+                      className="px-6 py-3 rounded-xl bg-[#5A7755] hover:bg-[#384C37] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                    >
+                      <span>Book Your Setup Now</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="w-full lg:w-1/2 min-h-[320px] sm:min-h-[420px] relative overflow-hidden bg-neutral-100">
+                  <img
+                    src="./src/assets/images/solo.jfif"
+                    alt="Paradise Slumbers Inclusions"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-md p-3.5 rounded-xl border border-white/40 shadow-lg">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#B06F78] block">
+                      Grand Cayman Luxury
+                    </span>
+                    <span className="text-sm font-black text-[#384C37] uppercase">
+                      Handcrafted &amp; Steam-Sanitized
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: ADD-ONS */}
+        {activeTab === 'addons' && (
+          <div className="max-w-6xl mx-auto py-6 animate-fadeIn">
+            <div className="bg-white rounded-3xl border-2 border-[#5A7755]/25 shadow-xl overflow-hidden">
+              <div className="flex flex-col-reverse lg:flex-row items-stretch">
+                
+                <div className="w-full lg:w-1/2 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                  <div className="space-y-2">
+                    <span className="text-xs font-extrabold uppercase tracking-[0.25em] text-[#B06F78]">
+                      Optional Party Extras
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#384C37] tracking-tight">
+                      Party Add-Ons
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#232B25]/80 font-medium">
+                      Prices on request and subject to availability and number of campers. Add-ons may vary depending on popularity and product availability.
+                    </p>
+                  </div>
+
+                  <ul className="space-y-3.5">
+                    {addOnsList.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <span className="w-5 h-5 rounded-full bg-[#5A7755]/10 border border-[#5A7755]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#5A7755]" />
+                        </span>
+                        <span className="text-xs sm:text-sm font-medium text-black/85 leading-snug">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => onNavigate ? onNavigate('contact') : null}
+                      className="px-6 py-3 rounded-xl bg-[#A56069] hover:bg-[#8E5058] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                    >
+                      <span>Enquire Add-Ons</span>
+                      <PlusCircle className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="w-full lg:w-1/2 min-h-[320px] sm:min-h-[420px] relative overflow-hidden bg-neutral-100">
+                  <img
+                    src="./src/assets/images/ggg.jfif"
+                    alt="Paradise Slumbers Add-Ons"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-md p-3.5 rounded-xl border border-white/40 shadow-lg">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#B06F78] block">
+                      Custom Party Decor
+                    </span>
+                    <span className="text-sm font-black text-[#384C37] uppercase">
+                      Balloons, Henna, Cake &amp; More
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ======================================================== */}
+        {/* ENLARGED HD VIDEO SECTION WITH CIRCULAR LOGO & BORDERS   */}
+        {/* ======================================================== */}
+        <div className="mt-16 pt-10 border-t-2 border-[#5A7755]/20">
+          <div className="text-center max-w-2xl mx-auto mb-6 space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5A7755]/10 border border-[#5A7755]/30 text-[#384C37] text-[10px] font-extrabold uppercase tracking-widest">
+              <Play className="w-3 h-3 fill-[#384C37]" />
+              <span>Experience The Magic</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black text-[#384C37] uppercase tracking-tight">
+              Watch Our Glamping Showcase
+            </h3>
+            <p className="text-xs text-[#232B25]/75">
+              High-definition preview of our luxury indoor setups across Grand Cayman.
+            </p>
+          </div>
+
+          {/* Luxury Container with Refined Solid Borders & Shadow */}
+          <div className="max-w-6xl mx-auto bg-black rounded-none shadow-2xl border-4 border-[#5A7755] relative overflow-hidden group">
+            
+            {/* TOP-RIGHT CORNER CIRCULAR LOGO WATERMARK */}
+            <div className="absolute top-4 right-4 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/95 backdrop-blur-md p-1 border-2 border-[#5A7755] shadow-2xl flex items-center justify-center pointer-events-none select-none">
+              <img 
+                src="./src/assets/images/logo.jpg" 
+                alt="Logo" 
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+
+            {/* HD RENDER VIDEO WITH SHARP PIXEL OPTIMIZATION */}
+            <video
+              className="w-full h-auto max-h-[75vh] object-contain mx-auto block transform-gpu"
+              style={{ imageRendering: 'crisp-edges' }}
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="./src/video/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        {/* ======================================================== */}
 
       </div>
     </section>

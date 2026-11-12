@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heart, ArrowRight, Sparkles, Tent, Star, ShieldCheck, Award } from 'lucide-react';
-
+import { CuteSmileyCloud } from './CuteSmileyCloud';
 interface WhoWeAreSectionProps {
   onOpenBooking: () => void;
   onNavigate: (view: string) => void;
@@ -20,6 +20,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Slumber Story</span>
           </div>
+            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
           
           <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
             Who We Are &amp; What We Do
@@ -44,7 +45,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
               {/* Main Wider Image Card */}
               <div className="relative rounded-2xl overflow-hidden border-2 border-[#5A7755]/40 shadow-xl bg-white aspect-[16/11]">
                 <img
-                  src="https://paradiseslumbersky-btzm.vercel.app/3e.jfif"
+                  src="./src/assets/images/ttt.jfif"
                   alt="Paradise Slumbers Luxury Setup"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

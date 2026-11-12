@@ -29,8 +29,11 @@
   }
 
   /* Strict Sans-serif only throughout the entire website */
-  *, h1, h2, h3, h4, h5, h6, .font-serif, .font-hand, button, input, select, textarea {
-    font-family: var(--font-sans) !important;
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', Georgia, serif !important;
+    font-weight: 900 !important;
+    font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 72 !important;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -96,10 +99,24 @@
 }
 
 .animate-marquee {
-  display: inline-flex;
-  animation: marquee 28s linear infinite;
+  animation: marquee 50s linear infinite;
+   display: inline-flex;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+.animated-marquee {
+  animation: marquee 15s linear infinite;
+  display: inline-flex;
+  
+}
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 50s linear infinite;
 }
