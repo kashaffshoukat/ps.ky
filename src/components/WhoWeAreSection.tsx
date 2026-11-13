@@ -46,7 +46,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
               {/* Main Wider Image Card */}
               <div className="relative rounded-2xl overflow-hidden border-2 border-[#5A7755]/40 shadow-xl bg-white aspect-[16/11]">
                 <img
-                  src="/assets/aistudio/ttt.jfif"
+                  src="/assets/aistudio/who.jpeg"
                   alt="Paradise Slumbers Luxury Setup"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

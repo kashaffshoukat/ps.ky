@@ -832,9 +832,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             {/* Accordion FAQ */}
             <div className="bg-white rounded-none p-6 sm:p-7 border-2 border-[#5A7755]/25 shadow-sm">
               <div className="flex items-center gap-3 mb-4 pb-2 border-b border-neutral-100">
-                <div className="animate-bounce duration-1000 shrink-0">
+                {/* <div className="animate-bounce duration-1000 shrink-0"> */}
                   <CuteSmileyCloud size="sm" />
-                </div>
+                {/* </div> */}
                 <h4 className="font-sans text-lg sm:text-xl font-black text-[#384C37] tracking-tight leading-snug">
                   Frequently Asked Questions
                 </h4>

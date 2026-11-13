@@ -25,7 +25,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 1 Guest (2 People)',
       price: '$275',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/solo.jfif',
+      image: '/assets/aistudio/3.jfif',
       features: [
         'Hire of 2 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -40,7 +40,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 2 Guests (3 People)',
       price: '$395',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/333.jfif',
+      image: '/assets/aistudio/2e.jfif',
       features: [
         'Hire of 3 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -55,7 +55,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 3 Guests (4 People)',
       price: '$495',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/4t.jfif',
+      image: '/assets/aistudio/4.jpeg',
       features: [
         'Hire of 4 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -70,7 +70,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 4 Guests (5 People)',
       price: '$595',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/bbb.jfif',
+      image: '/assets/aistudio/aall.jfif',
       features: [
         'Hire of 5 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -85,7 +85,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 5 Guests (6 People)',
       price: '$670',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/ttt.jfif',
+      image: '/assets/aistudio/w3.jpeg',
       features: [
         'Hire of 6 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -100,7 +100,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 6 Guests (7 People)',
       price: '$765',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/ggg.jfif',
+      image: '/assets/aistudio/butter.jpeg',
       features: [
         'Hire of 7 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -115,7 +115,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       subtitle: '1 Host + 7 Guests (8 People)',
       price: '$820',
       period: 'KYD / event hire',
-      image: '/assets/aistudio/bnw.jfif',
+      image: '/assets/aistudio/3w.jpeg',
       features: [
         'Hire of 8 custom A-frame tents',
         'Theme blankets & cozy decorative cushions',
@@ -355,7 +355,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                 <div className="w-full lg:w-1/2 min-h-[320px] sm:min-h-[420px] relative overflow-hidden bg-neutral-100">
                   <img
-                    src="/assets/aistudio/solo.jfif"
+                    src="/assets/aistudio/7.jfif"
                     alt="Paradise Slumbers Inclusions"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -420,7 +420,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                 <div className="w-full lg:w-1/2 min-h-[320px] sm:min-h-[420px] relative overflow-hidden bg-neutral-100">
                   <img
-                    src="/assets/aistudio/ggg.jfif"
+                    src="/assets/aistudio/3e.jfif"
                     alt="Paradise Slumbers Add-Ons"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
