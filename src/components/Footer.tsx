@@ -9,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-[#5A7755] text-white py-12 sm:py-14 relative z-10 border-t border-[#4E6849] shadow-inner">
+    <footer className="bg-[#5A7755] backdrop-blur-sm text-white py-4 sm:py-4 relative z-10 border-t border-[#4E6849] shadow-inner">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         
         {/* LOGO ONLY (NO TEXT BESIDE OR UNDER LOGO AS REQUESTED) */}
@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Copyright */}
         <div className="pt-4 border-t border-white/15 text-xs text-white/70 font-medium">
           <p>
-            Copyright © {new Date().getFullYear()} Paradise Slumbers Ltd. All Rights Reserved. Grand Cayman.
+            Copyright © {new Date().getFullYear()} Paradise Slumbers Ltd. 
           </p>
         </div>
 

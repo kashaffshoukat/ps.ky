@@ -13,13 +13,13 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
   onOpenBooking,
 }) => {
   return ( 
-    <section className="w-full py-8 sm:py-12 px-2 sm:px-6 lg:px-8 bg-[#FAF7F4]">
+    <section className="w-full py-8 sm:py-12 px-2 sm:px-6 lg:px-8 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto w-full">
         <br/> 
       
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Slumber Story</span>
           </div>

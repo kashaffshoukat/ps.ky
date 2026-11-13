@@ -49,7 +49,7 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
       {/* ========================================================
           TIER 1: TOP DUSTY ROSE/MAUVE ANNOUNCEMENT BAR
           ======================================================== */}
-      <div className="bg-[#a56069] text-white py-2 px-3 sm:px-6 overflow-hidden text-xs sm:text-[13px] font-semibold border-b border-[#9E5D68]/40">
+      <div className="bg-[#A56069] text-white py-2 px-3 sm:px-6 overflow-hidden text-xs sm:text-[13px] font-semibold border-b border-[#9E5D68]/40">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex-1 overflow-hidden">
             <div className="flex items-center gap-6 whitespace-nowrap animated-marquee text-xs sm:text-[13px]">

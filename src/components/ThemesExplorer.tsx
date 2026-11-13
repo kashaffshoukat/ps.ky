@@ -53,12 +53,12 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
   };
 
   return (
-    <section id="themes" className="relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans py-14 sm:py-20 overflow-hidden">
+    <section id="themes" className="relative z-10 bg-transparent border-b border-[#5A7755]/15 select-none font-sans py-14 sm:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-xs">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-xs backdrop-blur-sm">
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Themes Collection</span>
           </div>
@@ -88,7 +88,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
               <div
                 key={`row1-${theme.id}-${index}`}
                 onClick={() => onOpenBooking(undefined, theme.id)}
-                className="w-[320px] sm:w-[380px] flex-shrink-0 bg-white border-2 border-[#5A7755]/30 shadow-lg hover:border-[#5A7755] transition-all cursor-pointer flex flex-col rounded-none"
+                className="w-[320px] sm:w-[380px] flex-shrink-0 bg-white/95 backdrop-blur-sm border-2 border-[#5A7755]/30 shadow-lg hover:border-[#5A7755] transition-all cursor-pointer flex flex-col rounded-none"
               >
                 {/* Full-Bleed Image Box (Zero Padding/Spacing) */}
                 <div className="relative w-full aspect-[16/11] overflow-hidden bg-neutral-200 rounded-none">
@@ -108,7 +108,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
                 </div>
 
                 {/* Title & Two Lines of Description Below */}
-                <div className="p-4 text-left bg-white">
+                <div className="p-4 text-left bg-white/95">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-[#B06F78] block mb-1">
                     {theme.category}
                   </span>
@@ -136,7 +136,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
               <div
                 key={`row2-${theme.id}-${index}`}
                 onClick={() => onOpenBooking(undefined, theme.id)}
-                className="w-[320px] sm:w-[380px] flex-shrink-0 bg-white border-2 border-[#5A7755]/30 shadow-lg hover:border-[#5A7755] transition-all cursor-pointer flex flex-col rounded-none"
+                className="w-[320px] sm:w-[380px] flex-shrink-0 bg-white/95 backdrop-blur-sm border-2 border-[#5A7755]/30 shadow-lg hover:border-[#5A7755] transition-all cursor-pointer flex flex-col rounded-none"
               >
                 {/* Full-Bleed Image Box (Zero Padding/Spacing) */}
                 <div className="relative w-full aspect-[16/11] overflow-hidden bg-neutral-200 rounded-none">
@@ -156,7 +156,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
                 </div>
 
                 {/* Title & Two Lines of Description Below */}
-                <div className="p-4 text-left bg-white">
+                <div className="p-4 text-left bg-white/95">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-[#B06F78] block mb-1">
                     {theme.category}
                   </span>

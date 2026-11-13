@@ -89,7 +89,7 @@ export const TestimonialsSection: React.FC = () => {
   const rowTwoReviews = testimonials.slice(midPoint);
 
   return (
-    <section id="reviews" className="py-14 sm:py-18 lg:py-22 relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans overflow-hidden">
+    <section id="reviews" className="py-14 sm:py-18 lg:py-22 relative z-10 bg-transparent border-b border-[#5A7755]/15 select-none font-sans overflow-hidden">
       
       {/* Custom CSS Keyframes for Left-to-Right and Right-to-Left Loops */}
       <style>{`
@@ -123,7 +123,7 @@ export const TestimonialsSection: React.FC = () => {
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Verified Reviews</span>
           </div>
@@ -153,7 +153,7 @@ export const TestimonialsSection: React.FC = () => {
 
         {/* WRITE A REVIEW INLINE ACCORDION */}
         {isWriteReviewOpen && (
-          <div className="max-w-2xl mx-auto mb-12 bg-white rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/25 shadow-md">
+          <div className="max-w-2xl mx-auto mb-12 bg-white/95 backdrop-blur-sm rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/25 shadow-md">
             <div className="flex items-center justify-between pb-4 border-b border-[#5A7755]/15 mb-5">
               <h3 className="font-sans text-lg font-black text-[#384C37]">
                 Share Your Slumber Experience
@@ -263,7 +263,7 @@ export const TestimonialsSection: React.FC = () => {
               return (
                 <div
                   key={`${t.id}-r1-${idx}`}
-                  className="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#5A7755] rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white"
+                  className="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#5A7755]/95 backdrop-blur-sm rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -310,7 +310,7 @@ export const TestimonialsSection: React.FC = () => {
               return (
                 <div
                   key={`${t.id}-r2-${idx}`}
-                  className="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#5A7755] rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white"
+                  className="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#5A7755]/95 backdrop-blur-sm rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">

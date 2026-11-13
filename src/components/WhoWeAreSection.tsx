@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, ArrowRight, Sparkles, Tent, Star, ShieldCheck, Award } from 'lucide-react';
+import { Heart, ArrowRight } from 'lucide-react';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
 
 interface WhoWeAreSectionProps {
@@ -12,16 +12,16 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
   onNavigate,
 }) => {
   return (
-    <section id="who-we-are" className="relative z-10 bg-transparent overflow-hidden border-b border-[#5A7755]/15">
+    <section id="who-we-are" className="relative z-10 bg-transparent overflow-hidden border-b border-[#5A7755]/15 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* SECTION HEADER */}<br/><br/>
+        {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3 relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5  bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Slumber Story</span>
           </div>
-            <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
+          <CuteSmileyCloud size="sm" className="hidden sm:inline-block" />
           
           <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
             Who We Are &amp; What We Do
@@ -68,7 +68,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4">
               
               {/* Strip 1: Core Identity */}
-              <div className="relative overflow-hidden bg-white rounded-2xl p-4 sm:p-5 border border-[#5A7755]/20 shadow-sm hover:border-[#5A7755]/50 hover:shadow-md transition-all flex flex-col lg:flex-row items-start gap-3 sm:gap-4 group">
+              <div className="relative overflow-hidden bg-white/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-[#5A7755]/20 shadow-sm hover:border-[#5A7755]/50 hover:shadow-md transition-all flex flex-col lg:flex-row items-start gap-3 sm:gap-4 group">
                 <div className="absolute top-0 left-0 bottom-0 w-1 bg-[#5A7755]" />
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#5A7755]/10 text-[#5A7755] flex items-center justify-center flex-shrink-0 font-black text-xs sm:text-sm">
                   01
@@ -82,7 +82,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
               </div>
 
               {/* Strip 2: Full-Service Experience */}
-              <div className="relative overflow-hidden bg-white rounded-2xl p-4 sm:p-5 border border-[#C78D95]/30 shadow-sm hover:border-[#C78D95]/60 hover:shadow-md transition-all flex flex-col lg:flex-row items-start gap-3 sm:gap-4 group">
+              <div className="relative overflow-hidden bg-white/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-[#C78D95]/30 shadow-sm hover:border-[#C78D95]/60 hover:shadow-md transition-all flex flex-col lg:flex-row items-start gap-3 sm:gap-4 group">
                 <div className="absolute top-0 left-0 bottom-0 w-1 bg-[#C78D95]" />
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#C78D95]/15 text-[#B06F78] flex items-center justify-center flex-shrink-0 font-black text-xs sm:text-sm">
                   02
@@ -96,7 +96,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
               </div>
 
               {/* Strip 3: Interior Design Service */}
-              <div className="relative overflow-hidden bg-white rounded-2xl p-4 sm:p-5 border border-[#5A7755]/20 shadow-sm hover:border-[#5A7755]/50 hover:shadow-md transition-all flex flex-col lg:flex-row items-start gap-3 sm:gap-4 group col-span-2 lg:col-span-1">
+              <div className="relative overflow-hidden bg-white/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-[#5A7755]/20 shadow-sm hover:border-[#5A7755]/50 hover:shadow-md transition-all flex flex-col lg:flex-row items-start gap-3 sm:gap-4 group col-span-2 lg:col-span-1">
                 <div className="absolute top-0 left-0 bottom-0 w-1 bg-[#5A7755]" />
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#5A7755]/10 text-[#5A7755] flex items-center justify-center flex-shrink-0 font-black text-xs sm:text-sm">
                   03
@@ -117,7 +117,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onNavigate('contact')}
-                  className="px-5 py-2.5 rounded-xl bg-[#5A7755]/10 hover:bg-[#5A7755]/20 text-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-white/80 hover:bg-white text-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border border-[#5A7755]/20 shadow-xs"
                 >
                   Enquire Here
                 </button>
@@ -139,15 +139,15 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
       </div>
 
       {/* Taller Marquee Strip at the End */}
-      <div className="w-full bg-[#5A7755]/10 border-t border-[#5A7755]/20 py-6 sm:py-7 overflow-hidden whitespace-nowrap select-none">
+      <div className="w-full bg-[#5A7755]/10 backdrop-blur-xs border-t border-b border-[#5A7755]/20 py-6 sm:py-7 overflow-hidden whitespace-nowrap select-none">
         <div className="inline-flex animate-marquee items-center gap-12 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#384C37]">
-          <span className="inline-flex items-center gap-2"> Grand Cayman’s 1st Luxury Indoor Glamping</span>
+          <span className="inline-flex items-center gap-2">Grand Cayman’s 1st Luxury Indoor Glamping</span>
           <span className="text-[#C78D95]">•</span>
-          <span className="inline-flex items-center gap-2"> Fully Delivered, Styled &amp; Packaged Away</span>
+          <span className="inline-flex items-center gap-2">Fully Delivered, Styled &amp; Packaged Away</span>
           <span className="text-[#C78D95]">•</span>
-          <span className="inline-flex items-center gap-2"> Bespoke Kids Interior Design by Candice Hall</span>
+          <span className="inline-flex items-center gap-2">Bespoke Kids Interior Design by Candice Hall</span>
           <span className="text-[#C78D95]">•</span>
-          <span className="inline-flex items-center gap-2"> Turnkey Party Setup &amp; Takedown</span>
+          <span className="inline-flex items-center gap-2">Turnkey Party Setup &amp; Takedown</span>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Tag, Gift } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Tag, Gift } from 'lucide-react';
 
 interface FloatingWhatsAppProps {
   onOpenPromoModal?: () => void;
@@ -11,28 +11,8 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
   isDismissed = false,
 }) => {
   const [promoDismissed, setPromoDismissed] = useState(false);
-  const [isFadingOut, setIsFadingOut] = useState(false);
 
-  // Smooth auto-close timer after 3 seconds
-  useEffect(() => {
-    if (promoDismissed || isDismissed) return;
-
-    // 2.5 seconds ke baad fade-out animation start hogi
-    const fadeTimer = setTimeout(() => {
-      setIsFadingOut(true);
-    }, 2500);
-
-    // Exact 3 seconds ke baad component completely hide ho jayega
-    const hideTimer = setTimeout(() => {
-      setPromoDismissed(true);
-    }, 3000);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(hideTimer);
-    };
-  }, [promoDismissed, isDismissed]);
-
+  // Auto-close timer removed so it stays permanently open until manually closed
   const shouldHidePromo = promoDismissed || isDismissed;
 
   return (
@@ -42,12 +22,10 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
         {/* ... WhatsApp Button Code Agar Koi Ho ... */}
       </div>
 
-      {/* 2. RIGHT CORNER: Special Cayman Offers Popup with Smooth 3s Auto-Close */}
+      {/* 2. RIGHT CORNER: Permanent Special Cayman Offers Popup */}
       {!shouldHidePromo && (
         <div 
-          className={`fixed bottom-4 right-4 z-40 max-w-[260px] sm:max-w-[320px] bg-white rounded-none p-3 sm:p-4 border-2 border-[#5A7755]/40 shadow-2xl font-sans select-none transition-all duration-500 transform ${
-            isFadingOut ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100 translate-y-0 animate-in slide-in-from-bottom-5'
-          }`}
+          className="fixed bottom-4 right-4 z-40 max-w-[260px] sm:max-w-[320px] bg-white rounded-none p-3 sm:p-4 border-2 border-[#5A7755]/40 shadow-2xl font-sans select-none transition-all duration-300 opacity-100 scale-100 translate-y-0"
         >
           <button
             type="button"

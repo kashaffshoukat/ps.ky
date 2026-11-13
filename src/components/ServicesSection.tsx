@@ -151,12 +151,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   ];
 
   return (
-    <section id="services" className="relative z-10 bg-[#FBF9F6] text-[#232B25] select-none py-12">
+    <section id="services" className="relative z-10 bg-transparent text-[#232B25] select-none py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-sm backdrop-blur-sm">
             <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
             <span>Grand Cayman's Slumber Services</span>
           </div>
@@ -169,7 +169,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </p>
 
           {/* Tab Navigation Pill Strip */}
-          <div className="inline-flex items-center p-1.5 bg-white border border-[#5A7755]/25 shadow-md mt-2">
+          <div className="inline-flex items-center p-1.5 bg-white/90 backdrop-blur-sm border border-[#5A7755]/25 shadow-md mt-2">
             <button
               onClick={() => setActiveTab('packages')}
               className={`px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
@@ -204,7 +204,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         </div>
 
         {/* FULL-WIDTH SPECIAL OFFER BANNER */}
-        <div className="w-full my-6 p-4 sm:p-6 bg-gradient-to-r from-[#5A7755] to-[#455c42] text-white rounded-none shadow-xl border-y-2 border-white/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+        <div className="w-full my-6 p-4 sm:p-6 bg-gradient-to-r from-[#5A7755]/95 to-[#455c42]/95 backdrop-blur-sm text-white rounded-none shadow-xl border-y-2 border-white/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
           <div className="flex items-center gap-4">
               <CuteSmileyCloud size="md" className="shrink-0" />
             
@@ -244,7 +244,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 return (
                   <div
                     key={pkg.id}
-                    className="w-full relative bg-white text-[#232B25] rounded-2xl overflow-hidden border-2 border-[#5A7755]/25 shadow-md hover:border-[#5A7755]/50 transition-all duration-300 flex flex-col justify-between group"
+                    className="w-full relative bg-white/95 backdrop-blur-sm text-[#232B25] rounded-2xl overflow-hidden border-2 border-[#5A7755]/25 shadow-md hover:border-[#5A7755]/50 transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
                       <div className="w-full h-56 sm:h-64 overflow-hidden relative">
@@ -313,7 +313,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         {/* TAB 2: INCLUSIONS */}
         {activeTab === 'inclusions' && (
           <div className="max-w-6xl mx-auto py-6 animate-fadeIn">
-            <div className="bg-white rounded-3xl border-2 border-[#5A7755]/25 shadow-xl overflow-hidden">
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl border-2 border-[#5A7755]/25 shadow-xl overflow-hidden">
               <div className="flex flex-col-reverse lg:flex-row items-stretch">
                 
                 <div className="w-full lg:w-1/2 p-6 sm:p-10 flex flex-col justify-between space-y-6">
@@ -378,7 +378,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         {/* TAB 3: ADD-ONS */}
         {activeTab === 'addons' && (
           <div className="max-w-6xl mx-auto py-6 animate-fadeIn">
-            <div className="bg-white rounded-3xl border-2 border-[#5A7755]/25 shadow-xl overflow-hidden">
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl border-2 border-[#5A7755]/25 shadow-xl overflow-hidden">
               <div className="flex flex-col-reverse lg:flex-row items-stretch">
                 
                 <div className="w-full lg:w-1/2 p-6 sm:p-10 flex flex-col justify-between space-y-6">
@@ -445,7 +445,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         {/* ======================================================== */}
         <div className="mt-16 pt-10 border-t-2 border-[#5A7755]/20">
           <div className="text-center max-w-2xl mx-auto mb-6 space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5A7755]/10 border border-[#5A7755]/30 text-[#384C37] text-[10px] font-extrabold uppercase tracking-widest">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/90 backdrop-blur-sm border border-[#5A7755]/30 text-[#384C37] text-[10px] font-extrabold uppercase tracking-widest">
               <Play className="w-3 h-3 fill-[#384C37]" />
               <span>Experience The Magic</span>
             </div>

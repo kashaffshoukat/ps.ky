@@ -82,15 +82,15 @@ export const BentoGallery: React.FC<BentoGalleryProps> = ({
       id="gallery" 
       className={`pt-24 sm:pt-28 py-12 sm:py-16 scroll-mt-28 relative z-10 border-b font-sans select-none transition-colors duration-300 ${
         isDedicatedPage 
-          ? 'bg-white text-[#232B25] border-[#5A7755]/20' 
-          : 'bg-[#5A7755] text-white border-white/20'
+          ? 'bg-transparent text-[#232B25] border-[#5A7755]/20' 
+          : 'bg-[#5A7755]/90 backdrop-blur-sm text-white border-white/20'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
-          <div className={`inline-flex items-center gap-2 px-4 py-1.5 border text-xs font-bold uppercase tracking-widest shadow-sm ${
+          <div className={`inline-flex items-center gap-2 px-4 py-1.5 border text-xs font-bold uppercase tracking-widest shadow-sm backdrop-blur-sm ${
             isDedicatedPage 
               ? 'bg-[#C78D95]/15 border-[#C78D95]/30 text-[#B06F78]' 
               : 'bg-white/20 border-white/30 text-white'
@@ -121,7 +121,7 @@ export const BentoGallery: React.FC<BentoGalleryProps> = ({
 
         {/* Responsive Tabs Slider on dedicated page */}
         {isDedicatedPage && (
-          <div className="mb-8 bg-[#FBF9F6] p-2 rounded-2xl border border-[#5A7755]/25 shadow-sm">
+          <div className="mb-8 bg-white/90 backdrop-blur-sm p-2 rounded-2xl border border-[#5A7755]/25 shadow-sm">
             <CategoryTabsSlider
               tabs={tabOptions}
               activeTab={activeFilter}
@@ -140,7 +140,7 @@ export const BentoGallery: React.FC<BentoGalleryProps> = ({
               return (
                 <div
                   key={photo.id}
-                  className="relative rounded-2xl overflow-hidden bg-[#FAF7F4] border-4 border-white shadow-xl aspect-[4/3] p-6 flex flex-col justify-between group hover:border-[#C78D95]/50 transition-all"
+                  className="relative rounded-2xl overflow-hidden bg-white/95 backdrop-blur-sm border-4 border-white shadow-xl aspect-[4/3] p-6 flex flex-col justify-between group hover:border-[#C78D95]/50 transition-all"
                 >
                   <div className="flex items-center justify-between">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5A7755]/10 text-[#384C37] text-[11px] font-extrabold uppercase tracking-wider border border-[#5A7755]/20">
@@ -185,7 +185,7 @@ export const BentoGallery: React.FC<BentoGalleryProps> = ({
               return (
                 <div
                   key={photo.id}
-                  className="relative rounded-2xl overflow-hidden bg-[#FAF7F4] border-4 border-[#5A7755] shadow-xl aspect-[4/3] p-6 flex flex-col justify-between group hover:border-[#C78D95] transition-all"
+                  className="relative rounded-2xl overflow-hidden bg-white/95 backdrop-blur-sm border-4 border-[#5A7755] shadow-xl aspect-[4/3] p-6 flex flex-col justify-between group hover:border-[#C78D95] transition-all"
                 >
                   <div className="flex items-center justify-between">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5A7755]/15 text-[#384C37] text-[11px] font-extrabold uppercase tracking-wider border border-[#5A7755]/30">

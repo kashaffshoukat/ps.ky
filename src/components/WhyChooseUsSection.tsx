@@ -40,12 +40,12 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
   ];
 
   return (
-    <section id="why-choose-us" className="py-16 sm:py-20 lg:py-24 relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans">
+    <section id="why-choose-us" className="py-16 sm:py-20 lg:py-24 relative z-10 bg-transparent border-b border-[#5A7755]/15 select-none font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-         <div className="inline-flex items-center gap-2 px-4 py-1.5  bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest">
+         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
                       <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
                       <span>Trust on Grand Cayman's Slumber</span>
                     </div>
@@ -71,7 +71,7 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
             <div className="absolute -top-3 -left-3 -right-3 -bottom-3 border-2 border-[#5A7755]/30 rounded-none pointer-events-none group-hover:border-[#5A7755]/60 transition-colors" />
 
             {/* Inner Bordered Image Box */}
-            <div className="relative rounded-none overflow-hidden border-2 border-[#5A7755] shadow-[0_15px_30px_rgba(35,49,34,0.15)] aspect-[4/3] bg-white">
+            <div className="relative rounded-none overflow-hidden border-2 border-[#5A7755] shadow-[0_15px_30px_rgba(35,49,34,0.15)] aspect-[4/3] bg-white/95">
               <img
                 src="/assets/aistudio/why.jpeg"
                 alt="Paradise Slumbers Experience"
@@ -95,7 +95,7 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
             {featuresList.map((item) => (
               <div
                 key={item.number}
-                className="bg-white rounded-none p-4 sm:p-5 border-2 border-[#5A7755]/20 hover:border-[#5A7755]/60 shadow-sm hover:shadow-md transition-all flex items-start gap-4 group"
+                className="bg-white/95 backdrop-blur-sm rounded-none p-4 sm:p-5 border-2 border-[#5A7755]/20 hover:border-[#5A7755]/60 shadow-sm hover:shadow-md transition-all flex items-start gap-4 group"
               >
                 {/* Number Badge (Squared) */}
                 <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-none bg-[#5A7755] text-white flex items-center justify-center font-black text-xs sm:text-base shadow-sm group-hover:bg-[#384C37] transition-colors">
@@ -116,26 +116,26 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
           </div>
 
         </div>
-  {/* Professional Action Bar */}
-            <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3 ml-auto">
-                <button
-                  type="button"
-                  onClick={() => onNavigate('contact')}
-                  className="px-5 py-2.5 rounded-xl bg-[#5A7755]/10 hover:bg-[#5A7755]/20 text-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-                >
-                  Enquire Here
-                </button>
-                <button
-                  type="button"
-                  onClick={onOpenBooking}
-                  className="px-6 py-2.5 rounded-xl bg-[#5A7755] hover:bg-[#384C37] text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
-                >
-                  <span>Book Now</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
-                </button>
-              </div>
-            </div>
+        {/* Professional Action Bar */}
+        <div className="pt-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3 ml-auto">
+            <button
+              type="button"
+              onClick={() => onNavigate('contact')}
+              className="px-5 py-2.5 rounded-xl bg-white/90 hover:bg-white text-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border border-[#5A7755]/20 shadow-xs backdrop-blur-sm"
+            >
+              Enquire Here
+            </button>
+            <button
+              type="button"
+              onClick={onOpenBooking}
+              className="px-6 py-2.5 rounded-xl bg-[#5A7755] hover:bg-[#384C37] text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
+            >
+              <span>Book Now</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
+            </button>
+          </div>
+        </div>
 
       </div>
     </section>
