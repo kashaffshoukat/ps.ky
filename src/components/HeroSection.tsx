@@ -14,7 +14,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Background Hero Image with Dusty Rose Tint Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://nashvillebabyguide.com/wp-content/uploads/2024/05/candyland-first-birthday-party-theme-nashville-baby-guide-24.jpg"
+          src="./assets/aistudio/bg.jpg"
           alt="Luxury Indoor Glamping Teepees Under Starry Sky"
           className="w-full h-full object-cover object-center scale-[1.01]"
         />
