@@ -28,7 +28,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="pointer-events-none absolute -top-8 -left-8 w-28 h-28 rounded-full bg-white/[0.06] z-10" />
       <div className="pointer-events-none absolute top-44 -right-6 w-16 h-16 rounded-lg bg-white/[0.08] z-10 hidden sm:block" />
 
-      {/* Single Flow Container with tightened mobile bottom padding */}
+      {/* Single Flow Container */}
       <div className="relative z-20 max-w-[1380px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-2 pb-6 sm:py-24 flex flex-col">
         
         {/* Kicker Tag */}
@@ -36,12 +36,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           Luxury Indoor Glamping &bull; Grand Cayman
         </p>
 
-        {/* Giant Brand Heading */}
-        <h1 className="font-extrabold uppercase text-white tracking-[-0.02em] leading-[0.95] text-[clamp(2.35rem,7.35vw,6.85rem)] whitespace-nowrap drop-shadow-lg mt-3 sm:mt-4 mb-5 sm:mb-6">
-          PARADISE SLUMBERS
+        {/* Brand Heading with Responsive Stack for Mobile */}
+        <h1 className="font-extrabold uppercase text-white tracking-[-0.02em] leading-[0.95] text-[clamp(2.1rem,6.8vw,6.85rem)] drop-shadow-lg mt-3 sm:mt-4 mb-5 sm:mb-6">
+          PARADISE <span className="block sm:inline">SLUMBERS</span>
         </h1>
 
-        {/* Content Block with consistent internal spacing */}
+        {/* Content Block */}
         <div className="max-w-3xl space-y-4 sm:space-y-6">
           
           {/* Subtitle / Tagline */}
