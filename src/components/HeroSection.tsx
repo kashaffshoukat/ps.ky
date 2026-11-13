@@ -19,7 +19,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="w-full h-full object-cover object-center scale-[1.01]"
         />
         {/* Soft dusty rose / mauve color wash overlay */}
-        <div className="absolute inset-0 bg-[#A6757D]/70 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[#A6757D]/100 mix-blend-multiply" />
         {/* Subtle dark vignette so text remains crisp and readable */}
         <div className="absolute inset-0 bg-black/25" />
       </div>
@@ -50,7 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </span>
 
           {/* Description Paragraph */}
-          <p className="text-xs sm:text-[15px] font-medium text-white/95 leading-relaxed drop-shadow max-w-2xl">
+          <p className="text-xs sm:text-[15px] font-medium text-white leading-relaxed drop-shadow max-w-2xl">
             Seamless, precise, and built to last your indoor adventure, done right.
             Turning ordinary sleepovers into extraordinary childhood adventures across Grand
             Cayman. Every detail is thoughtfully executed from the first teepee setup to the
