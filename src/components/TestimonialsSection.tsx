@@ -5,10 +5,10 @@ import { TestimonialItem } from '../types';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
 import { ScrollReveal } from './ScrollReveal';
 
-const STORAGE_KEY = 'paradise_slumbers_reviews_v4';
-const VOTES_STORAGE_KEY = 'paradise_slumbers_helpful_votes_v4';
+const STORAGE_KEY = 'paradise_slumbers_reviews_v5';
+const VOTES_STORAGE_KEY = 'paradise_slumbers_helpful_votes_v5';
 
-// 20 Natural, authentic reviews written like real Cayman parents
+// Exactly 10 natural, authentic reviews written like real Cayman parents
 const AUTHENTIC_REVIEWS: TestimonialItem[] = [
   {
     id: 'review-unicorn-outdoor-1',
@@ -110,114 +110,7 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     date: '3 months ago',
     verified: true,
   },
-  // 10 Additional New Reviews Added Below
-  {
-    id: 'review-real-11',
-    name: 'Marcus & Rachel Parsons',
-    location: 'Grand Harbour, Grand Cayman',
-    eventType: 'Gamer Zone Sleepover',
-    rating: 5,
-    review: 'Absolute lifesavers! We had 6 boys over for a gaming-themed sleepover and the LED light setups inside the teepees completely blew them away. Setup was fast and professional.',
-    date: '3 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-12',
-    name: 'Sarah Jane Conolly',
-    location: 'South Sound, Grand Cayman',
-    eventType: 'Enchanted Garden Party',
-    rating: 5,
-    review: 'The floral garlands and pastel lights looked straight out of a Pinterest board. All the other moms kept asking who did the styling. Will definitely use them again next year!',
-    date: '4 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-13',
-    name: 'David & Gemma Rivers',
-    location: 'Bodden Town, Grand Cayman',
-    eventType: 'Movie Night Slumber',
-    rating: 5,
-    review: 'Super clean, gorgeous aesthetic, and wonderful customer service. They arrived right on schedule and handled everything seamlessly while the kids were at school.',
-    date: '4 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-14',
-    name: 'Jessica Hurlstone',
-    location: 'West Bay, Grand Cayman',
-    eventType: 'Sweet Dreams Spa Retreat',
-    rating: 5,
-    review: 'The little individual spa kits with robes and cucumber eye pads were a massive hit for my daughter’s 11th birthday. Every single detail was thoughtfully executed.',
-    date: '5 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-15',
-    name: 'Liam McLaughlin',
-    location: 'Seven Mile Beach, Grand Cayman',
-    eventType: 'Outdoor Starlight Campout',
-    rating: 5,
-    review: 'Exceptional quality. The bell tent felt spacious, sturdy, and luxurious. Great communication throughout booking and stress-free pickup the next day.',
-    date: '5 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-16',
-    name: 'Kirsty Bush',
-    location: 'North Side, Grand Cayman',
-    eventType: 'Tropical Luau Sleepover',
-    rating: 5,
-    review: 'Living further out on the island can sometimes make party planning tricky, but they came all the way out to North Side with bright smiles and total professionalism.',
-    date: '6 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-17',
-    name: 'Andrea Martinez',
-    location: 'George Town, Grand Cayman',
-    eventType: 'Galaxy Space Odyssey',
-    rating: 5,
-    review: 'My son is obsessed with space and the galaxy projections on the ceiling of the tent made him feel like he was sleeping under the stars. Incredible concept!',
-    date: '6 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-18',
-    name: 'Nadine Hydes',
-    location: 'Savannah, Grand Cayman',
-    eventType: 'Boho Chic Teepee Party',
-    rating: 5,
-    review: 'From the soft rugs to the cozy blankets and fairy lights, everything felt exceptionally high-end. The girls felt like absolute princesses all night long.',
-    date: '7 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-19',
-    name: 'Shane McMillan',
-    location: 'Prospect, Grand Cayman',
-    eventType: 'Classic Midnight Feast Slumber',
-    rating: 5,
-    review: 'Prompt, courteous, and extremely tidy. They set up the entire arrangement in under an hour and left our living room spotless. Worth every single penny.',
-    date: '7 months ago',
-    verified: true,
-  },
-  {
-    id: 'review-real-20',
-    name: 'Tanya Seymour',
-    location: 'Camana Bay, Grand Cayman',
-    eventType: 'Rainbow Unicorn Dream',
-    rating: 5,
-    review: 'The absolute best birthday investment we’ve ever made. Zero hassle for parents and pure magic for the kids. Thank you for creating such unforgettable memories!',
-    date: '8 months ago',
-    verified: true,
-  },
 ];
-
-const COMBINED_TESTIMONIALS: TestimonialItem[] = (() => {
-  const seen = new Set(AUTHENTIC_REVIEWS.map((r) => r.id));
-  const extra = (TESTIMONIALS_DATA || []).filter((item) => !seen.has(item.id));
-  return [...AUTHENTIC_REVIEWS, ...extra];
-})();
 
 export const TestimonialsSection: React.FC = () => {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>(() => {
@@ -228,7 +121,7 @@ export const TestimonialsSection: React.FC = () => {
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
     } catch {}
-    return COMBINED_TESTIMONIALS;
+    return AUTHENTIC_REVIEWS;
   });
 
   const [helpfulVotes, setHelpfulVotes] = useState<{ [id: string]: number }>(() => {
@@ -443,16 +336,16 @@ export const TestimonialsSection: React.FC = () => {
         )}
 
         {/* ========================================================
-            ALL REVIEWS DISPLAYED IN CLEAN WHITE CARDS (Sample Image Style)
+            SAGE GREEN CARDS THEME - ALL REVIEWS DISPLAYED DIRECTLY
             ======================================================== */}
         <ScrollReveal animation="fade-up" delay={150}>
           <div className="space-y-6">
-            {testimonials.map((t) => {
+            {testimonials.slice(0, 10).map((t) => {
               const votes = helpfulVotes[t.id] || 0;
               return (
                 <article
                   key={t.id}
-                  className="bg-white rounded-none p-6 sm:p-8 border-2 border-neutral-200 shadow-md flex flex-col justify-between text-[#232B25]"
+                  className="bg-[#5A7755] rounded-none p-6 sm:p-8 border-2 border-white/45 shadow-md flex flex-col justify-between text-white"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
@@ -461,39 +354,39 @@ export const TestimonialsSection: React.FC = () => {
                           <Star key={i} className="w-5 h-5 fill-[#EAB308] text-[#EAB308]" />
                         ))}
                       </div>
-                      <span className="text-xs text-neutral-400 font-medium uppercase tracking-wider">{t.date}</span>
+                      <span className="text-xs text-white/75 font-medium uppercase tracking-wider">{t.date}</span>
                     </div>
 
                     {t.eventType && (
-                      <div className="inline-block px-2.5 py-0.5 bg-[#5A7755]/10 border border-[#5A7755]/20 text-[11px] font-semibold tracking-wide text-[#384C37]">
+                      <div className="inline-block px-2.5 py-0.5 bg-white/15 border border-white/30 text-[11px] font-semibold tracking-wide text-white">
                         {t.eventType}
                       </div>
                     )}
 
-                    <p className="text-sm sm:text-base text-neutral-700 leading-relaxed italic pt-1">
+                    <p className="text-sm sm:text-base text-white/95 leading-relaxed italic pt-1">
                       "{t.review}"
                     </p>
                   </div>
 
-                  <div className="pt-5 mt-5 border-t border-neutral-100 flex items-center justify-between gap-2">
+                  <div className="pt-5 mt-5 border-t border-white/20 flex items-center justify-between gap-2">
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="font-sans font-black text-xs sm:text-sm text-[#384C37] uppercase tracking-wide">
+                        <span className="font-sans font-black text-xs sm:text-sm text-white uppercase tracking-wide">
                           {t.name}
                         </span>
                         {t.verified && (
-                          <span className="inline-flex items-center justify-center w-5 h-5 bg-blue-600 text-white rounded-none flex-shrink-0" title="Verified Customer">
-                            <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                          <span className="inline-flex items-center justify-center w-5 h-5 bg-[#EAB308] text-[#384C37] rounded-none flex-shrink-0" title="Verified Customer">
+                            <ShieldCheck className="w-3.5 h-3.5 text-[#384C37]" />
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-neutral-500 block mt-0.5">{t.location}</span>
+                      <span className="text-[11px] text-white/80 block mt-0.5">{t.location}</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => handleVoteHelpful(t.id)}
-                      className="inline-flex items-center gap-1 text-xs text-[#5A7755] hover:text-[#384C37] font-semibold transition-colors cursor-pointer bg-[#5A7755]/10 hover:bg-[#5A7755]/20 px-3 py-1.5 border border-[#5A7755]/30 flex-shrink-0"
+                      className="inline-flex items-center gap-1 text-xs text-white hover:text-white/90 font-semibold transition-colors cursor-pointer bg-white/15 hover:bg-white/25 px-3 py-1.5 border border-white/30 flex-shrink-0"
                       title="Mark as helpful"
                     >
                       <ThumbsUp className="w-3.5 h-3.5" />
