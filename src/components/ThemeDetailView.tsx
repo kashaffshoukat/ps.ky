@@ -33,14 +33,14 @@ export const ThemeDetailView: React.FC<ThemeDetailViewProps> = ({
   const saved = savedWishlistIds.includes(theme.id);
 
   const themeAddons = [
-    { title: 'Balloon Arches & Styling', desc: 'Custom balloon garlands and columns matched to your party colors' },
+    { title: 'Balloon Arches and Styling', desc: 'Custom balloon garlands and columns matched to your party colors' },
     { title: 'Theme Decorated Party Cake', desc: 'Freshly baked and custom decorated to match your chosen theme' },
     { title: 'Graze Girl Charcuterie Board', desc: 'Curated sweet or savory boards tailored to your celebration' },
     { title: 'Fresh Flower Display / Garlands', desc: 'Floral arrangements and fresh garlands sourced locally' },
     { title: 'Custom Piñata', desc: 'Themed party piñata ready for celebration fun' },
-    { title: 'Party Tableware & Decorations', desc: 'Coordinated plates, cups, napkins, candles, and extra decor' },
-    { title: 'Spa Package & Nail Pampering', desc: 'Fun mini-spa and nail care pampering experience' },
-    { title: 'Henna Tattoo & Face Painting', desc: 'Live artistic henna tattoos and face painting in Grand Cayman' },
+    { title: 'Party Tableware and Decorations', desc: 'Coordinated plates, cups, napkins, candles, and extra decor' },
+    { title: 'Spa Package and Nail Pampering', desc: 'Fun mini-spa and nail care pampering experience' },
+    { title: 'Henna Tattoo and Face Painting', desc: 'Live artistic henna tattoos and face painting in Grand Cayman' },
   ];
 
   return (
@@ -55,7 +55,7 @@ export const ThemeDetailView: React.FC<ThemeDetailViewProps> = ({
             className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-[#5A7755]/30 rounded-xl text-[#384C37] font-bold text-xs sm:text-sm hover:bg-[#5A7755] hover:text-white transition-all shadow-sm cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Themes & Home</span>
+            <span>Back to Themes and Home</span>
           </button>
 
           <button

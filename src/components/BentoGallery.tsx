@@ -63,34 +63,35 @@ export const BentoGallery: React.FC<BentoGalleryProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
-          <ScrollReveal animation="fade-up" delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
-              <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
-              <span>Grand Cayman's Slumber Top Picks</span>
-            </div>
-            <CuteSmileyCloud size="md" className="hidden sm:inline-block mx-auto" />
+       <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
+  <ScrollReveal animation="fade-up" delay={0}>
+    <div className="inline-flex items-center justify-center flex-wrap gap-0">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+        <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
+        <span>Grand Cayman's Slumber Story</span>
+      </div>
+      <div className="-mt-3 shrink-0">
+        <CuteSmileyCloud size="md" />
+      </div>
+    </div>
+  </ScrollReveal>
 
-          </ScrollReveal>
+  <ScrollReveal animation="fade-up" delay={200}>
+    <div className="flex items-center justify-center gap-2 sm:gap-3">
+      <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#384C37]">
+        {isDedicatedPage ? 'Photo Gallery' : 'Sleepover Setup Showcase'}
+      </h2>
+    </div>
+  </ScrollReveal>
 
-
-          <ScrollReveal animation="fade-up" delay={200}>
-            <div className="flex items-center justify-center gap-2 sm:gap-3">
-              <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#384C37]">
-                {isDedicatedPage ? 'Photo Gallery' : 'Sleepover Setup Showcase'}
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal animation="fade-up" delay={300}>
-            <p className="text-sm sm:text-base leading-relaxed text-[#232B25]/80">
-              {isDedicatedPage
-                ? 'Browse our complete catalog of authentic sleepovers, themed teepees, custom timber A-frames, and bedroom makeovers.'
-                : 'Authentic Cayman slumber setups photographed on island.'}
-            </p>
-          </ScrollReveal>
-        </div>
+  <ScrollReveal animation="fade-up" delay={300}>
+    <p className="text-sm sm:text-base leading-relaxed text-[#232B25]/80">
+      {isDedicatedPage
+        ? 'Browse our complete catalog of authentic sleepovers, themed teepees, custom timber A-frames, and bedroom makeovers.'
+        : 'Authentic Cayman slumber setups photographed on island.'}
+    </p>
+  </ScrollReveal>
+</div>
 
         {/* Image Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">

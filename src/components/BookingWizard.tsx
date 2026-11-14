@@ -187,7 +187,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
           <div className="px-6 pt-3 pb-2.5 bg-[#FAF7F4] border-b border-[#5A7755]/15 shrink-0">
             <div className="flex items-center justify-between text-[11px] font-bold text-[#232B25] mb-2">
               <span className={step >= 1 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>1. Experience</span>
-              <span className={step >= 2 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>2. Date &amp; Guests</span>
+              <span className={step >= 2 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>2. Date and Guests</span>
               <span className={step >= 3 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>3. Add-Ons</span>
               <span className={step >= 4 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>4. Details</span>
               <span className={step >= 5 ? 'text-[#5A7755] font-extrabold' : 'text-[#232B25]/40'}>5. Review</span>

@@ -62,7 +62,7 @@ export const CookieConsentBanner: React.FC = () => {
         <div className="space-y-1">
           <div className="flex items-center gap-1.5">
             <h4 className="text-xs font-black text-[#384C37]">
-              Cookie &amp; Privacy Choices
+              Cookie and Privacy Choices
             </h4>
             <span className="text-[10px]" title="Happy Camping">☁️</span>
           </div>

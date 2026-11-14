@@ -21,7 +21,7 @@ export const BlogSection: React.FC<BlogSectionProps> = ({ onOpenBooking }) => {
             <span>Island Slumber Journal</span>
           </div>
           <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
-            Slumber Insights &amp; Guides
+            Slumber Insights and Guides
           </h2>
           <p className="text-[#232B25]/75 text-sm sm:text-base leading-relaxed">
             Expert styling tips, room space guidelines, theme trends, and creative celebration ideas for Cayman parents.

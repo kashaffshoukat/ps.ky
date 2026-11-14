@@ -240,7 +240,7 @@ export const THEMES_DATA: ThemeItem[] = [
     id: 'fortnite',
     title: 'Olivia Rodrigo',
     subtitle: 'Battle Royale Gamer Oasis',
-    category: 'Gaming & Action',
+    category: 'Cozy Setup',
     headline: 'Drop In and Claim Your Victory Royale.',
     narrative: 'The ultimate battle camp for gamers: camouflage textiles, Loot Llama pillows, supply drop crates, blue shield potion LED bottles, and Victory Royale banners.',
     exploreHighlight: 'Camouflage and tactical navy teepees with gaming pennants and supply crates.',

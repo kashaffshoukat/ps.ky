@@ -280,7 +280,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           <ScrollReveal animation="fade-up" delay={200}>
             <div className="flex items-center justify-center gap-2 sm:gap-3">
               <h1 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
-                Booking &amp; Enquiry Form
+                Booking and Enquiry Form
               </h1>
             </div>
           </ScrollReveal>
@@ -361,7 +361,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-none text-xs font-bold text-white hover:bg-white/10 transition-all cursor-pointer border border-white/40"
                       >
                         <RefreshCw className="w-3.5 h-3.5 text-white" />
-                        <span>Close &amp; Book Another Event</span>
+                        <span>Close and Book Another Event</span>
                       </button>
                     </div>
 

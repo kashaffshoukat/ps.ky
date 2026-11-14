@@ -101,7 +101,7 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
                   Select Your Package
                 </span>
                 <p className="text-[11px] sm:text-xs text-white/90 max-w-[220px] font-medium leading-snug">
-                  Choose guest count and customize with cozy add-ons &amp; garlands.
+                  Choose guest count and customize with cozy add-ons and garlands.
                 </p>
               </div>
             </div>

@@ -14,10 +14,10 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ onOpenBook
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5  border border-[#5A7755]/30 bg-white text-xs font-bold uppercase tracking-wider text-[#5A7755] shadow-xs mb-4">
             <ShieldCheck className="w-4 h-4 text-[#5A7755]" />
-            <span>Grand Cayman Privacy &amp; Trust</span>
+            <span>Grand Cayman Privacy and Trust</span>
           </div>
           <h1 className="font-sans text-3xl sm:text-5xl font-black text-[#384C37] tracking-tight mb-4">
-            Privacy Policy &amp; Client Protection
+            Privacy Policy and Client Protection
           </h1>
           <p className="font-sans text-sm sm:text-base text-[#232B25]/80 max-w-2xl mx-auto">
             At Paradise Slumbers, we respect your family's privacy, home confidentiality, and personal information in full compliance with Cayman Islands Data Protection legislation.
@@ -61,7 +61,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ onOpenBook
                 <Eye className="w-5 h-5 text-white" />
               </div>
               <h2 className="font-sans text-xl font-bold text-[#384C37]">
-                2. Photography &amp; Child Privacy Consent
+                2. Photography and Child Privacy Consent
               </h2>
             </div>
             <p className="font-sans text-sm text-[#232B25]/80 leading-relaxed mb-3">
@@ -79,7 +79,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ onOpenBook
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <h2 className="font-sans text-xl font-bold text-[#384C37]">
-                3. Cleanliness, Bedding Hygiene &amp; Disinfection Standards
+                3. Cleanliness, Bedding Hygiene and Disinfection Standards
               </h2>
             </div>
             <p className="font-sans text-sm text-[#232B25]/80 leading-relaxed">
@@ -94,7 +94,7 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ onOpenBook
                 <FileText className="w-5 h-5 text-white" />
               </div>
               <h2 className="font-sans text-xl font-bold text-[#384C37]">
-                4. Island-Wide Delivery &amp; Setup Terms
+                4. Island-Wide Delivery and Setup Terms
               </h2>
             </div>
             <p className="font-sans text-sm text-[#232B25]/80 leading-relaxed">
@@ -109,10 +109,10 @@ export const PrivacyPolicyView: React.FC<PrivacyPolicyViewProps> = ({ onOpenBook
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#C78D95]">
-              Paradise Slumbers Stories &amp; Guides
+              Paradise Slumbers Stories and Guides
             </span>
             <h2 className="font-sans text-2xl sm:text-4xl font-black text-[#232B25] mt-1">
-              Party Planning Blog &amp; Guides
+              Party Planning Blog and Guides
             </h2>
           </div>
         </div>

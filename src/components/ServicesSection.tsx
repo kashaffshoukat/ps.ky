@@ -231,11 +231,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 </div>
                 <div>
                   <span className="text-sm sm:text-base font-black tracking-tight text-white uppercase leading-snug block">
-                    Custom Name Tumblers &amp; Camper Gift Bags with Every Setup!
+                    Custom Name Tumblers and Camper Gift Bags with Every Setup!
                   </span>
                 </div>
                 <p className="text-xs text-white/90 leading-relaxed">
-                  Every setup comes with custom teepees, blankets, tray tables, fairy lights, LED lightboard, 4ft candy table with cake stand, personalized camper tumblers, and gift bags filled with squishies, spa masks &amp; glow sticks.
+                  Every setup comes with custom teepees, blankets, tray tables, fairy lights, LED lightboard, 4ft candy table with cake stand, personalized camper tumblers, and gift bags filled with squishies, spa masks and glow sticks.
                 </p>
               </div>
             </div>
@@ -383,7 +383,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                         Grand Cayman Luxury
                       </span>
                       <span className="text-sm font-black text-[#384C37] uppercase">
-                        Handcrafted &amp; Steam-Sanitized
+                        Handcrafted and Steam-Sanitized
                       </span>
                     </div>
                   </div>
@@ -450,7 +450,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                         Custom Party Decor
                       </span>
                       <span className="text-sm font-black text-[#384C37] uppercase">
-                        Balloons, Henna, Cake &amp; More
+                        Balloons, Henna, Cake and More
                       </span>
                     </div>
                   </div>

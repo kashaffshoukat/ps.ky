@@ -30,7 +30,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           
           <ScrollReveal animation="fade-up" delay={200}>
             <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-black text-[#384C37] tracking-tight">
-              Who We Are &amp; What We Do
+              Who We Are and What We Do
             </h2>
           </ScrollReveal>
 
@@ -63,9 +63,11 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#161B18]/90 via-[#161B18]/20 to-transparent" />
 
                   {/* Bottom Caption on Image */}
-                  <div className="absolute bottom-4 left-4 right-4 text-white space-y-0.5">
-                    <p className="text-[10px] font-bold text-[#C78D95] uppercase tracking-widest">Handcrafted Teepees</p>
-                    <h3 className="text-sm font-bold text-white leading-tight">Bespoke Indoor Glamping Oasis</h3>
+                  <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-widest bg-white/90 px-2.5 py-0.5 rounded-none text-[#384C37]">
+                      Handcrafted Teepees
+                    </span><br />
+                    <span className="text-sm font-bold text-white leading-tight">Bespoke Indoor Glamping Oasis</span>
                   </div>
                 </div>
 
@@ -163,11 +165,11 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           <div className="inline-flex animate-marquee items-center gap-12 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#384C37]">
             <span className="inline-flex items-center gap-2">Grand Cayman’s 1st Luxury Indoor Glamping</span>
             <span className="text-[#C78D95]">•</span>
-            <span className="inline-flex items-center gap-2">Fully Delivered, Styled &amp; Packaged Away</span>
+            <span className="inline-flex items-center gap-2">Fully Delivered, Styled and Packaged Away</span>
             <span className="text-[#C78D95]">•</span>
             <span className="inline-flex items-center gap-2">Bespoke Kids Interior Design by Candice Hall</span>
             <span className="text-[#C78D95]">•</span>
-            <span className="inline-flex items-center gap-2">Turnkey Party Setup &amp; Takedown</span>
+            <span className="inline-flex items-center gap-2">Turnkey Party Setup and Takedown</span>
           </div>
         </div>
       </ScrollReveal>

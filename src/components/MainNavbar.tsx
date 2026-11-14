@@ -96,7 +96,7 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
                 <span>15% OFF Code: PARADISE15 [Claim]</span>
               </button>
               <span className="text-white/95">Creating Magical Memories for Kids </span>
-              <span className="text-white/95">Delivered, Styled &amp; Packed Away </span>
+              <span className="text-white/95">Delivered, Styled and Packed Away </span>
               <span className="text-white/95 hidden sm:inline">100% Steam Sanitized Linens </span>
               <span className="font-extrabold text-white">Grand Cayman's Only Luxury Indoor Glamping Experience </span>
             </div>

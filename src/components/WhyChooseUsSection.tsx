@@ -90,13 +90,12 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                   
+                  
                   <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
                     <span className="text-[10px] font-bold uppercase tracking-widest bg-white/90 px-2.5 py-0.5 rounded-none text-[#384C37]">
                       Grand Cayman Luxury
-                    </span>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-white mt-1">
-                      Magical Slumber Parties
-                    </h3>
+                    </span><br />
+                    <span className="text-sm text-white font-bold leading-tight">Magical Slumber Parties</span>
                   </div>
                 </div>
               </div>
