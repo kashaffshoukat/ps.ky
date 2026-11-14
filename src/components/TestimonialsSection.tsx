@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Star, Heart, CheckCircle2, Plus, X, ThumbsUp, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { Star, Heart, CheckCircle2, Plus, X, ThumbsUp, ShieldCheck } from 'lucide-react';
 import { TESTIMONIALS_DATA } from '../data/mockData';
 import { TestimonialItem } from '../types';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
 import { ScrollReveal } from './ScrollReveal';
 
-const STORAGE_KEY = 'paradise_slumbers_reviews_v3';
-const VOTES_STORAGE_KEY = 'paradise_slumbers_helpful_votes';
+const STORAGE_KEY = 'paradise_slumbers_reviews_v4';
+const VOTES_STORAGE_KEY = 'paradise_slumbers_helpful_votes_v4';
 
-// Natural, authentic reviews written like real Cayman parents (no AI clichés)
+// 20 Natural, authentic reviews written like real Cayman parents
 const AUTHENTIC_REVIEWS: TestimonialItem[] = [
   {
     id: 'review-unicorn-outdoor-1',
@@ -19,7 +19,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'We set the unicorn teepees up out on our back patio for my daughter’s 7th birthday and honestly the girls didn’t even want to come inside for cake. Everything looked so pretty once the fairy lights came on at dusk.',
     date: '3 days ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-2',
@@ -30,7 +29,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'Booked four tents for my niece’s sleepover. They showed up right on time at 3pm, had the whole living room ready before the kids got home from school, and came back the next morning to pack it all up. Zero stress for me.',
     date: '1 week ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-3',
@@ -41,7 +39,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'Was a bit worried 5 tents wouldn’t fit in our family room, but she measured everything out and arranged them so nicely. The sheets smelled super clean and fresh too, which as a mom I really appreciated.',
     date: '2 weeks ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-4',
@@ -52,7 +49,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'My 9-year-old has been begging for a teepee party all year. Seeing her face when she walked into the room made it worth every dollar. The little breakfast trays and eye masks were such a cute touch.',
     date: '3 weeks ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-5',
@@ -63,7 +59,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'Hard to find vendors willing to drive all the way out to Rum Point without charging crazy fees, so we were thrilled they came out. The kids slept till 8am—which never happens at a sleepover!',
     date: '1 month ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-6',
@@ -74,7 +69,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'Super easy to communicate with over WhatsApp when I needed to add an extra tent two days before the party. Everything was spotless and the mermaid pillows were a huge hit.',
     date: '1 month ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-7',
@@ -85,7 +79,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'Did the safari theme for my son and his 3 best friends. Loved that it wasn’t overly babyish—the boys thought the lanterns and little camp setup were so cool.',
     date: '2 months ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-8',
@@ -96,7 +89,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'Honestly the easiest birthday party I’ve ever thrown. I didn’t have to buy a bunch of plastic decorations that end up in the bin afterward. Already booked again for my younger daughter in November.',
     date: '2 months ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-9',
@@ -107,7 +99,6 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'We live in a townhouse so space is tight, but they made four tents work without blocking the whole downstairs. Really friendly team and great quality air mattresses—not the cheap thin ones.',
     date: '3 months ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80',
   },
   {
     id: 'review-real-10',
@@ -118,7 +109,107 @@ const AUTHENTIC_REVIEWS: TestimonialItem[] = [
     review: 'The custom name signs on each tent were my daughter’s favorite part—she still has hers hanging on her bedroom door. Thank you for making her 10th birthday feel so special!',
     date: '3 months ago',
     verified: true,
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80',
+  },
+  // 10 Additional New Reviews Added Below
+  {
+    id: 'review-real-11',
+    name: 'Marcus & Rachel Parsons',
+    location: 'Grand Harbour, Grand Cayman',
+    eventType: 'Gamer Zone Sleepover',
+    rating: 5,
+    review: 'Absolute lifesavers! We had 6 boys over for a gaming-themed sleepover and the LED light setups inside the teepees completely blew them away. Setup was fast and professional.',
+    date: '3 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-12',
+    name: 'Sarah Jane Conolly',
+    location: 'South Sound, Grand Cayman',
+    eventType: 'Enchanted Garden Party',
+    rating: 5,
+    review: 'The floral garlands and pastel lights looked straight out of a Pinterest board. All the other moms kept asking who did the styling. Will definitely use them again next year!',
+    date: '4 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-13',
+    name: 'David & Gemma Rivers',
+    location: 'Bodden Town, Grand Cayman',
+    eventType: 'Movie Night Slumber',
+    rating: 5,
+    review: 'Super clean, gorgeous aesthetic, and wonderful customer service. They arrived right on schedule and handled everything seamlessly while the kids were at school.',
+    date: '4 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-14',
+    name: 'Jessica Hurlstone',
+    location: 'West Bay, Grand Cayman',
+    eventType: 'Sweet Dreams Spa Retreat',
+    rating: 5,
+    review: 'The little individual spa kits with robes and cucumber eye pads were a massive hit for my daughter’s 11th birthday. Every single detail was thoughtfully executed.',
+    date: '5 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-15',
+    name: 'Liam McLaughlin',
+    location: 'Seven Mile Beach, Grand Cayman',
+    eventType: 'Outdoor Starlight Campout',
+    rating: 5,
+    review: 'Exceptional quality. The bell tent felt spacious, sturdy, and luxurious. Great communication throughout booking and stress-free pickup the next day.',
+    date: '5 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-16',
+    name: 'Kirsty Bush',
+    location: 'North Side, Grand Cayman',
+    eventType: 'Tropical Luau Sleepover',
+    rating: 5,
+    review: 'Living further out on the island can sometimes make party planning tricky, but they came all the way out to North Side with bright smiles and total professionalism.',
+    date: '6 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-17',
+    name: 'Andrea Martinez',
+    location: 'George Town, Grand Cayman',
+    eventType: 'Galaxy Space Odyssey',
+    rating: 5,
+    review: 'My son is obsessed with space and the galaxy projections on the ceiling of the tent made him feel like he was sleeping under the stars. Incredible concept!',
+    date: '6 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-18',
+    name: 'Nadine Hydes',
+    location: 'Savannah, Grand Cayman',
+    eventType: 'Boho Chic Teepee Party',
+    rating: 5,
+    review: 'From the soft rugs to the cozy blankets and fairy lights, everything felt exceptionally high-end. The girls felt like absolute princesses all night long.',
+    date: '7 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-19',
+    name: 'Shane McMillan',
+    location: 'Prospect, Grand Cayman',
+    eventType: 'Classic Midnight Feast Slumber',
+    rating: 5,
+    review: 'Prompt, courteous, and extremely tidy. They set up the entire arrangement in under an hour and left our living room spotless. Worth every single penny.',
+    date: '7 months ago',
+    verified: true,
+  },
+  {
+    id: 'review-real-20',
+    name: 'Tanya Seymour',
+    location: 'Camana Bay, Grand Cayman',
+    eventType: 'Rainbow Unicorn Dream',
+    rating: 5,
+    review: 'The absolute best birthday investment we’ve ever made. Zero hassle for parents and pure magic for the kids. Thank you for creating such unforgettable memories!',
+    date: '8 months ago',
+    verified: true,
   },
 ];
 
@@ -134,7 +225,7 @@ export const TestimonialsSection: React.FC = () => {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length >= 10) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
     } catch {}
     return COMBINED_TESTIMONIALS;
@@ -149,16 +240,6 @@ export const TestimonialsSection: React.FC = () => {
     }
   });
 
-  // Screen mode: 'mobile' (< 640px -> 1 review slider), 'tablet' (640px-1023px -> 4 reviews), 'desktop' (>= 1024px -> 10 reviews in 3-col grid)
-  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>(() => {
-    if (typeof window === 'undefined') return 'desktop';
-    if (window.innerWidth >= 1024) return 'desktop';
-    if (window.innerWidth >= 640) return 'tablet';
-    return 'mobile';
-  });
-
-  // Index for mobile single-card slider
-  const [mobileIndex, setMobileIndex] = useState(0);
   const [isWriteReviewOpen, setIsWriteReviewOpen] = useState(false);
 
   // Form state
@@ -169,25 +250,8 @@ export const TestimonialsSection: React.FC = () => {
   const [reviewText, setReviewText] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setScreenSize('desktop');
-      } else if (window.innerWidth >= 640) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('mobile');
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const saveReviews = (newList: TestimonialItem[]) => {
     setTestimonials(newList);
-    setMobileIndex(0);
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(newList));
     } catch {}
@@ -217,7 +281,6 @@ export const TestimonialsSection: React.FC = () => {
       review: reviewText.trim(),
       date: 'Just now',
       verified: true,
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
     };
 
     const updated = [newReview, ...testimonials];
@@ -231,28 +294,12 @@ export const TestimonialsSection: React.FC = () => {
     }, 1500);
   };
 
-  const handleMobilePrev = () => {
-    setMobileIndex((prev) => (prev > 0 ? prev - 1 : testimonials.length - 1));
-  };
-
-  const handleMobileNext = () => {
-    setMobileIndex((prev) => (prev < testimonials.length - 1 ? prev + 1 : 0));
-  };
-
-  // Determine which reviews to render based on screen size
-  const displayedReviews =
-    screenSize === 'mobile'
-      ? [testimonials[mobileIndex] || testimonials[0]]
-      : screenSize === 'tablet'
-      ? testimonials.slice(0, 4)
-      : testimonials.slice(0, 10); // Large screen: 10 reviews arranged 3 per row (3 + 3 + 3 + 1)
-
   return (
     <section
       id="reviews"
       className="py-14 sm:py-18 lg:py-22 relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
@@ -295,7 +342,7 @@ export const TestimonialsSection: React.FC = () => {
         {/* WRITE A REVIEW INLINE ACCORDION */}
         {isWriteReviewOpen && (
           <ScrollReveal animation="scale-in" delay={0}>
-            <div className="max-w-2xl mx-auto mb-12 bg-white/95 backdrop-blur-sm rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/25 shadow-md">
+            <div className="max-w-2xl mx-auto mb-12 bg-white backdrop-blur-sm rounded-none p-6 sm:p-8 border-2 border-[#5A7755]/25 shadow-md">
               <div className="flex items-center justify-between pb-4 border-b border-[#5A7755]/15 mb-5">
                 <h3 className="font-sans text-lg font-black text-[#384C37]">
                   Share Your Slumber Experience
@@ -326,7 +373,7 @@ export const TestimonialsSection: React.FC = () => {
                         placeholder="e.g. Jessica M."
                         value={reviewerName}
                         onChange={(e) => setReviewerName(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none text-[#232B25]"
                       />
                     </div>
                     <div>
@@ -335,7 +382,7 @@ export const TestimonialsSection: React.FC = () => {
                         type="text"
                         value={reviewerLocation}
                         onChange={(e) => setReviewerLocation(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none text-[#232B25]"
                       />
                     </div>
                   </div>
@@ -366,7 +413,7 @@ export const TestimonialsSection: React.FC = () => {
                         type="text"
                         value={eventType}
                         onChange={(e) => setEventType(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none text-[#232B25]"
                       />
                     </div>
                   </div>
@@ -379,7 +426,7 @@ export const TestimonialsSection: React.FC = () => {
                       placeholder="Tell other Cayman parents how the sleepover was..."
                       value={reviewText}
                       onChange={(e) => setReviewText(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none resize-none"
+                      className="w-full px-3.5 py-2.5 rounded-none border-2 border-neutral-300 text-xs sm:text-sm bg-neutral-50 focus:bg-white focus:border-[#5A7755] outline-none resize-none text-[#232B25]"
                     />
                   </div>
 
@@ -396,93 +443,67 @@ export const TestimonialsSection: React.FC = () => {
         )}
 
         {/* ========================================================
-            REVIEWS DISPLAY
-            - Small screens (<640px): 1 review at a time with Prev/Next arrows (no page numbers)
-            - Medium screens (640px-1023px): 4 reviews (2x2 grid)
-            - Large screens (>=1024px): 10 reviews in 3-column rows (3 per row)
+            ALL REVIEWS DISPLAYED IN CLEAN WHITE CARDS (Sample Image Style)
             ======================================================== */}
         <ScrollReveal animation="fade-up" delay={150}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayedReviews.map((t) => {
+          <div className="space-y-6">
+            {testimonials.map((t) => {
               const votes = helpfulVotes[t.id] || 0;
               return (
                 <article
                   key={t.id}
-                  className="bg-[#5A7755]/95 backdrop-blur-sm rounded-none p-6 border-2 border-white/80 shadow-lg flex flex-col justify-between text-white min-h-[250px]"
+                  className="bg-white rounded-none p-6 sm:p-8 border-2 border-neutral-200 shadow-md flex flex-col justify-between text-[#232B25]"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1 text-[#EAB308]">
                         {[...Array(t.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-[#EAB308] text-[#EAB308]" />
+                          <Star key={i} className="w-5 h-5 fill-[#EAB308] text-[#EAB308]" />
                         ))}
                       </div>
-                      <span className="text-[11px] text-white/75 font-medium">{t.date}</span>
+                      <span className="text-xs text-neutral-400 font-medium uppercase tracking-wider">{t.date}</span>
                     </div>
 
                     {t.eventType && (
-                      <div className="inline-block px-2.5 py-0.5 bg-white/10 border border-white/20 text-[10px] font-semibold tracking-wide text-white/95">
+                      <div className="inline-block px-2.5 py-0.5 bg-[#5A7755]/10 border border-[#5A7755]/20 text-[11px] font-semibold tracking-wide text-[#384C37]">
                         {t.eventType}
                       </div>
                     )}
 
-                    <p className="text-xs sm:text-sm text-white/95 leading-relaxed italic">
+                    <p className="text-sm sm:text-base text-neutral-700 leading-relaxed italic pt-1">
                       "{t.review}"
                     </p>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-white/25 flex items-center justify-between gap-2">
+                  <div className="pt-5 mt-5 border-t border-neutral-100 flex items-center justify-between gap-2">
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="font-sans font-bold text-xs sm:text-sm text-white">
+                        <span className="font-sans font-black text-xs sm:text-sm text-[#384C37] uppercase tracking-wide">
                           {t.name}
                         </span>
                         {t.verified && (
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#EAB308] flex-shrink-0" />
+                          <span className="inline-flex items-center justify-center w-5 h-5 bg-blue-600 text-white rounded-none flex-shrink-0" title="Verified Customer">
+                            <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                          </span>
                         )}
                       </div>
-                      <span className="text-[10px] text-white/80 block">{t.location}</span>
+                      <span className="text-[11px] text-neutral-500 block mt-0.5">{t.location}</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => handleVoteHelpful(t.id)}
-                      className="inline-flex items-center gap-1 text-[11px] text-white hover:text-white/80 font-semibold transition-colors cursor-pointer bg-white/10 px-2.5 py-1 border border-white/30 flex-shrink-0"
+                      className="inline-flex items-center gap-1 text-xs text-[#5A7755] hover:text-[#384C37] font-semibold transition-colors cursor-pointer bg-[#5A7755]/10 hover:bg-[#5A7755]/20 px-3 py-1.5 border border-[#5A7755]/30 flex-shrink-0"
                       title="Mark as helpful"
                     >
                       <ThumbsUp className="w-3.5 h-3.5" />
-                      <span>{votes > 0 ? votes : 'Helpful'}</span>
+                      <span>{votes > 0 ? `Helpful (${votes})` : 'Helpful'}</span>
                     </button>
                   </div>
                 </article>
               );
             })}
           </div>
-
-          {/* Mobile-only simple Prev / Next arrows (1 review after 1 review, no page numbers) */}
-          {screenSize === 'mobile' && testimonials.length > 1 && (
-            <div className="mt-6 flex items-center justify-center gap-4">
-              <button
-                type="button"
-                onClick={handleMobilePrev}
-                aria-label="Previous review"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-none bg-white hover:bg-[#5A7755] text-[#384C37] hover:text-white border-2 border-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                <span>Prev</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleMobileNext}
-                aria-label="Next review"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-none bg-[#5A7755] hover:bg-[#384C37] text-white border-2 border-[#5A7755] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-              >
-                <span>Next</span>
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          )}
         </ScrollReveal>
 
       </div>
