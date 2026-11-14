@@ -277,7 +277,7 @@ export const THEMES_DATA: ThemeItem[] = [
   
   {
     id: 'pirates',
-    title: 'Pirates of the Caribbean',
+    title: 'Pirates',
     subtitle: 'Cayman Pirate Cove Adventure',
     category: 'Island Adventure',
     headline: 'Sail the Seven Seas and Unearth Hidden Treasure.',
@@ -296,7 +296,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'glow-party',
-    title: 'Glow-In-The-Dark',
+    title: 'Glow In Dark',
     subtitle: 'Ultraviolet Neon Party Energy',
     category: 'Cosmic & Neon',
     headline: 'Turn Down the Lights and Ignite the Glow.',
@@ -505,7 +505,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'all-white-faux-fur',
-    title: 'All White Faux Fur Luxury',
+    title: 'All White',
     subtitle: 'Cozy Winter Cloud Haven',
     category: 'Winter Luxe',
     headline: 'Snowy White Textures, Shaggy Fur & Golden Warmth.',

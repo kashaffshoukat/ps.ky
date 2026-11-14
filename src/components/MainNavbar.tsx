@@ -15,7 +15,7 @@ interface MainNavbarProps {
 }
 
 const DROPDOWN_THEMES = [
-  { id: 'theme-dreaming-of-unicorn', title: 'Dreaming of Unicorn' },
+  { id: 'theme-dreaming-of-unicorn', title: 'Unicorn' },
   ...THEMES_DATA.map((t) => ({ id: t.id, title: t.title })),
 ];
 
