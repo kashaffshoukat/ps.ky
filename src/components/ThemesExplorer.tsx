@@ -70,17 +70,17 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
     <section id="themes" className="relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans py-14 sm:py-20 overflow-hidden">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <ScrollReveal animation="fade-up" delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest shadow-xs backdrop-blur-sm">
-              <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
-              <span>Grand Cayman's Themes Collection</span>
-            </div>
-            <CuteSmileyCloud size="md" className="hidden sm:inline-block mx-auto" />
-
-          </ScrollReveal>
+       
+   {/* SECTION HEADER */}
+         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3 relative">
+           <ScrollReveal animation="fade-up" delay={0}>
+             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+               <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
+               <span>Grand Cayman's Themes Collection</span>
+             </div>
+               <CuteSmileyCloud size="md" className="shrink-0 mx-auto" />
  
+           </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={200}>
             <div className="flex items-center justify-center gap-2 sm:gap-3">

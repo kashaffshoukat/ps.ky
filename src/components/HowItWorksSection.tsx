@@ -53,11 +53,11 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
           <ScrollReveal animation="scale-in" delay={100} className="h-full">
             <div
               onClick={() => onNavigate('themes')}
-              className="group relative h-[250px] sm:h-[300px] bg-[#5A7755] overflow-hidden cursor-pointer flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/20 p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
+              className="group relative h-[250px] sm:h-[300px] bg-[#5A7755] overflow-hidden cursor-pointer flex flex-col justify-between border-[0.5px] border-white p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
             >
               {/* Larger Logo & Step */}
               <div className="flex flex-col items-center">
-                <div className="p-1.5 rounded-full bg-white shadow-md border border-white/50 mb-1.5">
+                <div className="p-1.5 rounded-full bg-white shadow-md border border-white mb-1.5">
                   <img src={LOGO_IMAGE} alt="Paradise Slumbers" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" />
                 </div>
                 <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-white">
@@ -83,11 +83,11 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
           <ScrollReveal animation="scale-in" delay={200} className="h-full">
             <div
               onClick={() => onNavigate('services')}
-              className="group relative h-[250px] sm:h-[300px] bg-[#A56069] overflow-hidden cursor-pointer flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/20 p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
+              className="group relative h-[250px] sm:h-[300px] bg-[#A56069] overflow-hidden cursor-pointer flex flex-col justify-between border-[0.5px] border-white p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
             >
               {/* Larger Logo & Step */}
               <div className="flex flex-col items-center">
-                <div className="p-1.5 rounded-full bg-white shadow-md border border-white/50 mb-1.5">
+                <div className="p-1.5 rounded-full bg-white shadow-md border border-white mb-1.5">
                   <img src={LOGO_IMAGE} alt="Paradise Slumbers" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" />
                 </div>
                 <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-white">
@@ -113,11 +113,11 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
           <ScrollReveal animation="scale-in" delay={300} className="h-full">
             <div
               onClick={() => onOpenBooking()}
-              className="group relative h-[250px] sm:h-[300px] bg-[#5A7755] overflow-hidden cursor-pointer flex flex-col justify-between border-r border-white/25 p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
+              className="group relative h-[250px] sm:h-[300px] bg-[#5A7755] overflow-hidden cursor-pointer flex flex-col justify-between border-[0.5px] border-white p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
             >
               {/* Larger Logo & Step */}
               <div className="flex flex-col items-center">
-                <div className="p-1.5 rounded-full bg-white shadow-md border border-white/50 mb-1.5">
+                <div className="p-1.5 rounded-full bg-white shadow-md border border-white mb-1.5">
                   <img src={LOGO_IMAGE} alt="Paradise Slumbers" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" />
                 </div>
                 <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-white">
@@ -143,11 +143,11 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({
           <ScrollReveal animation="scale-in" delay={400} className="h-full">
             <div
               onClick={() => onOpenBooking()}
-              className="group relative h-[250px] sm:h-[300px] bg-[#A56069] overflow-hidden cursor-pointer flex flex-col justify-between p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
+              className="group relative h-[250px] sm:h-[300px] bg-[#A56069] overflow-hidden cursor-pointer flex flex-col justify-between border-[0.5px] border-white p-4 sm:p-6 text-center items-center transform hover:scale-[1.02] transition-all"
             >
               {/* Larger Logo & Step */}
               <div className="flex flex-col items-center">
-                <div className="p-1.5 rounded-full bg-white shadow-md border border-white/50 mb-1.5">
+                <div className="p-1.5 rounded-full bg-white shadow-md border border-white mb-1.5">
                   <img src={LOGO_IMAGE} alt="Paradise Slumbers" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" />
                 </div>
                 <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-white">
