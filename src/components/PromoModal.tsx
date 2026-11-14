@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Mail, Tag, Heart, CheckCircle2, Sparkles } from 'lucide-react';
+import { X, Mail, Tag, Heart, CheckCircle2, Sparkles, Loader2 } from 'lucide-react';
 import { CuteSmileyCloud } from './CuteSmileyCloud';
 
 interface PromoModalProps {
@@ -8,6 +8,9 @@ interface PromoModalProps {
   onSubmit?: (email: string) => void;
 }
 
+// Apni Formspree ID yahan dalein
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/moedqlgw';
+
 export const PromoModal: React.FC<PromoModalProps> = ({
   isOpen,
   onClose,
@@ -15,24 +18,53 @@ export const PromoModal: React.FC<PromoModalProps> = ({
 }) => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
-    if (onSubmit) {
-      onSubmit(email);
-    }
+    setIsLoading(true);
+    setErrorMessage('');
 
-    setIsSubmitted(true);
-    setEmail('');
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ 
+          _subject: '❤🎉 New VIP Club Subscriber - Paradise Slumbers!',
+          email: email,
+          promo_code_unlocked: 'VIPSLUMBER20 (20% OFF + Heart)',
+          source: 'Website Popup Modal'
+        }),
+      });
+
+      if (response.ok) {
+        if (onSubmit) {
+          onSubmit(email);
+        }
+        setIsSubmitted(true);
+        setEmail('');
+      } else {
+        setErrorMessage('Kuch masla ho gaya. Dobara koshish karein!');
+      }
+    } catch (error) {
+      setErrorMessage('Network error. Connection check karein.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleCloseModal = () => {
     setIsSubmitted(false);
     setEmail('');
+    setErrorMessage('');
     onClose();
   };
 
@@ -52,22 +84,21 @@ export const PromoModal: React.FC<PromoModalProps> = ({
           <X className="w-4 h-4" />
         </button>
 
-        {/* LEFT COLUMN: Image with overlay text (Stacked on mobile, side-by-side on sm+) */}
+        {/* LEFT COLUMN: Image with overlay text */}
         <div className="relative w-full sm:w-1/2 h-36 sm:h-auto flex-shrink-0 bg-neutral-900 flex flex-col justify-end overflow-hidden">
           <img
-            src="./assets/aistudio/eee.jfif"
+            src="./assets/aistudio/www.jpg"
             alt="Paradise Slumbers Setup"
             className="absolute inset-0 w-full h-full object-cover opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
           <div className="relative z-10 p-3 sm:p-4 space-y-1">
-            <span className="inline-block px-2 py-0.5 bg-[#5A7755] text-white text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider rounded-none">
-              VIP CLUB
+          
+          
+            <span className="text-sm font-black text-white  flex items-center gap-1.5">
+              <span>20% OFF with Free Pop Corn</span>
             </span>
-            <h3 className="text-sm sm:text-base font-black text-white uppercase tracking-tight leading-tight drop-shadow-sm">
-              20% OFF + POPCORN BAR
-            </h3>
           </div>
         </div>
 
@@ -105,9 +136,15 @@ export const PromoModal: React.FC<PromoModalProps> = ({
                   Subscribe and Save
                 </h2>
                 <p className="text-xs text-[#232B25]/70 leading-relaxed">
-                  Get 20% off your first party.
+                  Get 20% off your first party with a special heart touch.
                 </p>
               </div>
+
+              {errorMessage && (
+                <div className="p-2 bg-red-50 border border-red-200 text-red-600 text-xs font-semibold">
+                  {errorMessage}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="space-y-1">
@@ -135,10 +172,20 @@ export const PromoModal: React.FC<PromoModalProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-3 bg-[#5A7755] hover:bg-[#384C37] text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                  disabled={isLoading}
+                  className="w-full py-2.5 px-3 bg-[#5A7755] hover:bg-[#384C37] text-white text-xs sm:text-sm font-black uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >
-                  <Tag className="w-4 h-4" />
-                  <span>GET 20% OFF</span>
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>SENDING...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Tag className="w-4 h-4" />
+                      <span>GET 20% OFF</span>
+                    </>
+                  )}
                 </button>
               </form>
 

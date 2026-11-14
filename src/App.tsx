@@ -17,6 +17,8 @@ import { AuthModal, UserProfile } from './components/AuthModal';
 import { WishlistModal } from './components/WishlistModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { PromoModal } from "./components/PromoModal";
+import { ThemeDetailView } from './components/ThemeDetailView';
+
 type ViewType =
   | 'home'
   | 'services'
@@ -28,10 +30,12 @@ type ViewType =
   | 'testimonials'
   | 'privacy'
   | 'blog'
-  | 'contact';
+  | 'contact'
+  | 'theme-detail';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewType>('home');
+  const [selectedThemeId, setSelectedThemeId] = useState<string>('harry-potter');
   const [bookingServiceId, setBookingServiceId] = useState<string | undefined>(undefined);
   const [bookingThemeId, setBookingThemeId] = useState<string | undefined>(undefined);
   const [bookingPackageId, setBookingPackageId] = useState<string | undefined>(undefined);
@@ -39,7 +43,7 @@ export default function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isPromoOpen, setIsPromoOpen] = useState(false);
   
-  // 2. Add state for your new custom promo modal
+  // Custom promo modal state
   const [isCustomPromoModalOpen, setIsCustomPromoModalOpen] = useState(false);
 
   // Auto show promo discount on visit
@@ -94,7 +98,7 @@ export default function App() {
     });
   };
 
-  // Direct Booking Handler (No modals! Links directly to Contact Form with prefilled state)
+  // Direct Booking Handler (Links directly to Contact Form with prefilled state)
   const handleOpenBooking = (serviceId?: string, themeId?: string, packageId?: string) => {
     setBookingServiceId(serviceId);
     setBookingThemeId(themeId);
@@ -122,17 +126,20 @@ export default function App() {
     setIsAuthOpen(true);
   };
 
-  const handleNavigate = (view: string) => {
+  const handleNavigate = (view: string, themeId?: string) => {
+    if (themeId) {
+      setSelectedThemeId(themeId);
+    }
     setCurrentView(view as ViewType);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-[#FAF7F4] bg-cream-canvas text-[#232B25] font-sans relative selection:bg-[#5A7755] selection:text-white">
-      {/* Animated Floating Balloons with smooth sloped rising trajectory on each section */}
+      {/* Animated Floating Balloons */}
       <BackgroundBalloons />
 
-      {/* Main Luxury Navbar (100% same as screenshot for large screen + mobile) */}
+      {/* Main Luxury Navbar */}
       <MainNavbar
         currentView={currentView}
         onNavigate={handleNavigate}
@@ -152,14 +159,13 @@ export default function App() {
               onNavigate={handleNavigate}
               onOpenBooking={handleOpenBooking}
             />
-          
-           <HowItWorksSection onNavigate={(view) => handleNavigate(view)} onOpenBooking={handleOpenBooking} />
-             <ThemesExplorer
+            <HowItWorksSection onNavigate={(view) => handleNavigate(view)} onOpenBooking={handleOpenBooking} />
+            <ThemesExplorer
               onOpenBooking={handleOpenBooking}
+              onNavigate={handleNavigate}
               onToggleWishlist={handleToggleWishlist}
               savedWishlistIds={wishlist}
             />
-           
             <ServicesSection
               onOpenBooking={handleOpenBooking}
             />
@@ -220,10 +226,28 @@ export default function App() {
           <div className="pt-4">
             <ThemesExplorer
               onOpenBooking={handleOpenBooking}
+              onNavigate={handleNavigate}
               onToggleWishlist={handleToggleWishlist}
               savedWishlistIds={wishlist}
             />
             <ServicesSection onOpenBooking={handleOpenBooking} />
+            <ContactSection
+              prefilledService={bookingServiceId}
+              prefilledTheme={bookingThemeId}
+              prefilledPackage={bookingPackageId}
+            />
+          </div>
+        )}
+
+        {currentView === 'theme-detail' && (
+          <div className="pt-4">
+            <ThemeDetailView
+              themeId={selectedThemeId}
+              onBack={() => setCurrentView('themes')}
+              onOpenBooking={handleOpenBooking}
+              onToggleWishlist={handleToggleWishlist}
+              savedWishlistIds={wishlist}
+            />
             <ContactSection
               prefilledService={bookingServiceId}
               prefilledTheme={bookingThemeId}
@@ -303,27 +327,24 @@ export default function App() {
         onOpenBooking={() => handleOpenBooking()}
       />
 
-      {/* 3. Pass the handler down to FloatingWhatsApp */}
+      {/* Floating WhatsApp */}
       <FloatingWhatsApp 
         onOpenPromoModal={() => setIsCustomPromoModalOpen(true)} 
       />
 
-     
-
-      {/* 4. Render your new custom PromoModal at the bottom of the stack */}
+      {/* Custom PromoModal */}
       <PromoModal
         isOpen={isCustomPromoModalOpen}
         onClose={() => setIsCustomPromoModalOpen(false)}
         onSubmit={(email) => {
           console.log('Subscribed email:', email);
-          // Handle your Formspree/backend submission here
         }}
       />
 
-      {/* Floating Cookie & Privacy Consent Banner */}
+      {/* Cookie Consent Banner */}
       <CookieConsentBanner />
 
-      {/* Interactive Wishlist Drawer/Modal */}
+      {/* Wishlist Modal */}
       <WishlistModal
         isOpen={isWishlistOpen}
         onClose={() => setIsWishlistOpen(false)}
@@ -335,7 +356,7 @@ export default function App() {
         }}
       />
 
-      {/* VIP Member Profile / Auth Modal */}
+      {/* Auth Modal */}
       <AuthModal
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}

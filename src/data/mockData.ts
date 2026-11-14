@@ -219,7 +219,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'unicorns',
-    title: 'Dreaming of Unicorns',
+    title: 'Dark Unicorns',
     subtitle: 'Golden Horn Fairytale Fantasy',
     category: 'Fantasy & Magic',
     headline: 'Where Fairytales Come Alive Beneath Starlit Canopies.',
@@ -238,7 +238,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'fortnite',
-    title: 'Fortnite',
+    title: 'Olivia Rodrigo',
     subtitle: 'Battle Royale Gamer Oasis',
     category: 'Gaming & Action',
     headline: 'Drop In and Claim Your Victory Royale.',
@@ -257,7 +257,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'frozen',
-    title: 'Frozen',
+    title: 'Indian Teepee Tent',
     subtitle: 'Winter Kingdom Elegance',
     category: 'Winter & Royalty',
     headline: 'Step into an Ice Castle of Shimmering Snowflakes.',
@@ -467,7 +467,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'black-and-white',
-    title: 'Black and White Elegance',
+    title: 'Gamer',
     subtitle: 'Silver Trimmings & Monochrome Chic',
     category: 'Monochrome & Luxe',
     headline: 'Timeless High-Contrast Silver & Black Luxe.',
@@ -486,7 +486,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
   {
     id: 'olivia-rodrigo',
-    title: 'Olivia Rodrigo',
+    title: 'Posh Polka Dots',
     subtitle: 'Pop Star Purple & Punk Pop',
     category: 'Music & Teen Pop',
     headline: 'Lavender Grunge, Butterfly Decals & Pop Star Anthems.',
@@ -524,7 +524,7 @@ export const THEMES_DATA: ThemeItem[] = [
   },
     {
     id: 'harry-potter',
-    title: 'Harry Potter',
+    title: 'Glow in the Dark',
     subtitle: 'Hogwarts Wizarding Academy',
     category: 'Magic & Adventure',
     headline: 'Board the Hogwarts Express for a Night of Magic.',
@@ -574,7 +574,7 @@ export const THEMES_DATA: ThemeItem[] = [
     vibeHighlight: 'Holiday Tartan, Pine Garlands & Christmas Starlight',
     palette: ['#B22222', '#2E5A36', '#D4AF37', '#FAF9F6', '#000000'],
     paletteNames: ['Holiday Crimson', 'Pine Green', 'Gilded Star', 'Soft White', 'Pure Black'],
-    image: './assets/aistudio/2.jfif',
+    image: './assets/aistudio/chr.jpeg',
     popularFor: 'December holiday sleepovers, Christmas Eve traditions, winter birthdays, and festive family fun.',
     decorElements: ['Frosted evergreen garlands', 'Personalized holiday stockings', 'Tartan blankets', 'Snowflake pillows'],
     tentStyle: 'Ivory A-frames draped in holiday pine swags and red velvet ribbons',
@@ -603,7 +603,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'gal-1',
     title: 'Seven Mile Beach Slumber Oasis',
     category: 'Teepees',
-    image: HERO_IMAGE,
+    image:'./assets/aistudio/3w.jpeg',
     span: 'featured',
     caption: 'A 5-teepee bespoke slumber party at a Seven Mile Beach villa with handcrafted timber A-frames and candy table.',
     location: 'Seven Mile Beach, Grand Cayman',
