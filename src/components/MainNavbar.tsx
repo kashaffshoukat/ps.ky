@@ -370,9 +370,7 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
                         <div className="overflow-hidden">
                           <div className="p-3 bg-neutral-50 rounded-xl border-2 border-[#5A7755]/20 shadow-inner space-y-2">
                             <div className="flex items-center justify-between pb-2 border-b border-neutral-200 px-1">
-                              <span className="text-[10px] font-black uppercase tracking-widest text-[#B06F78]">
-                                All Themes (3 Sections)
-                              </span>
+                             
                               <button
                                 type="button"
                                 onClick={() => handleLinkClick('themes')}
