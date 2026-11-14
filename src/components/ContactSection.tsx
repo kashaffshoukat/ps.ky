@@ -652,7 +652,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <div className="flex items-center justify-between mb-2">
                       <div>
                         <label className="text-xs font-bold text-[#384C37] flex items-center gap-1.5">
-                          <Gift className="w-3.5 h-3.5 text-[#5A7755]" />
                           <span>OPTIONAL PARTY ADD-ONS (Quoted on Request)</span>
                         </label>
                         <span className="text-[10px] text-[#232B25]/60 block mt-0.5">
