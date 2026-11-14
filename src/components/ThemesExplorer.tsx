@@ -68,7 +68,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
 
   return (
     <section id="themes" className="relative z-10 bg-white border-b border-[#5A7755]/15 select-none font-sans py-14 sm:py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
@@ -80,8 +80,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
             <CuteSmileyCloud size="md" className="hidden sm:inline-block mx-auto" />
 
           </ScrollReveal>
-
-         
+ 
 
           <ScrollReveal animation="fade-up" delay={200}>
             <div className="flex items-center justify-center gap-2 sm:gap-3">
