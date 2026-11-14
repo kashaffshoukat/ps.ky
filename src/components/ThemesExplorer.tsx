@@ -76,7 +76,7 @@ export const ThemesExplorer: React.FC<ThemesExplorerProps> = ({
            <ScrollReveal animation="fade-up" delay={0}>
              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#C78D95]/15 border border-[#C78D95]/30 text-[#B06F78] text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
                <Heart className="w-3.5 h-3.5 fill-[#C78D95]" />
-               <span>Grand Cayman's Themes Collection</span>
+               <span>Grand Cayman's Themes</span>
              </div>
                <CuteSmileyCloud size="md" className="shrink-0 mx-auto" />
  
