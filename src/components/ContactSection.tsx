@@ -658,14 +658,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         <span className="text-[10px] text-[#232B25]/60 block mt-0.5">
                           Prices on request and subject to availability and number of campers.
                         </span>
-                      </div>
-                      <button
+                         <button
                         type="button"
                         onClick={handleSelectAllExtras}
                         className="text-xs font-bold text-[#5A7755] hover:underline cursor-pointer"
                       >
                         {formData.extras.length === EXTRAS_LIST.length ? 'Deselect All' : 'Select All'}
                       </button>
+                      </div>
+                     
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-neutral-50 border-2 border-neutral-200 rounded-none p-4 max-h-72 overflow-y-auto no-scrollbar">
